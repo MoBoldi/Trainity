@@ -1,0 +1,42 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Ziel" directorySegmentName="seg_0" id="D6095C8B-5FF1-EAF2-6EB4-1A05636D783B">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:45:54 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>37FCD819-F909-A25B-DFEC-487723494D1E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>556F416C-0C2C-5931-387E-86EBED866B6D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="Datum" id="E4C5D394-A639-560B-8971-4E47391EDB13">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:46:13 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="Status" id="BE71D1D3-638E-6AB3-820B-9C56B9535439">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:46:22 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

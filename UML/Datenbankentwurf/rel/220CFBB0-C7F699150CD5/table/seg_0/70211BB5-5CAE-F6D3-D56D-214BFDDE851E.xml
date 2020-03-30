@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="70211BB5-5CAE-F6D3-D56D-214BFDDE851E" name="Aufteilung_Trainingsplan">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Trainingsplan_Trainingsplan_ID" id="866CFD60-F152-36B4-9170-02A0A8020B8F">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1F1CBC03-D026-B638-9DAF-8C384775F81A" referredColumn="FD3AE48E-1299-EDBA-B71F-92A9684BD9C9"/>
+</associations>
+</Column>
+<Column name="Trainingseinheit_Trainingseinheit_ID" id="8CF95C1A-1BFF-B375-D344-0574B9EEF796">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F5016913-FD34-233F-BAB0-DB1FC5C9C190" referredColumn="27F3BF21-24CE-418A-676D-8C4EE5D9A8F1"/>
+</associations>
+</Column>
+<Column name="Stelle" id="DBE26FA8-EE62-0279-3E8B-2DB460E0F2F4">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<comment><![CDATA[Welche Einheit wird zuerst ausgeführt. 
+Bsp.: Am ersten Tag wird Arm-Training gemacht, am zweiten Beine, ...
+]]></comment>
+<generatorID>5A461ED5-C282-529B-057B-FC32098F5BFA</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,3,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<isDependOnFK_AsMandatory>true</isDependOnFK_AsMandatory>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1750F818-E354-797F-3C05-E21D437CEFDB" name="Aufteilung_Trainingsplan_PK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="866CFD60-F152-36B4-9170-02A0A8020B8F"/>
+<colUsage columnID="8CF95C1A-1BFF-B375-D344-0574B9EEF796"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4596D30B-8E8D-D79D-F4B1-08D4236E16AE" name="Aufteilung_Trainingsplan_Trainingsplan_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>0CC2907C-FEC3-21D2-6FB0-7011613DAF12</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="866CFD60-F152-36B4-9170-02A0A8020B8F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="47ADC194-119C-FFD7-4E0D-F9C4C6A84042" name="Aufteilung_Trainingsplan_Trainingseinheit_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>0CC2907C-FEC3-21D2-6FB0-7011613DAF12</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8CF95C1A-1BFF-B375-D344-0574B9EEF796"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

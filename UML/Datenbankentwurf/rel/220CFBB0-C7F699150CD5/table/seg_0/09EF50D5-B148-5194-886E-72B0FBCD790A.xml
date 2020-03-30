@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="09EF50D5-B148-5194-886E-72B0FBCD790A" name="Trainingsplan">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>FB054DF1-34A4-7BD2-0758-B83F16625F62</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Trainingsplan_ID" id="FD3AE48E-1299-EDBA-B71F-92A9684BD9C9">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>89BDEBDE-3F17-2193-151C-235602957671</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="7F97E780-2266-5761-5725-F8FCC2F50ED3">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>BE0F7D80-05B6-812B-283C-2D61F5612A45</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Besitzer" id="A32BAD07-9AA8-14F0-AF46-55E64453B03E">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>235D4812-5D91-7650-7DCD-BF0FB3F7399A</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Benutzer_Benutzer_ID" id="88BBE2AE-E962-F35C-CB4A-0F42CA397D24">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>F128180D-D659-01A3-3444-81D6A68F7A1A</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3F73971E-C002-B852-F37A-F2A42AA60F06" referredColumn="523B729D-B898-472D-124D-30BF97A5BEF8"/>
+</associations>
+</Column>
+<Column name="Bild_Bild_ID" id="4E6BD0BB-ED47-4751-9F39-45308AB15DA6">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>801C4D1B-4102-B93A-43EA-C409FAE0CBA4</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FA27ACFE-EAE3-6438-75AB-1557D0FBD0CC" referredColumn="4697A306-12E4-B5B2-ED1D-FB86136B656E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E1816322-C6B5-B48A-1EB6-54977B3C731B" name="Trainingsplan_PK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>993CEBCD-3085-F17E-7F6B-60E974570CF6</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FD3AE48E-1299-EDBA-B71F-92A9684BD9C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D0C7CC0D-1E77-AB16-722B-C3C71406E666" name="Trainingsplan_Bild_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>C055ECB8-7B45-7EE2-6557-E2094BDAE7DA</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E6BD0BB-ED47-4751-9F39-45308AB15DA6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CEC61734-D466-88F4-C0AA-30D8942E3DE7" name="Trainingsplan_Benutzer_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>72215E0D-28E5-8FE2-1E97-7FF280E5233F</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88BBE2AE-E962-F35C-CB4A-0F42CA397D24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
