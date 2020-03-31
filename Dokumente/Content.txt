@@ -1,0 +1,82 @@
+ITP - Projekt - Content (Bestandteile)
+//Daten
+einzelner Trainingsplan
+    Gesamtdauer des Plans (+ Pausen)
+    Trainingsaktivitäten 
+        Aktivitätsdauer
+        Bild 
+        Name
+        Schwierigkeitsstufe (max + 1 als Plan)
+            Anfänger 
+            Fortgeschritten
+            Profi
+    Schwierigkeitsstufe
+    Bild
+    Name
+    Preis (nur anzeigen wenn > 0€)
+
+--> User 
+    //Rang
+    //    Anfänger
+    //    Fortgeschritten 
+    //    Profi
+    //Freunde (Für evtl. Battles und Motivation, weil Freunde mehr trainieren. Vllt. sogar mit 
+    //          Meldungen á la: "Hahah, ich hab die Woche 1x mehr trainiert als du xD.")
+    Erfolge
+    Ziel
+        Anzahl der Trainings in einer Woche (/Monat)
+        Uhrzeit zu der der User trainieren will
+    Kalender
+        Zeitpunkt der erledigten Trainingspläne
+    Vorname
+    Nachname
+    Geburtsdatum 
+    Email
+    Gewicht
+    Eigene Trainingspläne
+        Zeitpunkt der Erstellung
+        Name 
+        Trainingsaktivitäten
+        Bild 
+    Passwort (als HASH)
+    Favorisierte Trainingspläne
+    Fitnesscoach (muss nur gespeichert werden, wenn er überprüft worden ist)
+        JA? 
+            Sales-Seite
+                Einnahmen durch die App 
+                Verkäufe
+                Aufrufe
+
+--> Startseite (In Abschnitte geteilt; Vertical Scrolling) 
+    Favorisierte Trainingspläne
+    Empfohlene Trainingspläne
+    Zielsetzung und Einhaltung
+    Neueste Communitytrainingspläne
+    
+--> Zielsetzungsseite 
+    Kalender
+    Gewichtsgraph
+    Trainingsgraph
+
+    //Motivationsbilder
+    //Evtl. Abnehmziele
+    //Evtl. Ziele wie eigene Erfolge
+
+Trainingsplan starten Seite
+    Motivierendes Zitat 
+        Erst wenn ich Schmerzen habe, fange ich an zu zählen, weil es erst dann wirklich etwas bringt. 
+        ( - Muhammad Ali)
+    Kurzes Intro um welches Training handelt es sich (Kann man abstellen in Einstellungen)
+        z.Bsp.: Krafttraining mit 5kg Hanteln 
+                Yoga (benötigt nur eine Yogamatte)
+    Training starten Button
+        //Pausenlänge einstellen
+
+
+--> Login 
+Datenmodell: 
+Beziehung zw. User und Favorisierte Pläne
+
+User_ID 
+Trainingseinheit
+Datum 
