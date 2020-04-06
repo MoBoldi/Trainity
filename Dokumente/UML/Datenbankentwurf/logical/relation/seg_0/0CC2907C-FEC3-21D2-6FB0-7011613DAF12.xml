@@ -1,0 +1,37 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Aufteilung_Trainingsplan" directorySegmentName="seg_0" id="0CC2907C-FEC3-21D2-6FB0-7011613DAF12">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:35:36 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>FB054DF1-34A4-7BD2-0758-B83F16625F62</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>556F416C-0C2C-5931-387E-86EBED866B6D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="Stelle" id="5A461ED5-C282-529B-057B-FC32098F5BFA">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:35:40 UTC</createdTime>
+<comment><![CDATA[Welche Einheit wird zuerst ausgeführt. 
+Bsp.: Am ersten Tag wird Arm-Training gemacht, am zweiten Beine, ...
+]]></comment>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,3,0</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

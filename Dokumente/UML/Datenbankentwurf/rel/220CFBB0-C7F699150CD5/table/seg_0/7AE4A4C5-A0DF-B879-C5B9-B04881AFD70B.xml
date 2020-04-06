@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7AE4A4C5-A0DF-B879-C5B9-B04881AFD70B" name="Trainingseinheit">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>556F416C-0C2C-5931-387E-86EBED866B6D</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Trainingseinheit_ID" id="27F3BF21-24CE-418A-676D-8C4EE5D9A8F1">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>0C728DA0-627D-F6BC-E709-49AF2E5B4914</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="FA74396A-ABA0-C065-3B21-632B05D3DFF1">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>5FF81DA1-B04A-D856-AC66-38845893DFC2</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Erstelldatum" id="44F4E6C7-5DF9-7214-421D-EA11054EE5C9">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>6E9472BB-E9EC-2EB5-FAF6-670F100CF514</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Dauer" id="F37E81FE-7E85-4B94-6851-B4E733CFE1F6">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>7D96174C-C1DE-EA42-745F-8E714EB7DD95</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Benutzer_Benutzer_ID" id="5EAB8633-B131-C7A1-D65C-CB5206BD34AD">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>EBFF31CE-14AB-4A7B-1B62-2E97D0CE0688</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FA524C5A-064B-D5C2-99CF-A2A8ADBEE1B1" referredColumn="523B729D-B898-472D-124D-30BF97A5BEF8"/>
+</associations>
+</Column>
+<Column name="Bild_Bild_ID" id="73D5EFAA-9B32-C9D3-DCA0-0D2652E455AF">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>B222D5B7-24C7-AC4B-B3A6-C6E91F70C2ED</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="51F71C34-17FE-76E9-32C2-964B9B5C7840" referredColumn="4697A306-12E4-B5B2-ED1D-FB86136B656E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2B6F7252-E7D5-373A-0219-6E3E3AEC55BD" name="Trainingseinheit_PK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>4CB039B0-4D3B-6CB3-4D92-BEF59211A72C</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="27F3BF21-24CE-418A-676D-8C4EE5D9A8F1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C676C3F-BB73-E0B7-3D8D-1241554FD813" name="Trainingseinheit_Bild_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>EC828FF3-BF1A-D36E-8772-8D9CE452FB88</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="73D5EFAA-9B32-C9D3-DCA0-0D2652E455AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CCAA06C0-774C-D14E-1DB2-C70DC753E8B1" name="Trainingseinheit_Benutzer_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>CB03F938-8809-4865-62AF-37D3345ECB06</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5EAB8633-B131-C7A1-D65C-CB5206BD34AD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

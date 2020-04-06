@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="1F1CBC03-D026-B638-9DAF-8C384775F81A" containerWithKeyObject="70211BB5-5CAE-F6D3-D56D-214BFDDE851E" localFKIndex="4596D30B-8E8D-D79D-F4B1-08D4236E16AE" name="Aufteilung_Trainingsplan_Trainingsplan_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>0CC2907C-FEC3-21D2-6FB0-7011613DAF12</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<referredTableLongName>Trainingsplan</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>09EF50D5-B148-5194-886E-72B0FBCD790A</referredTableID>
+<keyObject>E1816322-C6B5-B48A-1EB6-54977B3C731B</keyObject>
+<referredKeyID>E1816322-C6B5-B48A-1EB6-54977B3C731B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Trainingsplan_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

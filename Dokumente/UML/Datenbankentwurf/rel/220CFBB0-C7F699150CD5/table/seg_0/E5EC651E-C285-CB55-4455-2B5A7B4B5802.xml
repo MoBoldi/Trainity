@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E5EC651E-C285-CB55-4455-2B5A7B4B5802" name="Benutzer">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>37FCD819-F909-A25B-DFEC-487723494D1E</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Benutzer_ID" id="523B729D-B898-472D-124D-30BF97A5BEF8">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>469B2B63-3A51-959F-8007-1A981D9F6A23</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Vorname" id="067D7076-AE13-8C6F-078C-2CF24332C8B2">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>735445A6-C073-5769-C0C7-82064AA72015</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nachname" id="4E5621F0-C2BC-5AC4-6D83-4BC11C0C663C">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>A5F83C7B-5BDE-555E-77DB-06600FD095C8</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Email" id="54B734B5-9759-9289-092F-D5983A184000">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>629D2FDB-000D-A8E2-E143-8182E7B94E48</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Passwort" id="E7491567-5588-A863-CBC7-6B2F04485353">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>8F4A8223-26C5-70E4-4B12-B69FBF951EF2</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Status" id="E20970A1-F3E7-EA95-E1F0-DBE8EE921A42">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>9D98F2E2-8C14-3437-C03F-9BF6ABD0C868</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Geburtsdatum" id="20F8D3FF-CB60-BA88-8EF0-A3E925B3189E">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>262AA01D-993D-D837-CD8E-D3B8F83B929E</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4B85686C-57CC-089F-8796-E6304DC83A99" name="Benutzer_PK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>F211002D-51E5-1BB9-ABA0-321FB0F3463E</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="523B729D-B898-472D-124D-30BF97A5BEF8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

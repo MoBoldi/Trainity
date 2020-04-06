@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Aufteilung_Trainingseinheit" directorySegmentName="seg_0" id="59785CAD-0946-0589-776A-3F3C7C138D20">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:33:01 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>556F416C-0C2C-5931-387E-86EBED866B6D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>48D604B0-E374-91A7-5FEA-1711F1748ACC</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="Stelle" id="46BE8287-23B3-26F1-D8A8-3E532EA70CC4">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:33:10 UTC</createdTime>
+<comment><![CDATA[An welcher Stelle soll die Übung stehen
+]]></comment>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+</attribute>
+<attribute name="Anzahl" id="54330A07-5F9E-F7BA-CA20-DCA857F49C63">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:33:33 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,3,0</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="653870AE-5981-7B1E-13F5-3A58CF9827BB" name="Ziel">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Benutzer_Benutzer_ID" id="08E71047-5F4D-284F-8504-6D51D64FCD79">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="53B2276D-EE42-1A5F-884F-DEFC29E83D50" referredColumn="523B729D-B898-472D-124D-30BF97A5BEF8"/>
+</associations>
+</Column>
+<Column name="Trainingseinheit_Trainingseinheit_ID" id="F52D4D9B-F67D-CF2B-30AC-425A6FBCACF8">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5F5742F6-DDDC-AF46-F808-449C823484B6" referredColumn="27F3BF21-24CE-418A-676D-8C4EE5D9A8F1"/>
+</associations>
+</Column>
+<Column name="Datum" id="4D3B01A6-E8BE-66EB-7048-7E7F07BAFB18">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>E4C5D394-A639-560B-8971-4E47391EDB13</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<isDependOnFK_AsMandatory>true</isDependOnFK_AsMandatory>
+</Column>
+<Column name="Status" id="7D1B813D-B205-11F2-3274-627ED47EE14B">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>BE71D1D3-638E-6AB3-820B-9C56B9535439</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<isDependOnFK_AsMandatory>true</isDependOnFK_AsMandatory>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1BB3BE0F-8BDB-3A8E-1D87-E56A4E0D5C53" name="Ziel_PK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08E71047-5F4D-284F-8504-6D51D64FCD79"/>
+<colUsage columnID="F52D4D9B-F67D-CF2B-30AC-425A6FBCACF8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="63FDDF0C-AB6C-4D2F-5A38-040167B3805B" name="Ziel_Benutzer_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>D6095C8B-5FF1-EAF2-6EB4-1A05636D783B</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08E71047-5F4D-284F-8504-6D51D64FCD79"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1A14FF9D-0D6E-4664-0477-B6D58F07D9DB" name="Ziel_Trainingseinheit_FK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:01:51 UTC</createdTime>
+<generatorID>D6095C8B-5FF1-EAF2-6EB4-1A05636D783B</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F52D4D9B-F67D-CF2B-30AC-425A6FBCACF8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

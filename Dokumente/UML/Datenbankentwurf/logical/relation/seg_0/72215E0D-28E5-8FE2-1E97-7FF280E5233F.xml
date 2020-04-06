@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Erstellter_Trainingsplan" directorySegmentName="seg_0" id="72215E0D-28E5-8FE2-1E97-7FF280E5233F">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:41:26 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<sourcePk>F211002D-51E5-1BB9-ABA0-321FB0F3463E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>37FCD819-F909-A25B-DFEC-487723494D1E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>FB054DF1-34A4-7BD2-0758-B83F16625F62</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

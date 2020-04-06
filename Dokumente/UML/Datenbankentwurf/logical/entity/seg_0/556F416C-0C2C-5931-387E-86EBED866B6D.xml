@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="556F416C-0C2C-5931-387E-86EBED866B6D" name="Trainingseinheit">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:21:35 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Trainingseinheit_ID" id="0C728DA0-627D-F6BC-E709-49AF2E5B4914">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:21:44 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Name" id="5FF81DA1-B04A-D856-AC66-38845893DFC2">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:21:59 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Erstelldatum" id="6E9472BB-E9EC-2EB5-FAF6-670F100CF514">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:22:10 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Dauer" id="7D96174C-C1DE-EA42-745F-8E714EB7DD95">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:22:50 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Benutzer_ID" id="EBFF31CE-14AB-4A7B-1B62-2E97D0CE0688">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:42:09 UTC</createdTime>
+<generatorID>CB03F938-8809-4865-62AF-37D3345ECB06</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<referedAttribute>469B2B63-3A51-959F-8007-1A981D9F6A23</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Bild_ID" id="B222D5B7-24C7-AC4B-B3A6-C6E91F70C2ED">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 12:00:21 UTC</createdTime>
+<generatorID>EC828FF3-BF1A-D36E-8772-8D9CE452FB88</generatorID>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="true"/>
+</engineerTo>
+<referedAttribute>9916A1D6-CC5F-AD16-12BA-FB267929B73B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4CB039B0-4D3B-6CB3-4D92-BEF59211A72C" name="Trainingseinheit PK">
+<createdBy>Moritz Weibold</createdBy>
+<createdTime>2020-03-26 11:21:57 UTC</createdTime>
+<ownerDesignName>Datenbankentwurf</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="220CFBB0-2920-778F-0F9C-C7F699150CD5" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0C728DA0-627D-F6BC-E709-49AF2E5B4914</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
