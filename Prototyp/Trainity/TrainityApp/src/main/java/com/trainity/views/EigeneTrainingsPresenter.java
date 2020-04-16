@@ -34,8 +34,5 @@ public class EigeneTrainingsPresenter {
                         System.out.println("Favorite")));
             }
         });
-    
 }
-
-
 }
