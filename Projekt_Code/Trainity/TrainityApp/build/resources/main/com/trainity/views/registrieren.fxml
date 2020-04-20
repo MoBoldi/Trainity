@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.mvc.View?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<View fx:id="registrieren" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@registrieren.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.RegistrierenPresenter">
+<center>
+      <VBox fx:id="outterVBox" alignment="CENTER" minHeight="549.0" minWidth="321.0" prefHeight="580.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="innerVBox" maxWidth="300.0" prefHeight="524.0" prefWidth="300.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label fx:id="labelTitle" alignment="CENTER" opacity="0.96" text="Welcome,">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelTitle2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.52" text="create your own Account!">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <HBox fx:id="labelImageViewHBox" alignment="CENTER" prefHeight="181.0" prefWidth="300.0">
+                     <children>
+                        <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Bildschirmfoto%202020-03-24%20um%2020.56.43.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="InputHBox1" alignment="CENTER" prefHeight="167.0" prefWidth="310.0">
+                     <children>
+                        <GridPane alignment="CENTER" prefHeight="167.0" prefWidth="305.0" style="-fx-background-color: white;">
+                           <columnConstraints>
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <TextField prefHeight="26.0" prefWidth="267.0" promptText="Email">
+                                 <GridPane.margin>
+                                    <Insets bottom="30.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </TextField>
+                              <TextField prefHeight="26.0" prefWidth="240.0" promptText="Passwort" text="••••••••••••••••••••" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="30.0" top="30.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </TextField>
+                              <TextField prefHeight="26.0" prefWidth="267.0" promptText="Passwort bestätigen" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets top="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="InputHbox2" alignment="CENTER" prefHeight="167.0" prefWidth="310.0" visible="false">
+                     <children>
+                        <GridPane alignment="CENTER" prefHeight="167.0" prefWidth="305.0" style="-fx-background-color: white;">
+                           <columnConstraints>
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <TextField prefHeight="26.0" prefWidth="267.0" promptText="Vorname">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </TextField>
+                              <TextField prefHeight="26.0" prefWidth="240.0" promptText="Nachname" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets top="30.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </TextField>
+                              <DatePicker fx:id="DatePicker" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="266.0" promptText="GeburtstagsDatum" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </DatePicker>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="-167.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="saveButtonHBox" alignment="BOTTOM_RIGHT" prefHeight="76.0" prefWidth="300.0">
+                     <children>
+                        <Button alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.99" prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10;" text="Get Started " textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="labelLinkBox" prefHeight="32.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" opacity="0.58" text="Noch nicht registriert?">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+   </center>
+</View>
