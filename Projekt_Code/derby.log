@@ -1,0 +1,31 @@
+Mon Apr 20 12:49:15 CEST 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Mon Apr 20 12:49:16 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0171-9734-d9f2-ffffcfc167c9 
+on database directory C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\ITP\Projekt\Trainity\Projekt_Code\TrainityDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/SEW/Libraries/db-derby-10.14.2.0-lib/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\SEW\Libraries\db-derby-10.14.2.0-lib
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\ITP\Projekt\Trainity\Projekt_Code
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Apr 20 12:49:20 CEST 2020:
+Shutting down instance a816c00e-0171-9734-d9f2-ffffcfc167c9 on database directory C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\ITP\Projekt\Trainity\Projekt_Code\TrainityDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Mon Apr 20 12:49:20 CEST 2020 Thread[DRDAConnThread_3,5,main] (DATABASE = TrainityDB), (DRDAID = {2}), Database 'TrainityDB' shutdown.
+----------------------------------------------------------------
+Mon Apr 20 12:49:52 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 6ede40af-0171-9734-d9f2-ffffcfc167c9 
+on database directory C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\ITP\Projekt\Trainity\Projekt_Code\TrainityDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/SEW/Libraries/db-derby-10.14.2.0-lib/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\SEW\Libraries\db-derby-10.14.2.0-lib
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Moritz Weibold\OneDrive - HTBLA Leonding\ITP\Projekt\Trainity\Projekt_Code
+Database Class Loader started - derby.database.classpath=''
