@@ -2,7 +2,6 @@
 
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -16,15 +15,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.LoginPresenter">
+<View fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.LoginPresenter">
     <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <center>
    
-   <VBox fx:id="outerVBox" alignment="CENTER" minHeight="549.0" minWidth="330.0" prefHeight="549.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+   <VBox fx:id="outerVBox" alignment="CENTER" prefHeight="549.0" prefWidth="290.0" spacing="15.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
       <children>
-         <VBox fx:id="innerVBox" maxWidth="300.0" prefHeight="524.0" prefWidth="300.0">
+         <VBox fx:id="innerVBox">
             <VBox.margin>
                <Insets top="10.0" />
             </VBox.margin>
@@ -45,7 +44,7 @@
                         <Insets />
                      </VBox.margin>
                </Label>
-                  <HBox fx:id="imageHBox" alignment="CENTER" prefHeight="181.0" prefWidth="300.0">
+                  <HBox fx:id="imageHBox" alignment="CENTER" prefHeight="180.0">
                      <children>
                      <ImageView fx:id="imageView" fitHeight="142.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -54,9 +53,9 @@
                      </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="inputHBox" alignment="CENTER" prefHeight="167.0" prefWidth="310.0">
+                  <HBox fx:id="inputHBox" alignment="CENTER" prefWidth="310.0">
                      <children>
-                     <GridPane fx:id="gridPane" alignment="CENTER" prefHeight="167.0" prefWidth="305.0" style="-fx-background-color: white;">
+                     <GridPane fx:id="gridPane" alignment="CENTER" minHeight="150.0" prefWidth="305.0" style="-fx-background-color: white;">
                        <columnConstraints>
                          <ColumnConstraints />
                        </columnConstraints>
@@ -68,7 +67,7 @@
                            <Insets />
                         </opaqueInsets>
                            <children>
-                              <TextField fx:id="inputFieldEMail" prefHeight="26.0" prefWidth="267.0" promptText="Email">
+                              <TextField fx:id="inputFieldEMail" prefWidth="260.0" promptText="Email">
                                  <GridPane.margin>
                                     <Insets bottom="30.0" />
                                  </GridPane.margin>
@@ -76,7 +75,7 @@
                                     <Font size="21.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="inputFieldPasswort" prefHeight="26.0" prefWidth="240.0" promptText="Passwort" text="••••••••••••••••••••" GridPane.rowIndex="1">
+                              <TextField fx:id="inputFieldPasswort" prefWidth="240.0" promptText="Passwort" text="••••••••••••••••••••" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets top="30.0" />
                                  </GridPane.margin>
@@ -101,7 +100,7 @@
                      </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="labelLinkHBox" prefHeight="32.0" prefWidth="300.0">
+                  <HBox fx:id="labelLinkHBox" prefHeight="32.0" prefWidth="260.0">
                      <children>
                      <Label fx:id="labelLink" alignment="TOP_LEFT" contentDisplay="CENTER" opacity="0.58" text="Noch nicht registriert?">
                         <font>
