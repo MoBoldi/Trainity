@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -34,37 +35,37 @@
                                     <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <VBox fx:id="mo" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Mo" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <VBox fx:id="di" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Di" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);">
+                                    <VBox fx:id="mi" alignment="CENTER" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);">
                                        <children>
                                           <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Mi" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <VBox fx:id="don" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Do" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <VBox fx:id="fr" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bolder;" text="Fr" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <VBox fx:id="sa" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Sa" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <VBox fx:id="so" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="So" />
                                        </children>
@@ -76,53 +77,104 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0">
+                                          <ImageView fx:id="calendarMo" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="checkMo" fitHeight="25.0" fitWidth="25.0">
                                              <image>
                                                 <Image url="@../../../pictures/haeckchen.png" />
                                              </image>
                                           </ImageView>
                                        </children>
-                                    </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0" />
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    </StackPane>
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0">
+                                          <ImageView fx:id="calendarDi" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="checkDi" fitHeight="25.0" fitWidth="25.0">
                                              <image>
                                                 <Image url="@../../../pictures/haeckchen.png" />
                                              </image>
                                           </ImageView>
                                        </children>
-                                    </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    </StackPane>
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0">
+                                          <ImageView fx:id="calendarMi" fitHeight="25.0" fitWidth="25.0">
                                              <image>
                                                 <Image url="@../../../pictures/calendar.png" />
                                              </image>
                                           </ImageView>
+                                          <ImageView fx:id="checkMi" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/haeckchen.png" />
+                                             </image>
+                                          </ImageView>
                                        </children>
-                                    </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0" />
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    </StackPane>
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0">
+                                          <ImageView fx:id="calendarDo" fitHeight="25.0" fitWidth="25.0">
                                              <image>
                                                 <Image url="@../../../pictures/calendar.png" />
                                              </image>
                                           </ImageView>
+                                          <ImageView fx:id="checkDo" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/haeckchen.png" />
+                                             </image>
+                                          </ImageView>
                                        </children>
-                                    </VBox>
-                                    <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                    </StackPane>
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0">
+                                          <ImageView fx:id="calendarFr" fitHeight="25.0" fitWidth="25.0">
                                              <image>
                                                 <Image url="@../../../pictures/calendar.png" />
                                              </image>
                                           </ImageView>
+                                          <ImageView fx:id="checkFr" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/haeckchen.png" />
+                                             </image>
+                                          </ImageView>
                                        </children>
-                                    </VBox>
+                                    </StackPane>
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
+                                       <children>
+                                          <ImageView fx:id="calendarSa" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="checkSa" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/haeckchen.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="30.0" prefWidth="30.0">
+                                       <children>
+                                          <ImageView fx:id="calendarSo" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="checkSo" fitHeight="25.0" fitWidth="25.0">
+                                             <image>
+                                                <Image url="@../../../pictures/haeckchen.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </HBox>
                            </children>
