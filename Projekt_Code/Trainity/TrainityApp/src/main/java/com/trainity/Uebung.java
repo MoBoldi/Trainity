@@ -18,14 +18,18 @@ public class Uebung {
     private final StringProperty name = new SimpleStringProperty();
     private final ObjectProperty<Number> wiederholungen = new SimpleObjectProperty<>();
     private final StringProperty beschreibung = new SimpleStringProperty();
+    private final StringProperty imgPfad = new SimpleStringProperty();
+
 
     public Uebung(Uebung u) {
 
         this.setName(u.getName());
         this.setWiederholungen(u.getWiederholungen());
         this.setBeschreibung(u.getBeschreibung());
+        this.setImgPfad(u.getImgPfad());
 
     }
+    
    public Uebung() {
     clear();
   }
@@ -41,12 +45,15 @@ public class Uebung {
   
 
     public void saveuebung(Statement stmt) {
+        //Überprüfung beinhalted
         killAndFill();
 
+        System.out.println(getName());
+        
         String sql = "insert into DBNAME VALUES("
-                + "'getName()', "
-                + "'getWiederholungen()', "
-                + "'getBeschreibung()'"
+                + "         '" + getName() + "' "
+                 + "        , '" + getWiederholungen() + "' "
+                 + "        , '" + getBeschreibung() + "' "
                 + ")";
 
         try {
@@ -68,7 +75,7 @@ public class Uebung {
             FehlerBox("Fehlermeldung");
         }
 
-        if (checkBeschreibung(beschreibung.get())) {
+        if (checkBeschreibung(getBeschreibung())) {
             FehlerBox("Fehlermeldung");
         }
 
@@ -121,6 +128,30 @@ public class Uebung {
         return name;
     }
 
+    
+    
+    //-----------------------------------------
+    //Set-er Get-er IMGPFAD
+    
+    
+      //Set-er Get-er Beschreibung
+    public final void setImgPfad(String value) {
+        beschreibung.set(value);
+    }
+
+    public String getImgPfad() {
+        return beschreibung.get();
+    }
+
+    public StringProperty ImgPfadProperty() {
+        return name;
+    }
+
+    
+    
+    
+    
+    
     private void FehlerBox(String fehlermeldung) {
         System.out.println(fehlermeldung);
     }

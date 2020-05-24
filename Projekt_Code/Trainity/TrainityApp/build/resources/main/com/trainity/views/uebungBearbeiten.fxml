@@ -2,7 +2,6 @@
 
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -12,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<View fx:id="uebungBearbeiten" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@uebungBearbeiten.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.UebungBearbeitenPresenter">
+<View fx:id="uebungBearbeiten" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@uebungBearbeiten.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.UebungBearbeitenPresenter">
    
     <VBox fx:id="outerBox" alignment="CENTER" maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: white;">
         <children>
@@ -30,7 +28,7 @@
                     </HBox>
                     <HBox fx:id="inputNameHBox" prefHeight="40.0" prefWidth="302.0">
                         <children>
-                            <TextField fx:id="inputNameExercise" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="33.0" prefWidth="294.0" text="Jumping Jacks">
+                            <TextField fx:id="inputNameExercise" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="33.0" prefWidth="294.0">
                                 <font>
                                     <Font size="3.5" />
                                 </font>
@@ -51,7 +49,7 @@
                     </HBox>
                     <HBox prefHeight="42.0" prefWidth="302.0">
                         <children>
-                            <TextField fx:id="inputLabelRep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="44.0" prefWidth="294.0" text="10 x">
+                            <TextField fx:id="inputLabelRep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="44.0" prefWidth="294.0">
                                 <font>
                                     <Font size="3.5" />
                                 </font>
@@ -72,7 +70,7 @@
                     </HBox>
                     <HBox prefHeight="47.0" prefWidth="300.0">
                         <children>
-                            <TextField fx:id="inputLabelInfo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="294.0" text="Bei den Jumping Jacks wird hauptsächlich...">
+                            <TextField fx:id="inputLabelInfo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="294.0">
                                 <font>
                                     <Font size="3.5" />
                                 </font>
@@ -102,7 +100,7 @@
                     </HBox>
                     <HBox fx:id="saveButtonHBox" alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="350.0">
                         <children>
-                            <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
+                            <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionSaveToDB" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font size="16.0" />
                                 </font>
