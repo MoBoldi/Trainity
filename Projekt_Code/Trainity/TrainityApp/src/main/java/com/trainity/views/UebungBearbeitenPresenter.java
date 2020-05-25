@@ -124,7 +124,7 @@ public class UebungBearbeitenPresenter {
       //BINDINGS 
        uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
        uebungBearbeiten.getInputLabelRep().textProperty().bindBidirectional(uebungBearbeiten.model.wiederholungenProperty(),
-               new NullableNumberStringConverter(DF));
+         new NullableNumberStringConverter(DF));
         uebungBearbeiten.getInputLabelInfo().textProperty().bindBidirectional(uebungBearbeiten.model.beschreibungProperty());
       // uebungBearbeiten.getInputNameHBox().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
 
@@ -180,7 +180,7 @@ public class UebungBearbeitenPresenter {
     
     
     
-       @FXML
+    @FXML
     private void onActionSaveToDB(ActionEvent event) {
         
          
@@ -194,6 +194,7 @@ public class UebungBearbeitenPresenter {
     }
     catch (Exception ex) {
        System.out.println(ex.getMessage());
+        System.out.println("Error bei onActionSavetoDB");
      // getImageViewSafes().setStyle("-fx-text-inner-color: red;");
     }   
         

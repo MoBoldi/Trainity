@@ -65,6 +65,27 @@ public class Uebung {
 
     }
 
+       public void updateUebung(Statement stmt) {
+        //Überprüfung beinhalted
+        killAndFill();
+
+        System.out.println(getName());
+        
+        String sql = "UPDATE DBNAME SET("
+                + "   name=  '" + getName() + "' "
+                 + "  , rep = '" + getWiederholungen() + "' "
+                 + "  , beschreibung '" + getBeschreibung() + "' "
+                + ")";
+
+        try {
+            stmt.executeQuery(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Uebung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     private void killAndFill() {
 
         if (checkName(name.get())) {
