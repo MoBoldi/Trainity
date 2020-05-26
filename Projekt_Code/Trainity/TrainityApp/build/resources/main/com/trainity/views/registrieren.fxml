@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <View fx:id="registrieren" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@registrieren.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.RegistrierenPresenter">
 <center>
       <VBox fx:id="outterVBox" alignment="CENTER" minHeight="549.0" minWidth="321.0" prefHeight="580.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
@@ -51,9 +50,9 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="InputHBox1" alignment="CENTER" prefHeight="167.0" prefWidth="310.0">
+                  <HBox fx:id="InputHBox1" alignment="CENTER" prefWidth="310.0">
                      <children>
-                        <GridPane alignment="CENTER" prefHeight="167.0" prefWidth="305.0" style="-fx-background-color: white;">
+                        <GridPane alignment="CENTER" minHeight="150.0" prefWidth="305.0" style="-fx-background-color: white;">
                            <columnConstraints>
                               <ColumnConstraints />
                            </columnConstraints>
@@ -66,7 +65,7 @@
                               <Insets />
                            </opaqueInsets>
                            <children>
-                              <TextField prefHeight="26.0" prefWidth="267.0" promptText="Email">
+                              <TextField prefWidth="267.0" promptText="Email">
                                  <GridPane.margin>
                                     <Insets bottom="30.0" />
                                  </GridPane.margin>
@@ -74,7 +73,7 @@
                                     <Font size="21.0" />
                                  </font>
                               </TextField>
-                              <TextField prefHeight="26.0" prefWidth="240.0" promptText="Passwort" text="••••••••••••••••••••" GridPane.rowIndex="1">
+                              <TextField prefWidth="240.0" promptText="Passwort" text="••••••••••••••••••••" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="30.0" top="30.0" />
                                  </GridPane.margin>
@@ -82,7 +81,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </TextField>
-                              <TextField prefHeight="26.0" prefWidth="267.0" promptText="Passwort bestätigen" GridPane.rowIndex="2">
+                              <TextField prefWidth="267.0" promptText="Passwort bestätigen" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="21.0" />
                                  </font>
@@ -150,7 +149,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="labelLinkBox" prefHeight="32.0" prefWidth="300.0">
+                  <HBox fx:id="labelLinkBox" prefHeight="32.0" prefWidth="290.0">
                      <children>
                         <Label alignment="TOP_LEFT" contentDisplay="CENTER" opacity="0.58" text="Noch nicht registriert?">
                            <font>

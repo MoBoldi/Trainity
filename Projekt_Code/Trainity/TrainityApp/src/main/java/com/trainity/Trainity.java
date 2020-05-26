@@ -2,6 +2,7 @@ package com.trainity;
 
 import com.trainity.views.*;
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -46,5 +47,9 @@ public class Trainity extends MobileApplication {
 
         scene.getStylesheets().add(Trainity.class.getResource("style.css").toExternalForm());
         ((Stage) scene.getWindow()).getIcons().add(new Image(Trainity.class.getResourceAsStream("/icon.png")));
+    }
+    
+    public void goTo(String viewName){
+        MobileApplication.getInstance().switchView(viewName);
     }
 }
