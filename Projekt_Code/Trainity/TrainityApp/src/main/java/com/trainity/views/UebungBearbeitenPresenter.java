@@ -27,6 +27,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.NullableNumberStringConverter;
+import com.trainity.*;
+import javafx.event.ActionEvent;
 
 public class UebungBearbeitenPresenter {
 
@@ -102,6 +104,10 @@ public class UebungBearbeitenPresenter {
                 stage = new Stage();
             }
             
+            
+            
+            
+            
             stage.setScene(scene);
             stage.setTitle("UebungBearbeiten");
 
@@ -112,7 +118,22 @@ public class UebungBearbeitenPresenter {
            uebungBearbeiten.model = new Uebung();
 
       
-      //BINDINGS FEHLEN
+           
+           
+           
+      //BINDINGS 
+       uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+       uebungBearbeiten.getInputLabelRep().textProperty().bindBidirectional(uebungBearbeiten.model.wiederholungenProperty(),
+         new NullableNumberStringConverter(DF));
+        uebungBearbeiten.getInputLabelInfo().textProperty().bindBidirectional(uebungBearbeiten.model.beschreibungProperty());
+      // uebungBearbeiten.getInputNameHBox().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+
+            System.out.println("Bindet");
+      
+      
+      
+      
+      
        stage.show();
 
         } catch (IOException ex) {
@@ -122,6 +143,13 @@ public class UebungBearbeitenPresenter {
         }
 
     }
+    
+    
+    
+    
+    
+    
+    
     
     
 
@@ -148,6 +176,31 @@ public class UebungBearbeitenPresenter {
         
 
     }
+    
+    
+    
+    
+    @FXML
+    private void onActionSaveToDB(ActionEvent event) {
+        
+         
+    try {
+      new Uebung(model).saveuebung(statement);
+      model.clear();
+     // getTfMsg().setText("Ok, gesichert!");
+      System.out.println("Safe to DB ...");
+
+     // getImageViewSafes().setStyle("-fx-text-inner-color: green;");
+    }
+    catch (Exception ex) {
+       System.out.println(ex.getMessage());
+        System.out.println("Error bei onActionSavetoDB");
+     // getImageViewSafes().setStyle("-fx-text-inner-color: red;");
+    }   
+        
+        
+    }
+    
     
    
     
@@ -350,6 +403,8 @@ public class UebungBearbeitenPresenter {
     public void setStatement(Statement statement) {
         this.statement = statement;
     }
+
+ 
 
     
     

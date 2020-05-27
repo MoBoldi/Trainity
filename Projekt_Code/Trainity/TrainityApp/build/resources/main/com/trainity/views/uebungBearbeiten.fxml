@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -10,10 +8,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<<<<<<< HEAD
 
 <View fx:id="uebungBearbeiten" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@uebungBearbeiten.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.UebungBearbeitenPresenter">
    
     <VBox fx:id="outerBox" alignment="CENTER" maxWidth="-Infinity" prefHeight="200.0" prefWidth="310.0" spacing="15.0" style="-fx-background-color: white;">
+=======
+<View fx:id="uebungBearbeiten" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@uebungBearbeiten.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.UebungBearbeitenPresenter">
+    <VBox fx:id="outerBox" alignment="CENTER" maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: white;">
+>>>>>>> 087c4d6a7cd893ced165508982077c9a85d916e1
         <children>
             <VBox fx:id="upperBox" prefHeight="596.0" prefWidth="290.0">
                 <children>
@@ -21,7 +24,7 @@
                         <children>
                             <Label fx:id="labelNameExercise" alignment="CENTER" opacity="0.96" prefHeight="43.0" prefWidth="65.0" text="Name">
                                 <font>
-                                    <Font name="Al Bayan Plain" size="21.0" />
+                                    <Font name="Al Bayan Plain" size="21.0"/>
                                 </font>
                             </Label>
                         </children>
@@ -30,7 +33,11 @@
                         <children>
                             <TextField fx:id="inputNameExercise" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="33.0" prefWidth="290.0" text="Jumping Jacks">
                                 <font>
+<<<<<<< HEAD
                                     <Font size="12.0" />
+=======
+                                    <Font size="3.5"/>
+>>>>>>> 087c4d6a7cd893ced165508982077c9a85d916e1
                                 </font>
                             </TextField>
                         </children>
@@ -39,19 +46,23 @@
                         <children>
                             <Label fx:id="labelRep" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.98" prefHeight="38.0" prefWidth="72.0" text="Anzahl">
                                 <font>
-                                    <Font name="Al Bayan Plain" size="21.0" />
+                                    <Font name="Al Bayan Plain" size="21.0"/>
                                 </font>
                             </Label>
                         </children>
                         <VBox.margin>
-                            <Insets top="20.0" />
+                            <Insets top="20.0"/>
                         </VBox.margin>
                     </HBox>
                     <HBox prefHeight="42.0" prefWidth="290.0">
                         <children>
                             <TextField fx:id="inputLabelRep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="44.0" prefWidth="290.0" text="10 x">
                                 <font>
+<<<<<<< HEAD
                                     <Font size="12.0" />
+=======
+                                    <Font size="3.5"/>
+>>>>>>> 087c4d6a7cd893ced165508982077c9a85d916e1
                                 </font>
                             </TextField>
                         </children>
@@ -60,19 +71,23 @@
                         <children>
                             <Label fx:id="labelInfo" alignment="CENTER" opacity="0.96" prefHeight="41.0" prefWidth="139.0" text="Beschreibung">
                                 <font>
-                                    <Font name="Al Bayan Plain" size="21.0" />
+                                    <Font name="Al Bayan Plain" size="21.0"/>
                                 </font>
                             </Label>
                         </children>
                         <VBox.margin>
-                            <Insets top="20.0" />
+                            <Insets top="20.0"/>
                         </VBox.margin>
                     </HBox>
                     <HBox prefHeight="47.0" prefWidth="290.0">
                         <children>
                             <TextField fx:id="inputLabelInfo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="290.0" text="Bei den Jumping Jacks wird hauptsächlich...">
                                 <font>
+<<<<<<< HEAD
                                     <Font size="12.0" />
+=======
+                                    <Font size="3.5"/>
+>>>>>>> 087c4d6a7cd893ced165508982077c9a85d916e1
                                 </font>
                             </TextField>
                         </children>
@@ -81,50 +96,65 @@
                         <children>
                             <Label fx:id="labelIcon" alignment="CENTER" opacity="0.96" prefHeight="41.0" prefWidth="49.0" text="Icon">
                                 <font>
-                                    <Font name="Al Bayan Plain" size="21.0" />
+                                    <Font name="Al Bayan Plain" size="21.0"/>
                                 </font>
                             </Label>
                         </children>
                         <VBox.margin>
-                            <Insets top="20.0" />
+                            <Insets top="20.0"/>
                         </VBox.margin>
                     </HBox>
                     <HBox fx:id="buttonHBox" prefHeight="52.0" prefWidth="290.0">
                         <children>
                             <Button fx:id="NewExerciseButton" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="290.0" style="-fx-border-radius: 2.5px; -fx-border-width: .2px; -fx-border-color: black; -fx-background-color: white;" text="Icon auswählen" textAlignment="CENTER">
                                 <font>
-                                    <Font size="17.0" />
+                                    <Font size="17.0"/>
                                 </font>
                             </Button>
                         </children>
                     </HBox>
                     <HBox fx:id="saveButtonHBox" alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="290.0">
                         <children>
-                            <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
+                            <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionSaveToDB" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
                                 <font>
+<<<<<<< HEAD
                                     <Font size="13.0" />
+=======
+                                    <Font size="16.0"/>
+>>>>>>> 087c4d6a7cd893ced165508982077c9a85d916e1
                                 </font>
+                               
                                 <graphic>
                                     <ImageView fx:id="imageViewSafes" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                         <image>
-                                            <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/icons8-save-96.png" />
+                                            <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/icons8-save-96.png"/>
                                         </image>
                                     </ImageView>
                                 </graphic>
                             </Button>
                         </children>
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="15.0" />
+                            <Insets bottom="5.0" left="5.0" right="15.0"/>
                         </padding>
                         <VBox.margin>
-                            <Insets top="50.0" />
+                            <Insets top="50.0"/>
                         </VBox.margin>
                     </HBox>
                 </children>
+<<<<<<< HEAD
             </VBox>
         </children>
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+=======
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0"/>
+                </padding>
+            </VBox>
+        </children>
+        <padding>
+            <Insets top="20.0"/>
+>>>>>>> 087c4d6a7cd893ced165508982077c9a85d916e1
         </padding>
     </VBox>
 </View>
