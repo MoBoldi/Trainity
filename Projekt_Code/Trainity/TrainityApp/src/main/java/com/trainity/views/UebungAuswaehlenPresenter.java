@@ -6,14 +6,21 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import com.trainity.BoxDynamischBlauGroß;
+import com.trainity.BoxDynamischBlauKlein;
+import com.trainity.BoxDynamischGruen;
+import static com.trainity.Trainity.LOGIN_VIEW;
+import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -44,36 +51,6 @@ public class UebungAuswaehlenPresenter {
     private ScrollPane AllExercisePane;
     @FXML
     private VBox AllExerciseVBox;
-    @FXML
-    private HBox ExerciseBox1;
-    @FXML
-    private Label label12;
-    @FXML
-    private Label rep12;
-    @FXML
-    private HBox ExerciseBox2;
-    @FXML
-    private Label label121;
-    @FXML
-    private Label rep121;
-    @FXML
-    private HBox ExerciseBox3;
-    @FXML
-    private Label label1211;
-    @FXML
-    private Label rep1211;
-    @FXML
-    private HBox ExerciseBox4;
-    @FXML
-    private Label label1212;
-    @FXML
-    private Label rep1212;
-    @FXML
-    private HBox ExerciseBox1213;
-    @FXML
-    private Label label1213;
-    @FXML
-    private Label rep1213;
     
     
     
@@ -110,6 +87,37 @@ public class UebungAuswaehlenPresenter {
         });
     
 }
+
+    @FXML
+    private void openUebnungMenu(MouseEvent event) {
+   
+ 
+        System.out.println("Öffne Uebung mit Non Editable Fields");
+
+        
+        String name ="Jumpin Jacks";
+        int rep = 10;
+        String beschreibung = "Beschreibung Liegestütze .......";
+        
+        boolean includeTrash = true;
+        
+             
+       BoxDynamischGruen bx = new  BoxDynamischGruen(name, rep, beschreibung, includeTrash);
+        AllExerciseVBox.getChildren().add(bx);
+     
+        
+   
+    }
+
+    @FXML
+    private void CreateNewUebung(ActionEvent event) {
+        
+        
+        System.out.println("Creating New Uebung mit Editable Fields");
+        
+                MobileApplication.getInstance().switchView(UEBUNG_BEARBEITEN_VIEW);
+        //Link to UebungBearbeiten.fxml Felder aber editable haben keine Werte
+    }
 
 
 }
