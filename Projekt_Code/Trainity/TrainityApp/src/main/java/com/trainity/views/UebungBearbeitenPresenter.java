@@ -205,6 +205,31 @@ public class UebungBearbeitenPresenter {
    
     
     
+    @FXML
+    private void onActionSaveToDB(ActionEvent event) {
+        
+         
+    try {
+      new Uebung(model).saveuebung(statement);
+      model.clear();
+     // getTfMsg().setText("Ok, gesichert!");
+      System.out.println("Safe to DB ...");
+
+     // getImageViewSafes().setStyle("-fx-text-inner-color: green;");
+    }
+    catch (Exception ex) {
+       System.out.println(ex.getMessage());
+        System.out.println("Error bei onActionSavetoDB");
+     // getImageViewSafes().setStyle("-fx-text-inner-color: red;");
+    }   
+        
+        
+    }
+    
+    
+   
+    
+    
     /* 
     
     Aufruf Save FKt
