@@ -28,6 +28,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.NullableNumberStringConverter;
 import com.trainity.*;
+import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
 import javafx.event.ActionEvent;
 
 public class UebungBearbeitenNotEditablePresenter {
@@ -58,13 +61,10 @@ public class UebungBearbeitenNotEditablePresenter {
     private Label labelInfo;
     @FXML
     private TextField inputLabelInfo;
-    @FXML
     private HBox labelIconHBox;
-    @FXML
     private Label labelIcon;
     @FXML
     private HBox buttonHBox;
-    @FXML
     private Button NewExerciseButton;
     @FXML
     private HBox saveButtonHBox;
@@ -87,6 +87,10 @@ public class UebungBearbeitenNotEditablePresenter {
         DF.setMaximumFractionDigits(2);
         DF.setMinimumFractionDigits(2);
     }
+    @FXML
+    private Button ButtonSave1;
+    @FXML
+    private ImageView imageViewSafes1;
 
     public UebungBearbeitenNotEditablePresenter() {
     }
@@ -94,7 +98,7 @@ public class UebungBearbeitenNotEditablePresenter {
     public static void show(Stage stage, Statement statement) {
 
         try {
-            
+
             FXMLLoader loader = new FXMLLoader(UebungBearbeitenNotEditablePresenter.class.getResource("uebungBearbeiten.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -103,108 +107,114 @@ public class UebungBearbeitenNotEditablePresenter {
             if (stage == null) {
                 stage = new Stage();
             }
-            
-            
-            
-            
-            
+
             stage.setScene(scene);
             stage.setTitle("UebungBearbeiten");
 
             UebungBearbeitenNotEditablePresenter uebungBearbeiten = (UebungBearbeitenNotEditablePresenter) loader.getController();
             uebungBearbeiten.statement = statement;
 
-           // Model
-           uebungBearbeiten.model = new Uebung();
+            // Model
+            uebungBearbeiten.model = new Uebung();
 
-      
-           
-           
-           
-      //BINDINGS 
-       uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
-       uebungBearbeiten.getInputLabelRep().textProperty().bindBidirectional(uebungBearbeiten.model.wiederholungenProperty(),
-         new NullableNumberStringConverter(DF));
-        uebungBearbeiten.getInputLabelInfo().textProperty().bindBidirectional(uebungBearbeiten.model.beschreibungProperty());
-      // uebungBearbeiten.getInputNameHBox().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+            //BINDINGS 
+            uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+            uebungBearbeiten.getInputLabelRep().textProperty().bindBidirectional(uebungBearbeiten.model.wiederholungenProperty(),
+                    new NullableNumberStringConverter(DF));
+            uebungBearbeiten.getInputLabelInfo().textProperty().bindBidirectional(uebungBearbeiten.model.beschreibungProperty());
+            // uebungBearbeiten.getInputNameHBox().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
 
             System.out.println("Bindet");
-      
-      
-      
-      
-      
-       stage.show();
+
+            stage.show();
 
         } catch (IOException ex) {
             Logger.getLogger(UebungBearbeitenNotEditablePresenter.class.getName()).log(Level.SEVERE, null, ex);
-                  System.err.println("Error");
+            System.err.println("Error");
 
         }
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     public void initialize() {
         uebungBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
 
-       /* FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.INFO.text,
+        /* FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.INFO.text,
                 e -> System.out.println("Info"));
         fab.showOn(uebungBearbeiten);*/
-       
-       
-       
-
         uebungBearbeiten.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
                         -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Übung bearbeiten");
-               
+
             }
         });
+
+        fillValues();
+    }
+
+    public void fillValues() {
+        Uebung uebung = new Uebung();
+
+        //  uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+        getInputNameExercise().textProperty().bindBidirectional(uebung.nameProperty());
+        getInputLabelRep().textProperty().bindBidirectional(uebung.wiederholungenProperty(), new NullableNumberStringConverter(DF));
+        getInputLabelInfo().textProperty().bindBidirectional(uebung.beschreibungProperty());
+
+        //CALLING SQL STATEMENT
+        String name = getInfosFromDB();
+        int rep = 20;
+        String beschreibung = "Naja die Liegestütze sind eine einfache Übung";
         
         
+        uebung.setName(name);
+        uebung.setWiederholungen(rep);
+        uebung.setBeschreibung(beschreibung);
 
     }
+
+    
+    
+    
+    
+    
+    
+    public static String getInfosFromDB() {
+
+        //SQL STATEMENT
+        String name = "Liegestütze";
+        String rep = "20";
+
+        String beschreibung = "Naja die Liegestütze sind eine einfache Übung.";
+
+        
+        
+        
+       return name;
+          
+    }
+
     
     
     
     
     @FXML
-    private void onActionSaveToDB(ActionEvent event) {
-        
-         
-    try {
-      new Uebung(model).saveuebung(statement);
-      model.clear();
-     // getTfMsg().setText("Ok, gesichert!");
-      System.out.println("Safe to DB ...");
+    private void OnActionBack(ActionEvent event) {
 
-     // getImageViewSafes().setStyle("-fx-text-inner-color: green;");
+        MobileApplication.getInstance().switchView(UEBUNG_AUSWAEHLEN_VIEW);
+
     }
-    catch (Exception ex) {
-       System.out.println(ex.getMessage());
-        System.out.println("Error bei onActionSavetoDB");
-     // getImageViewSafes().setStyle("-fx-text-inner-color: red;");
-    }   
+   @FXML
+    private void onActionAddToTraining(ActionEvent event) {
         
-        
+        System.out.println("Add to Trainingsplan");
+     
+       MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
+
     }
-    
-    
-   
-    
-    
+
     /* 
     
     Aufruf Save FKt
@@ -222,12 +232,8 @@ public class UebungBearbeitenNotEditablePresenter {
       getTfMsg().setStyle("-fx-text-inner-color: red;");
     }
   }
-*/
-    
-    
-    /*Aktualisiern*/
-    
-
+     */
+ /*Aktualisiern*/
     public View getUebungBearbeiten() {
         return uebungBearbeiten;
     }
@@ -405,11 +411,4 @@ public class UebungBearbeitenNotEditablePresenter {
     }
 
  
-
-    
-    
-    
-    
-    
-    
 }

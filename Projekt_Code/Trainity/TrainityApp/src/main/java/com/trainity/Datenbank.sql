@@ -10,7 +10,7 @@
 
 
 drop table uebung;
-create table person (
+create table uebung (
   name varchar(40) primary key,
   wiederholung number(3) not null,
   beschreibung varchar (200)

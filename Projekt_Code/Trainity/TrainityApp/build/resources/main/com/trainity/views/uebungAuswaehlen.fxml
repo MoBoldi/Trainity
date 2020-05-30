@@ -36,7 +36,7 @@
                     </HBox>
                     <HBox fx:id="inputHBox" alignment="CENTER" prefHeight="59.0" prefWidth="330.0">
                         <children>
-                            <TextField fx:id="inputSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="43.0" prefWidth="290.0" text="Full Body Workout">
+                            <TextField fx:id="inputSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#searchForUebungInDB" onKeyTyped="#searchForUebungInDB" opacity="0.99" prefHeight="43.0" prefWidth="290.0" promptText="Suche nach Übung">
                                 <font>
                                     <Font size="3.5" />
                                 </font>

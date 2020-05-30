@@ -97,29 +97,43 @@
                             </Button>
                         </children>
                     </HBox>
-                    <HBox fx:id="saveButtonHBox" alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="350.0">
-                        <children>
-                            <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionSaveToDB" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
-                                <font>
-                                    <Font size="16.0" />
-                                </font>
-                               
-                                <graphic>
-                                    <ImageView fx:id="imageViewSafes" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                        <image>
-                                            <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/icons8-save-96.png" />
-                                        </image>
-                                    </ImageView>
-                                </graphic>
-                            </Button>
-                        </children>
-                        <padding>
-                            <Insets bottom="5.0" left="5.0" right="15.0" />
-                        </padding>
-                        <VBox.margin>
-                            <Insets top="50.0" />
-                        </VBox.margin>
-                    </HBox>
+               <HBox fx:id="saveButtonHBox" alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="277.0">
+                  <children>
+                     <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OnActionBack" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Zurück" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <graphic>
+                           <ImageView fx:id="imageViewSafes" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../Design/Icons/icons8-arrow-96.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                        <HBox.margin>
+                           <Insets right="30.0" />
+                        </HBox.margin>
+                     </Button>
+                     <Button fx:id="ButtonSave1" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionSaveToDB" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <graphic>
+                           <ImageView fx:id="imageViewSafes1" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../Design/Icons/icons8-save-96.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="15.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets top="50.0" />
+                  </VBox.margin>
+               </HBox>
                 </children>
                 <padding>
                     <Insets bottom="15.0" left="15.0" right="15.0" />

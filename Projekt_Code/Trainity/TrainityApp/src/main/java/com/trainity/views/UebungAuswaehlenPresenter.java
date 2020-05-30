@@ -20,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -84,9 +86,18 @@ public class UebungAuswaehlenPresenter {
                 appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e -> 
                         System.out.println("Favorite")));
             }
+            
+            
+            
+            
         });
     
 }
+    
+    
+    
+    
+    
 
     @FXML
     private void openUebnungMenu(MouseEvent event) {
@@ -118,6 +129,120 @@ public class UebungAuswaehlenPresenter {
                 MobileApplication.getInstance().switchView(UEBUNG_BEARBEITEN_VIEW);
         //Link to UebungBearbeiten.fxml Felder aber editable haben keine Werte
     }
+
+    
+
+    @FXML
+    private void searchForUebungInDB(KeyEvent event) {
+                System.out.println("Searching for Uebung in DB");
+                System.out.println("Searchstring: "+ getInputSearchBar().textProperty().get() );
+                
+                
+                
+                
+
+    }
+
+    public View getUebungAuswaehlen() {
+        return uebungAuswaehlen;
+    }
+
+    public void setUebungAuswaehlen(View uebungAuswaehlen) {
+        this.uebungAuswaehlen = uebungAuswaehlen;
+    }
+
+    public VBox getOuterBox() {
+        return outerBox;
+    }
+
+    public void setOuterBox(VBox outerBox) {
+        this.outerBox = outerBox;
+    }
+
+    public VBox getUpperBox() {
+        return UpperBox;
+    }
+
+    public void setUpperBox(VBox UpperBox) {
+        this.UpperBox = UpperBox;
+    }
+
+    public HBox getSearchHBox() {
+        return searchHBox;
+    }
+
+    public void setSearchHBox(HBox searchHBox) {
+        this.searchHBox = searchHBox;
+    }
+
+    public Label getLabelSearch() {
+        return labelSearch;
+    }
+
+    public void setLabelSearch(Label labelSearch) {
+        this.labelSearch = labelSearch;
+    }
+
+    public HBox getInputHBox() {
+        return inputHBox;
+    }
+
+    public void setInputHBox(HBox inputHBox) {
+        this.inputHBox = inputHBox;
+    }
+
+    public TextField getInputSearchBar() {
+        return inputSearchBar;
+    }
+
+    public void setInputSearchBar(TextField inputSearchBar) {
+        this.inputSearchBar = inputSearchBar;
+    }
+
+    public HBox getButtonHBox() {
+        return buttonHBox;
+    }
+
+    public void setButtonHBox(HBox buttonHBox) {
+        this.buttonHBox = buttonHBox;
+    }
+
+    public Button getNewExerciseButton() {
+        return NewExerciseButton;
+    }
+
+    public void setNewExerciseButton(Button NewExerciseButton) {
+        this.NewExerciseButton = NewExerciseButton;
+    }
+
+    public HBox getScrollPaneHBox() {
+        return scrollPaneHBox;
+    }
+
+    public void setScrollPaneHBox(HBox scrollPaneHBox) {
+        this.scrollPaneHBox = scrollPaneHBox;
+    }
+
+    public ScrollPane getAllExercisePane() {
+        return AllExercisePane;
+    }
+
+    public void setAllExercisePane(ScrollPane AllExercisePane) {
+        this.AllExercisePane = AllExercisePane;
+    }
+
+    public VBox getAllExerciseVBox() {
+        return AllExerciseVBox;
+    }
+
+    public void setAllExerciseVBox(VBox AllExerciseVBox) {
+        this.AllExerciseVBox = AllExerciseVBox;
+    }
+    
+    
+    
+    
+    
 
 
 }

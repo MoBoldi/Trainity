@@ -20,6 +20,7 @@ import static com.trainity.Trainity.REGISTRIEREN_VIEW;
 import static com.trainity.Trainity.TRAINING_DURCHFUEHREN_VIEW;
 import static com.trainity.Trainity.TRAINING_PAUSE_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import javafx.scene.image.Image;
 
@@ -44,8 +45,9 @@ public class DrawerManager {
         final Item trainingPause = new ViewItem("Training Pause", MaterialDesignIcon.DASHBOARD.graphic(), TRAINING_PAUSE_VIEW);
         final Item uebungAuswaehlen = new ViewItem("Übung auswählen", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_AUSWAEHLEN_VIEW);
         final Item uebungBearbeiten = new ViewItem("Übung bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_VIEW);
-        
-        drawer.getItems().addAll(startseiteItem, loginItem, eigeneTrainings, wochenplan, bildAuswaehlen, einheitBearbeiten, registrieren, trainingDurchfuehren, trainingPause, uebungAuswaehlen, uebungBearbeiten);
+        final Item uebungNotBearbeiten = new ViewItem("Übung Notbearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_NotEditable_VIEW);
+
+        drawer.getItems().addAll(startseiteItem, loginItem, eigeneTrainings, wochenplan, bildAuswaehlen, einheitBearbeiten, registrieren, trainingDurchfuehren, trainingPause, uebungAuswaehlen, uebungBearbeiten,uebungNotBearbeiten );
         
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Quit", MaterialDesignIcon.EXIT_TO_APP.graphic());
