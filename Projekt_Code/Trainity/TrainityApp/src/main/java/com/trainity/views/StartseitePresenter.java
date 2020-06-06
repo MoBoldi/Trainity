@@ -71,4 +71,8 @@ public class StartseitePresenter {
             }
         });
     }
+
+    @FXML
+    private void test(MouseEvent event) {
+    }
 }

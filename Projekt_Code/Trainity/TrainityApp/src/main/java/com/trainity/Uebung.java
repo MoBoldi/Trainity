@@ -18,7 +18,8 @@ public class Uebung {
     private final StringProperty name = new SimpleStringProperty();
     private final ObjectProperty<Number> wiederholungen = new SimpleObjectProperty<>();
     private final StringProperty beschreibung = new SimpleStringProperty();
-    private final StringProperty imgPfad = new SimpleStringProperty();
+    
+   // private final StringProperty imgPfad = new SimpleStringProperty();
 
 
     public Uebung(Uebung u) {
@@ -26,7 +27,7 @@ public class Uebung {
         this.setName(u.getName());
         this.setWiederholungen(u.getWiederholungen());
         this.setBeschreibung(u.getBeschreibung());
-        this.setImgPfad(u.getImgPfad());
+       // this.setImgPfad(u.getImgPfad());
 
     }
     
@@ -146,7 +147,7 @@ public class Uebung {
     }
 
     public StringProperty beschreibungProperty() {
-        return name;
+        return beschreibung;
     }
 
     
@@ -155,18 +156,7 @@ public class Uebung {
     //Set-er Get-er IMGPFAD
     
     
-      //Set-er Get-er Beschreibung
-    public final void setImgPfad(String value) {
-        beschreibung.set(value);
-    }
-
-    public String getImgPfad() {
-        return beschreibung.get();
-    }
-
-    public StringProperty ImgPfadProperty() {
-        return name;
-    }
+ 
 
     
     

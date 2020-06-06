@@ -28,6 +28,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.NullableNumberStringConverter;
 import com.trainity.*;
+import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
 import javafx.event.ActionEvent;
 
 public class UebungBearbeitenPresenter {
@@ -87,10 +89,17 @@ public class UebungBearbeitenPresenter {
         DF.setMaximumFractionDigits(2);
         DF.setMinimumFractionDigits(2);
     }
+    @FXML
+    private Button ButtonSave1;
+    @FXML
+    private ImageView imageViewSafes1;
 
     public UebungBearbeitenPresenter() {
     }
-
+    
+    
+    
+/*
     public static void show(Stage stage, Statement statement) {
 
         try {
@@ -122,7 +131,7 @@ public class UebungBearbeitenPresenter {
            
            
       //BINDINGS 
-       uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+     //  uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
        uebungBearbeiten.getInputLabelRep().textProperty().bindBidirectional(uebungBearbeiten.model.wiederholungenProperty(),
          new NullableNumberStringConverter(DF));
         uebungBearbeiten.getInputLabelInfo().textProperty().bindBidirectional(uebungBearbeiten.model.beschreibungProperty());
@@ -144,7 +153,7 @@ public class UebungBearbeitenPresenter {
 
     }
     
-    
+    */
     
     
     
@@ -173,38 +182,64 @@ public class UebungBearbeitenPresenter {
             }
         });
         
-        
+        bindEverything();
 
     }
     
+    public void bindEverything(){
+    
+    Uebung uebung = new Uebung();
+        
+    
+       //  uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
+       
+            getInputNameExercise().textProperty().bindBidirectional(uebung.nameProperty());
+            getInputLabelRep().textProperty().bindBidirectional(uebung.wiederholungenProperty(), new NullableNumberStringConverter(DF));            
+            getInputLabelInfo().textProperty().bindBidirectional(uebung.beschreibungProperty());
+        
+            
+            
+    }
     
     
+ 
     
+      
     @FXML
+    private void OnActionBack(ActionEvent event) {
+
+        MobileApplication.getInstance().switchView(UEBUNG_AUSWAEHLEN_VIEW);
+
+    }
+
+    
+          
+    @FXML   
     private void onActionSaveToDB(ActionEvent event) {
         
          
+        
+        
+        
     try {
       new Uebung(model).saveuebung(statement);
       model.clear();
-     // getTfMsg().setText("Ok, gesichert!");
       System.out.println("Safe to DB ...");
 
-     // getImageViewSafes().setStyle("-fx-text-inner-color: green;");
     }
     catch (Exception ex) {
        System.out.println(ex.getMessage());
         System.out.println("Error bei onActionSavetoDB");
-     // getImageViewSafes().setStyle("-fx-text-inner-color: red;");
     }   
         
         
     }
-    
-    
+   
    
     
- 
+
+
+   
     
     
    
@@ -409,8 +444,9 @@ public class UebungBearbeitenPresenter {
         this.statement = statement;
     }
 
- 
-
+   
+   
+  
     
     
     
