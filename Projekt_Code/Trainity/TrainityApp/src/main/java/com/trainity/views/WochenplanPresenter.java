@@ -58,7 +58,7 @@ public class WochenplanPresenter {
     @FXML
     private ImageView imageViewSafes;
     
-    private Boolean[] selected = {false, false, false, false, false, false};
+    private Boolean[] selected = {false, false, false, false, false, false, false};
     @FXML
     private HBox Monday;
     @FXML

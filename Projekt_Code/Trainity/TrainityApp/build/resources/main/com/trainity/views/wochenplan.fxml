@@ -40,7 +40,7 @@
                <children>
                   <VBox fx:id="DayInnerVBox" alignment="TOP_CENTER" prefHeight="585.0" prefWidth="300.0" spacing="11.0">
                      <children>
-                        <HBox fx:id="Monday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E#F26E2E; -fx-background-radius: 10;">
+                        <HBox fx:id="Monday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label12" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Montag" textFill="WHITE">
                                  <HBox.margin>
@@ -52,7 +52,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="Tuesday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #40C211; -fx-background-radius: 10;">
+                        <HBox fx:id="Tuesday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label121" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Dienstag" textFill="WHITE">
                                  <HBox.margin>
@@ -64,7 +64,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="Wednesday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E#F26E2E; -fx-background-radius: 10;">
+                        <HBox fx:id="Wednesday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label1211" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Mittwoch" textFill="WHITE">
                                  <HBox.margin>
@@ -76,7 +76,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="Thursday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #40C211#40C211 #40C211#40C211; -fx-background-radius: 10;">
+                        <HBox fx:id="Thursday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label1212" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Donnerstag" textFill="WHITE">
                                  <HBox.margin>
@@ -88,7 +88,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="Friday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E#F26E2E; -fx-background-radius: 10;">
+                        <HBox fx:id="Friday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label1214" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Freitag" textFill="WHITE">
                                  <HBox.margin>
@@ -100,7 +100,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="Saturday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E#F26E2E; -fx-background-radius: 10;">
+                        <HBox fx:id="Saturday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label1213" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Samstag" textFill="WHITE">
                                  <HBox.margin>
@@ -112,7 +112,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="Sunday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E#F26E2E; -fx-background-radius: 10;">
+                        <HBox fx:id="Sunday" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeColor" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #F26E2E; -fx-background-radius: 10;">
                            <children>
                               <Label fx:id="label12141" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="51.0" prefWidth="92.0" text="Sonntag" textFill="WHITE">
                                  <HBox.margin>
@@ -123,7 +123,7 @@
                         </HBox>
                         <HBox fx:id="saveButtonHBox" alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="350.0">
                            <children>
-                              <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.99" prefHeight="39.0" prefWidth="127.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
+                              <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#savePlan" opacity="0.99" prefHeight="39.0" prefWidth="127.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
