@@ -5,13 +5,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
-        <file>file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/ITP/Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/StartseitePresenter.java</file>
-        <file>file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/ITP/Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/LoginPresenter.java</file>
-        <file>file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/ITP/Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/LoginView.java</file>
-        <file>file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/ITP/Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/Trainity.java</file>
-        <file>file:/C:/Users/Moritz%20Weibold/OneDrive%20-%20HTBLA%20Leonding/ITP/Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/StartseiteView.java</file>
+        <file>file:/C:/Users/morit/Documents/Trainity/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/StartseitePresenter.java</file>
+        <file>file:/C:/Users/morit/Documents/Trainity/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/WochenplanView.java</file>
+        <file>file:/C:/Users/morit/Documents/Trainity/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/WochenplanPresenter.java</file>
+        <file>file:/C:/Users/morit/Documents/Trainity/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/StartseiteView.java</file>
       </group>
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+      <group/>
+    </open-files>
   </auxiliary>
 </gradle-project-properties>
