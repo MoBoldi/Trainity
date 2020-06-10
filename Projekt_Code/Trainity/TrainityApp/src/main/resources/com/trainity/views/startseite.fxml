@@ -2,16 +2,13 @@
 
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <View fx:id="startseite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@startseite.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.StartseitePresenter">
@@ -37,37 +34,37 @@
                                  <children>
                                     <VBox fx:id="mo" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Mo" />
+                                          <Text fx:id="moText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Mo" />
                                        </children>
                                     </VBox>
                                     <VBox fx:id="di" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Di" />
+                                          <Text fx:id="diText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Di" />
                                        </children>
                                     </VBox>
-                                    <VBox fx:id="mi" alignment="CENTER" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);">
+                                    <VBox fx:id="mi" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Mi" />
+                                          <Text fx:id="miText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Mi" />
                                        </children>
                                     </VBox>
                                     <VBox fx:id="don" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Do" />
+                                          <Text fx:id="doText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Do" />
                                        </children>
                                     </VBox>
                                     <VBox fx:id="fr" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bolder;" text="Fr" />
+                                          <Text fx:id="frText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bolder;" text="Fr" />
                                        </children>
                                     </VBox>
                                     <VBox fx:id="sa" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Sa" />
+                                          <Text fx:id="saText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Sa" />
                                        </children>
                                     </VBox>
                                     <VBox fx:id="so" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                                        <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="So" />
+                                          <Text fx:id="soText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="So" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -186,127 +183,13 @@
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Text>
-                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="280.0" spacing="5.0" style="-fx-background-color: #2196F3; -fx-background-radius: 5;">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../../../../Downloads/Icons/372516-gym/png/051-dumbbell-3.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="4.0" top="3.5" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.67" prefHeight="30.0" prefWidth="1.0" style="-fx-background-color: white;">
-                           <HBox.margin>
-                              <Insets left="3.0" top="3.0" />
-                           </HBox.margin>
-                        </Pane>
-                        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-                           <children>
-                              <Label opacity="0.99" style="-fx-font-weight: 600; -fx-font-size: 13px;" text="Jumping Jacks" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="1.5" top="1.5" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox opacity="0.86">
-                                 <children>
-                                    <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../../../Downloads/Icons/zukunft_icon_white.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets top="2.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label opacity="0.99" style="-fx-font-weight: 500; -fx-font-size: 11px;" text="10 x" textFill="WHITE">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="1.0" top="1.75" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets left="2.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="1.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </HBox>
+                  <VBox fx:id="nextTraining" spacing="5.0" />
                   <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: SEMI_BOLD;" text="Letzte Trainings">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Text>
-                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="280.0" spacing="5.0" style="-fx-background-color: #2196F3; -fx-background-radius: 5;">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../../../../../../Downloads/Icons/372516-gym/png/051-dumbbell-3.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="4.0" top="3.5" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.67" prefHeight="30.0" prefWidth="1.0" style="-fx-background-color: white;">
-                           <HBox.margin>
-                              <Insets left="3.0" top="3.0" />
-                           </HBox.margin>
-                        </Pane>
-                        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-                           <children>
-                              <Label opacity="0.99" style="-fx-font-weight: 600; -fx-font-size: 13px;" text="Jumping Jacks" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="1.5" top="1.5" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox opacity="0.86">
-                                 <children>
-                                    <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../../../Downloads/Icons/zukunft_icon_white.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets top="2.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label opacity="0.99" style="-fx-font-weight: 500; -fx-font-size: 11px;" text="10 x" textFill="WHITE">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="1.0" top="1.75" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets left="2.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="1.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </HBox>
+                  <VBox fx:id="lastTraining" spacing="5.0" />
                </children>
             </VBox>
          </content>
