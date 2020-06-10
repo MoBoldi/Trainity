@@ -116,6 +116,9 @@ public class StartseitePresenter {
         
         //Letzte Trainings aus DB holen
         lastTraining.getChildren().add(new BoxDynamischBlauKlein("Letzte Trainingseinheit", 20, "Plan"));
+        
+        //Geplante Tage aus Tabelle Ziel anzeigen 
+        
     }
     
     public void setDay(VBox box, Text text){
