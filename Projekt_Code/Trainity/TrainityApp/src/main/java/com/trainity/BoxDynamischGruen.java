@@ -4,7 +4,13 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.Trainity.LOGIN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
+import com.trainity.views.UebungBearbeitenNotEditablePresenter;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -39,14 +45,18 @@ public class BoxDynamischGruen extends HBox {
     private String name;
     private int rep;
     private String beschreibung;
+    private Statement stmt;
+    private int id;
+    
 
-    public BoxDynamischGruen(String name, int rep, String beschreibung, boolean includeTrash) {
+    public BoxDynamischGruen(String name, int rep, String beschreibung, boolean includeTrash, int id) {
 
         this.setName(name);
         this.setRep(rep);
         this.setBeschreibung(beschreibung);
-
+        this.setId(id);
         addContent(includeTrash);
+      
 
     }
 
@@ -191,16 +201,7 @@ public class BoxDynamischGruen extends HBox {
 
         hbox.getChildren().add(iv3);
         hbox.setMargin(iv3, new Insets(15.2, 0, 0, 53));
-   EventHandler<MouseEvent> mouseEventHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("Mouse event handler has been called");
-                MobileApplication.getInstance().switchView(UEBUNG_BEARBEITEN_NotEditable_VIEW);
-
-            }
-        };
-
-        hbox.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
+   
 
 
         
@@ -211,6 +212,7 @@ public class BoxDynamischGruen extends HBox {
 
             }
         };
+           
 
         iv3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler2);
         
@@ -219,6 +221,56 @@ public class BoxDynamischGruen extends HBox {
         
         }
         
+  
+        EventHandler<MouseEvent> mouseEventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("Mouse event handler has been called");
+                System.out.println("Julian Part nicht ändern !!!");
+                
+                int idSave = getID();
+                
+                
+                System.out.println(idSave);
+                
+                
+                
+                /*
+                
+                   try {
+            
+        
+                
+                
+                String sql2 ="Insert into xy VALUES("+idSave+")";
+                stmt.executeQuery(sql2);
+
+            
+            
+      
+        } catch (SQLException ex) {
+            Logger.getLogger(Uebung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       */    
+                
+                
+                UebungBearbeitenNotEditablePresenter.USERID = idSave;
+                
+             /*   
+                 UebungBearbeitenNotEditablePresenter p = new UebungBearbeitenNotEditablePresenter();
+                 System.out.println("Calling");
+                 p.fillValues();
+                */
+                
+        
+                
+               MobileApplication.getInstance().switchView(UEBUNG_BEARBEITEN_NotEditable_VIEW);
+
+            }
+     
+        };
+
+        hbox.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
 
 //-------------------------------------------------------------------------------------
 //Margin       
@@ -231,6 +283,15 @@ public class BoxDynamischGruen extends HBox {
 
         this.getChildren().add(hbox);
 
+    }
+
+    
+    public int getID() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

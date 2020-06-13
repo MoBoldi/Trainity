@@ -31,6 +31,14 @@ import com.trainity.*;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
+import static com.trainity.Uebung.printSQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.TimeZone;
 import javafx.event.ActionEvent;
 
 public class UebungBearbeitenNotEditablePresenter {
@@ -79,9 +87,17 @@ public class UebungBearbeitenNotEditablePresenter {
     // Database
     private Statement statement;
 
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private static final String DATABASE_USERNAME = "root";
+    private static final String DATABASE_PASSWORD = "root";
+        private static final String INSERT_QUERY = "INSERT INTO trainingsListe (trainingseinheit_id, trainingsuebung_id) VALUES (?, ?)";
+
     // Helper
     private static final NumberFormat DF;
 
+    
+    public static int USERID;
+    
     static {
         DF = NumberFormat.getNumberInstance();
         DF.setMaximumFractionDigits(2);
@@ -95,46 +111,7 @@ public class UebungBearbeitenNotEditablePresenter {
     public UebungBearbeitenNotEditablePresenter() {
     }
 
-    public static void show(Stage stage, Statement statement) {
 
-        try {
-
-            FXMLLoader loader = new FXMLLoader(UebungBearbeitenNotEditablePresenter.class.getResource("uebungBearbeiten.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-
-            // - Stage
-            if (stage == null) {
-                stage = new Stage();
-            }
-
-            stage.setScene(scene);
-            stage.setTitle("UebungBearbeiten");
-
-            UebungBearbeitenNotEditablePresenter uebungBearbeiten = (UebungBearbeitenNotEditablePresenter) loader.getController();
-            uebungBearbeiten.statement = statement;
-
-            // Model
-            uebungBearbeiten.model = new Uebung();
-
-            //BINDINGS 
-            uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
-            uebungBearbeiten.getInputLabelRep().textProperty().bindBidirectional(uebungBearbeiten.model.wiederholungenProperty(),
-                    new NullableNumberStringConverter(DF));
-            uebungBearbeiten.getInputLabelInfo().textProperty().bindBidirectional(uebungBearbeiten.model.beschreibungProperty());
-            // uebungBearbeiten.getInputNameHBox().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
-
-            System.out.println("Bindet");
-
-            stage.show();
-
-        } catch (IOException ex) {
-            Logger.getLogger(UebungBearbeitenNotEditablePresenter.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Error");
-
-        }
-
-    }
 
     public void initialize() {
         uebungBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
@@ -150,51 +127,87 @@ public class UebungBearbeitenNotEditablePresenter {
                 appBar.setTitleText("Übung bearbeiten");
 
             }
+                  fillValues();
+            
         });
 
-        fillValues();
+ 
+  
     }
-
+    
     public void fillValues() {
-        Uebung uebung = new Uebung();
+        
 
+             Uebung uebung = new Uebung();
+        
+        
         //  uebungBearbeiten.getInputNameExercise().textProperty().bindBidirectional(uebungBearbeiten.model.nameProperty());
         getInputNameExercise().textProperty().bindBidirectional(uebung.nameProperty());
         getInputLabelRep().textProperty().bindBidirectional(uebung.wiederholungenProperty(), new NullableNumberStringConverter(DF));
         getInputLabelInfo().textProperty().bindBidirectional(uebung.beschreibungProperty());
 
-        //CALLING SQL STATEMENT
-        String name = getInfosFromDB();
-        int rep = 20;
-        String beschreibung = "Naja die Liegestütze sind eine einfache Übung";
+        System.out.println("FILLING VALUES");
+  
+  try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                // Step 2:Create a statement using connection object
+
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT  trainingsname, wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + USERID + "'")) {
+
+                      System.out.println(USERID);
+
+                      
+      System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+
+     // System.out.println(USERID);
+     
+            if(rs!=null){
+            
+ 
+
+            
+       
         
-        
-        uebung.setName(name);
+               String trainingsname="";
+               int rep=0;
+                 String beschreibung="";
+             
+             
+            while (rs.next()) {
+
+                System.out.println("-------------------");
+
+              
+
+                trainingsname = rs.getString("trainingsname");
+
+                rep = rs.getInt("wiederholung");
+
+                beschreibung = rs.getString("beschreibung");
+
+                System.out.println(trainingsname);
+
+            }   
+            
+            
+            rs = null;
+        uebung.setName(trainingsname);
         uebung.setWiederholungen(rep);
         uebung.setBeschreibung(beschreibung);
-
+       
+            }
+            
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+   
     }
 
     
     
     
-    
-    
-    
-    public static String getInfosFromDB() {
-
-        //SQL STATEMENT
-        String name = "Liegestütze";
-        String rep = "20";
-
-        String beschreibung = "Naja die Liegestütze sind eine einfache Übung.";
-
-        
-        
-        
-       return name;
-          
-    }
+  
 
     
     
@@ -203,14 +216,58 @@ public class UebungBearbeitenNotEditablePresenter {
     @FXML
     private void OnActionBack(ActionEvent event) {
 
+       //  setInputNameExercise("s");
+       // uebung.setWiederholungen(rep);
+       // uebung.setBeschreibung(beschreibung);
+    //   Uebung ub = new Uebung("",0,"");
+       
+   
         MobileApplication.getInstance().switchView(UEBUNG_AUSWAEHLEN_VIEW);
 
     }
    @FXML
     private void onActionAddToTraining(ActionEvent event) {
         
-        System.out.println("Add to Trainingsplan");
+  //SAFING
+  
+            
+  
+  
+  
+       System.out.println("UebungID ist " + USERID);
+       
+       
+    int uebung_id = USERID;
+    int trainingseinheit_id = 1;
      
+       // Step 1: Establishing a Connection and 
+        // try-with-resource statement will auto close the connection.
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                // Step 2:Create a statement using connection object
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
+            preparedStatement.setInt(1, trainingseinheit_id);
+            preparedStatement.setInt(2, uebung_id);
+          
+
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+            
+            
+            
+            
+            //ADDING TO LIST
+            
+            
+            
+            
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+       
+       
+       
        MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
 
     }

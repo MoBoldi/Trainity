@@ -140,6 +140,7 @@ public class StartseitePresenter {
         lastTraining.getChildren().add(new BoxDynamischBlauKlein("Letzte Trainingseinheit", 20, "Plan"));
 
         
+<<<<<<< HEAD
         
     }
 
@@ -149,6 +150,8 @@ public class StartseitePresenter {
     }
 
     public void updateDays(){
+=======
+>>>>>>> 18e35d23f635d43325c94f81a572c21d6e428088
         //Geplante Tage aus Tabelle Ziel anzeigen 
         //Calendar c anlegen und ersten Tag der Woche setzen
         Calendar c = Calendar.getInstance(Locale.GERMAN);
@@ -185,7 +188,16 @@ public class StartseitePresenter {
             // print SQL exception information
             System.out.println(e.getMessage());
         }
+        
+        
     }
+
+    public void setDay(VBox box, Text text) {
+        box.setStyle("-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);");
+        text.setFill(Color.web("#2196f3"));
+    }
+
+    
     
 
     public void setPlanned(ImageView check, ImageView calendar, String result) {   

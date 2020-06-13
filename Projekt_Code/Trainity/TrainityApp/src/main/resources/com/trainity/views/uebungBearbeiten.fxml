@@ -106,7 +106,7 @@
                         <graphic>
                            <ImageView fx:id="imageViewSafes" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../Design/Icons/icons8-arrow-96.png" />
+                                 <Image url="@../../../pictures/icons8-arrow-96white.png" />
                               </image>
                            </ImageView>
                         </graphic>
