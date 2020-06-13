@@ -6,10 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -36,7 +33,7 @@
                     </HBox>
                     <HBox fx:id="inputHBox" alignment="CENTER" prefHeight="59.0" prefWidth="330.0">
                         <children>
-                            <TextField fx:id="inputSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#searchForUebungInDB" onKeyTyped="#searchForUebungInDB" opacity="0.99" prefHeight="43.0" prefWidth="290.0" promptText="Suche nach Übung">
+                            <TextField fx:id="inputSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#searchingTheDatabase" opacity="0.99" prefHeight="43.0" prefWidth="290.0" promptText="Suche nach Übung">
                                 <font>
                                     <Font size="3.5" />
                                 </font>
@@ -45,7 +42,7 @@
                     </HBox>
                     <HBox fx:id="buttonHBox" alignment="CENTER" prefHeight="110.0" prefWidth="313.0">
                         <children>
-                            <Button fx:id="NewExerciseButton" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CreateNewUebung" opacity="0.99" prefHeight="45.0" prefWidth="290.0" style="-fx-border-radius: 13px; -fx-border-width: .5; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 13px;" text="Neue Übung" textAlignment="CENTER">
+                            <Button fx:id="NewExerciseButton" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CreateNewUebung" prefHeight="45.0" prefWidth="290.0" style="-fx-border-radius: 13px; -fx-border-width: .5; -fx-border-color: black; -fx-background-color: #2196F3#2196F3; -fx-background-radius: 13px;" text="Neue Übung" textAlignment="CENTER" textFill="#111111">
                                 <font>
                                     <Font size="7.0" />
                                 </font>
@@ -58,75 +55,12 @@
                 <children>
                     <ScrollPane fx:id="AllExercisePane" hbarPolicy="NEVER" opacity="0.99" prefHeight="500.0" prefWidth="290.0" style="-fx-background-color: white;" vbarPolicy="ALWAYS">
                         <content>
-                            <VBox fx:id="AllExerciseVBox" prefHeight="452.0" prefWidth="290.0" spacing="10.0">
-                                <children>
-                                    
-                                    
-                           <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openUebnungMenu" prefHeight="50.0" prefWidth="275.0" spacing="5.0" style="-fx-background-color: #40C211#40C211; -fx-background-radius: 5;">
-                              <children>
-                                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../../../../../../../../../../../../../Downloads/Icons/372516-gym/png/051-dumbbell-3.png" />
-                                    </image>
-                                    <HBox.margin>
-                                       <Insets left="4.0" top="3.5" />
-                                    </HBox.margin>
-                                 </ImageView>
-                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.67" prefHeight="30.0" prefWidth="1.0" style="-fx-background-color: white; -fx-border-color: white;">
-                                    <HBox.margin>
-                                       <Insets left="3.0" top="3.0" />
-                                    </HBox.margin>
-                                 </Pane>
-                                 <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-                                    <children>
-                                       <Label opacity="0.99" style="-fx-font-weight: 600; -fx-font-size: 13px;" text="Jumping Jacks" textFill="WHITE">
-                                          <font>
-                                             <Font size="12.0" />
-                                          </font>
-                                          <VBox.margin>
-                                             <Insets left="1.5" top="1.5" />
-                                          </VBox.margin>
-                                       </Label>
-                                       <HBox opacity="0.86">
-                                          <children>
-                                             <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                   <Image url="@../../../../../../../../../../../../../Downloads/Icons/zukunft_icon_white.png" />
-                                                </image>
-                                                <HBox.margin>
-                                                   <Insets top="2.0" />
-                                                </HBox.margin>
-                                             </ImageView>
-                                             <Label opacity="0.99" style="-fx-font-weight: 500; -fx-font-size: 11px;" text="10 x" textFill="WHITE">
-                                                <font>
-                                                   <Font size="10.0" />
-                                                </font>
-                                                <HBox.margin>
-                                                   <Insets left="1.0" top="1.75" />
-                                                </HBox.margin>
-                                             </Label>
-                                          </children>
-                                          <padding>
-                                             <Insets left="2.0" />
-                                          </padding>
-                                       </HBox>
-                                    </children>
-                                    <HBox.margin>
-                                       <Insets left="1.0" />
-                                    </HBox.margin>
-                                 </VBox>
-                              </children>
-                              <padding>
-                                 <Insets left="5.0" />
-                              </padding>
-                           </HBox>
-                                </children>
-                            </VBox>
+                            <VBox fx:id="AllExerciseVBox" prefHeight="452.0" prefWidth="290.0" spacing="10.0" />
                         </content>
                     </ScrollPane>
                 </children>
                 <VBox.margin>
-                    <Insets top="-10.0" />
+                    <Insets left="10.0" top="-10.0" />
                 </VBox.margin>
             </HBox>
         </children>

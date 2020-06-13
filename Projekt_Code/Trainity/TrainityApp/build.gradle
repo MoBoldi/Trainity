@@ -18,8 +18,12 @@ repositories {
 
 mainClassName = 'com.trainity.Trainity'
 
+
+
 dependencies {
     compile 'com.gluonhq:charm:5.0.2'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
 }
 
 jfxmobile {

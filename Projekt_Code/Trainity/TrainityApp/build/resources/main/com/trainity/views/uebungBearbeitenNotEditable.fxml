@@ -97,7 +97,7 @@
                                 <graphic>
                                     <ImageView fx:id="imageViewSafes" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                         <image>
-                                            <Image url="@../../../../../../../../../Design/Icons/icons8-arrow-96.png" />
+                                            <Image url="@../../../pictures/icons8-arrow-96white.png" />
                                         </image>
                                     </ImageView>
                                 </graphic>
@@ -105,7 +105,7 @@
                            <Insets right="30.0" />
                         </HBox.margin>
                             </Button>
-                     <Button fx:id="ButtonSave1" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionAddToTraining" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Speichern" textAlignment="CENTER" textFill="WHITE">
+                     <Button fx:id="ButtonSave1" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionAddToTraining" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Hinzufügen" textAlignment="CENTER" textFill="WHITE">
                         <font>
                            <Font size="16.0" />
                         </font>
