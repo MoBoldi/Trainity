@@ -227,6 +227,7 @@ public class EinheitBearbeitenPresenter {
                 PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
             //preparedStatement.setString(1, searchString);
 
+<<<<<<< HEAD
             ResultSet rs2 = preparedStatement2.executeQuery();
    
             
@@ -345,3 +346,6 @@ public class EinheitBearbeitenPresenter {
 
     
 }
+=======
+}
+>>>>>>> d5f13026bb1f9165c9e38774b0f1368e66dce3fc

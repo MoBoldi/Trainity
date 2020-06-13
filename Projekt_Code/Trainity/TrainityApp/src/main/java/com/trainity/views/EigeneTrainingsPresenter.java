@@ -6,16 +6,20 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import com.trainity.BoxDynamischBlauGroß;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 
 
 public class EigeneTrainingsPresenter {
 
     @FXML
     private View eigeneTrainings;
+    @FXML
+    private VBox uebersicht;
     
     public void initialize() {
         eigeneTrainings.setShowTransitionFactory(BounceInRightTransition::new);
@@ -34,6 +38,8 @@ public class EigeneTrainingsPresenter {
                         System.out.println("Favorite")));
             }
         });
+        
+        uebersicht.getChildren().add(new BoxDynamischBlauGroß("Bauchmuskeltraining", 20, "test"));
     
 }
 

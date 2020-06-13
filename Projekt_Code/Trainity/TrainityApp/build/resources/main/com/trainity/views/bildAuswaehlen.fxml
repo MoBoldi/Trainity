@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="bildAuswaehlen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@bildAuswaehlen.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.BildAuswaehlenPresenter">
+<View fx:id="bildAuswaehlen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@bildAuswaehlen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.BildAuswaehlenPresenter">
    <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="1000.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <content>
@@ -54,197 +54,25 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
+                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../pictures/051-athlete-7.png" />
+                                       </image>
+                                    </ImageView>
                                     <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                                        <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
+                                          <Image url="@../../../pictures/051-athlete-7.png" />
                                        </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
                                     </ImageView>
                                     <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                                        <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
+                                          <Image url="@../../../pictures/051-athlete-7.png" />
                                        </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
                                     </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                                        <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
+                                          <Image url="@../../../pictures/051-athlete-7.png" />
                                        </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="56.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Icons/372516-gym/png/051-dumbbell-4.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
                                     </ImageView>
                                  </children>
                               </GridPane>

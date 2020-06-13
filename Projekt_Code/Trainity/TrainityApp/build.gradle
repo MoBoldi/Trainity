@@ -22,7 +22,10 @@ mainClassName = 'com.trainity.Trainity'
 
 dependencies {
     compile 'com.gluonhq:charm:5.0.2'
+<<<<<<< HEAD
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+=======
+>>>>>>> d5f13026bb1f9165c9e38774b0f1368e66dce3fc
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
 }
 
