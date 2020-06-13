@@ -4,6 +4,7 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
+import static com.trainity.UserSession.instance;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -73,11 +74,12 @@ public class Uebung {
         
 
         //   int userID = getUserID();
-        int userID = 5;
+        int userID = instance.getUserID();
+        System.out.println(userID);
         String name = getName();
         int wiederholungen = (int) getWiederholungen();
         String beschreibung = getBeschreibung();
-        int bildID = 5;
+      
         String bildName =getRandomImage();
 
         // Step 1: Establishing a Connection and 

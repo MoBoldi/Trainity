@@ -3,6 +3,7 @@ package com.trainity;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
+import static com.trainity.UserSession.instance;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -55,7 +56,7 @@ public class Trainingseinheit {
         
 
         //   int userID = getUserID();
-        int userID = 5;
+        int userID =  instance.getUserID();
         String name = getName();
         int dauer = (int) getDauer();
      
@@ -84,7 +85,6 @@ public class Trainingseinheit {
             
             
             
-            MobileApplication.getInstance().switchView(UEBUNG_AUSWAEHLEN_VIEW);
 
         } catch (SQLException e) {
             printSQLException(e);

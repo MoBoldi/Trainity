@@ -40,7 +40,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 
-public class EinheitBearbeitenPresenter {
+public class EinheitErstellenPresenter {
 
     @FXML
     private View einheitBearbeiten;
@@ -95,6 +95,7 @@ public class EinheitBearbeitenPresenter {
 
     private final StringProperty name = new SimpleStringProperty();
     
+    public boolean newPlan;
 
     public void initialize() {
         einheitBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
@@ -105,25 +106,21 @@ public class EinheitBearbeitenPresenter {
          */
         einheitBearbeiten.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
-             
+                newPlan = true;
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
                         -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Einheit bearbeiten");
 
             }
-                 clearChildren();
                  
           
 
 
             //Wenn Trainingseinheit vorhande
+                      
                         
-                            
-                         
-                        
-                        getUebungenVonTrainingsEinheit();
-                        
+                        newTrainingsplan();
                       
                
                         
@@ -157,100 +154,34 @@ public class EinheitBearbeitenPresenter {
     private void onActionSaveTrainingsPlan(ActionEvent event) {
 
         System.out.println("Saving");
-        MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
+        if(newPlan){
+        
+            System.out.println("Neue Einheit");
+            
+            
+            String nameplan = getInputName().textProperty().get();
+            
+            int anzahlMin = 3;
+            //int dauer = innerVBox.getChildren().size() * anzahlMin;
+          int dauer =0;
+            System.out.println(dauer);
+                    
+           
+         Trainingseinheit te = new Trainingseinheit(nameplan, dauer);
+        
+            te.saveTrainingsEinheit();
+   
+                   MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
 
+            
+            
+        }
 
     }
 
     
     
-    
-    //Wird automatisch aufgerufen wenn Traininsgeinheit schon vorhanden
-    public void getUebungenVonTrainingsEinheit() {
-
-        //ÄNDERN !!!!!!
-       int trainingseinheit_id = 1;
-       
-       
-         Trainingseinheit te = (Trainingseinheit) getInfoFromDB( trainingseinheit_id);
-        
-        getInputName().textProperty().bindBidirectional(te.nameProperty());
-
-   
-       
-    
-       
-       
-        
-  // Step 1: Establishing a Connection and 
-        // try-with-resource statement will auto close the connection.
-        try (Connection connection = DriverManager
-                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id FROM trainingsliste WHERE trainingseinheit_id = '" + trainingseinheit_id + "'")) {
-
-            ResultSet rs1 = preparedStatement.executeQuery();
-
-            
-            
-            System.out.println("-------------------");
-
-            
-
-               String trainingsname;
-               int rep;
-               String beschreibung;
-     
-            while(rs1.next()){
-
-                int trainingsuebung_id= rs1.getInt("trainingsuebung_id");
-
-         try (Connection connection2 = DriverManager
-                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
-            //preparedStatement.setString(1, searchString);
-
-            ResultSet rs2 = preparedStatement2.executeQuery();
-   
-            
-           
-             
-            while (rs2.next()) {
-
-                System.out.println("-------------------");
-
-                
-
-                trainingsname = rs2.getString("trainingsname");
-
-                rep = rs2.getInt("wiederholung");
-
-                beschreibung = rs2.getString("beschreibung");
-
-          
-           
-                createNewUebungBox(trainingsname,rep,beschreibung,trainingsuebung_id);
-            
-
-            }
-            
-             } catch (SQLException e) {
-            printSQLException(e);
-        }
-            
-        
-           }   
-            
-        } catch (SQLException e) {
-            printSQLException(e);
-        }
-            
-
-          //  }
-     
-
-    }
+ 
 
     
   

@@ -105,6 +105,7 @@ public class LoginPresenter {
         } else {
             infoBox("Login erfolgreich!", null, "Success");
             UserSession.getInstace(jdbcDao.getUserId(email));
+            
             MobileApplication.getInstance().switchView("Startseite View");
         }
 

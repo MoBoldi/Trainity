@@ -28,12 +28,12 @@
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="-70.0" />
+                        <Insets top="-130.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox fx:id="inputHBoxName" alignment="CENTER" prefHeight="31.0" prefWidth="290.0">
                      <children>
-                        <TextField fx:id="inputName" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="25.0" prefWidth="285.0">
+                        <TextField fx:id="inputName" alignment="TOP_LEFT" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.99" prefHeight="25.0" prefWidth="285.0">
                            <font>
                               <Font size="3.5" />
                            </font>
@@ -46,30 +46,6 @@
                         <Insets left="10.0" />
                      </padding>
                   </HBox>
-                  <HBox fx:id="labelIconHBox" maxWidth="-Infinity" prefHeight="31.0" prefWidth="290.0">
-                     <children>
-                        <Label fx:id="labelIcon" alignment="CENTER" opacity="0.96" text="Icon ">
-                           <font>
-                              <Font name="Al Bayan Plain" size="21.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="-10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="buttonOpenHBox" alignment="CENTER">
-                     <VBox.margin>
-                        <Insets top="-10.0" />
-                     </VBox.margin>
-                     <children>
-                        <Button fx:id="ButtonOpenImagePicker" alignment="CENTER" graphicTextGap="6.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.53" prefHeight="42.0" prefWidth="290.0" style="-fx-border-radius: 10px; -fx-border-width: .2px; -fx-border-color: black; -fx-background-color: white; -fx-text-fill: black;" text="Auswählen" textAlignment="CENTER">
-                           <font>
-                              <Font size="4.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
                   <VBox fx:id="upperBox" alignment="CENTER" prefHeight="431.0" prefWidth="290.0">
                      <children>
                         <HBox fx:id="labelH1HBox" maxWidth="-Infinity" prefHeight="39.0" prefWidth="290.0">
@@ -81,7 +57,7 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets top="-10.0" />
+                              <Insets top="-5.0" />
                            </VBox.margin>
                         </HBox>
                         <HBox fx:id="ScrollPaneHBox" alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="252.0" prefWidth="290.0">
