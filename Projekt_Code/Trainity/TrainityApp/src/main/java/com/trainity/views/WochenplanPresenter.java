@@ -6,6 +6,7 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import static com.trainity.Trainity.STARTSEITE_VIEW;
 import static java.awt.PageAttributes.ColorType.COLOR;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -247,6 +248,7 @@ public class WochenplanPresenter {
             // print SQL exception information
             printSQLException(e);
         }
+        
         
         
     }
