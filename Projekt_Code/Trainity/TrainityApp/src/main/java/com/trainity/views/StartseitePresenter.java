@@ -104,6 +104,7 @@ public class StartseitePresenter {
                 appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e
                         -> System.out.println("Search")));
             }
+            updateDays();
         });
         Date date = new Date();
         switch (date.getDay()) {
@@ -138,8 +139,6 @@ public class StartseitePresenter {
         //Letzte Trainings aus DB holen
         lastTraining.getChildren().add(new BoxDynamischBlauKlein("Letzte Trainingseinheit", 20, "Plan"));
 
-        updateDays();
-        
         
         
     }

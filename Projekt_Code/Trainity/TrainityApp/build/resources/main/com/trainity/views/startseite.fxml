@@ -15,7 +15,7 @@
    <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="310.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="1000.0" spacing="15.0">
+            <VBox prefHeight="1000.0" prefWidth="280.0" spacing="15.0">
                <children>
                   <HBox prefHeight="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 13;">
                      <VBox.margin>
@@ -27,7 +27,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="270.0" spacing="6.0">
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="280.0" spacing="6.0">
                                  <VBox.margin>
                                     <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
@@ -69,7 +69,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="270.0" spacing="6.0">
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="280.0" spacing="6.0">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
@@ -178,19 +178,22 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: SEMI_BOLD;" text="Nächstes Training">
+                  <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Nächstes Training">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Text>
                   <VBox fx:id="nextTraining" spacing="5.0" />
-                  <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: SEMI_BOLD;" text="Letzte Trainings">
+                  <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Letzte Trainings">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Text>
                   <VBox fx:id="lastTraining" spacing="5.0" />
                </children>
+               <padding>
+                  <Insets right="-20.0" />
+               </padding>
             </VBox>
          </content>
          <padding>
