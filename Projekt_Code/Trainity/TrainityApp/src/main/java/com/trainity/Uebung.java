@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +36,7 @@ public class Uebung {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String INSERT_QUERY = "INSERT INTO trainingsuebung (trainingsname, wiederholung, beschreibung, benutzer_id, bild_id) VALUES (?, ?, ?, ?, ?)";
+    private static final String INSERT_QUERY = "INSERT INTO trainingsuebung (trainingsname, wiederholung, beschreibung, benutzer_id, bildName) VALUES (?, ?, ?, ?, ?)";
    // private static final String UPDATE_QUERY = "INSERT INTO registration (full_name, email_id, password) VALUES (?, ?, ?)";
 
     // private final StringProperty imgPfad = new SimpleStringProperty();
@@ -77,6 +78,7 @@ public class Uebung {
         int wiederholungen = (int) getWiederholungen();
         String beschreibung = getBeschreibung();
         int bildID = 5;
+        String bildName =getRandomImage();
 
         // Step 1: Establishing a Connection and 
         // try-with-resource statement will auto close the connection.
@@ -88,7 +90,8 @@ public class Uebung {
             preparedStatement.setInt(2, wiederholungen);
             preparedStatement.setString(3, beschreibung);
             preparedStatement.setInt(4, userID);
-            preparedStatement.setInt(5, bildID);
+            preparedStatement.setString(5, bildName);
+
 
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
@@ -108,27 +111,49 @@ public class Uebung {
         }
 
     }
+    
+    
+    public String getRandomImage(){
+    
+    
+        Random zufall = new Random(); // neues Random Objekt, namens zufall
+        int zufallsZahl = zufall.nextInt(5);
+        String name ="";
+        switch(zufallsZahl){
+        
+            case 0: 
+                name =  "051-athlete-3.png";
+                break;
+             
+            case 1:
+                name = "051-athlete-4.png";
+                break;
+            case 2: 
+                name =  "051-athlete-5.png";
+                break;
+             
+            case 3:
+                name = "051-athlete-7.png";
+                break;
+        
+            case 4: 
+                name =  "051-athlete-8.png";
+                break;
+             
+            case 5:
+                name = "051-athlete.png";
+                break;
+        }
+        
+     
+     return name;   
+    }
 
     public int getUserID() {
         System.out.println("Returning the User ID");
         return 1;
     }
 
-    public void updateUebung() {
-        //Überprüfung beinhalted
-
-        
-        System.out.println(getName());
-
-        String sql = "UPDATE DBNAME SET("
-                + "   name=  '" + getName() + "' "
-                + "  , rep = '" + getWiederholungen() + "' "
-                + "  , beschreibung '" + getBeschreibung() + "' "
-                + ")";
-
-      
-
-    }
 
   
 

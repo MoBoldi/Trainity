@@ -7,6 +7,13 @@ package com.trainity;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
+import static com.trainity.Uebung.printSQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.TimeZone;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
@@ -27,6 +34,9 @@ public class BoxDynamischBlauGroß extends HBox {
     private String name;
     private int duration;
     private String beschreibung;
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private static final String DATABASE_USERNAME = "root";
+    private static final String DATABASE_PASSWORD = "root";
 
     public BoxDynamischBlauGroß(String name, int duration, String beschreibung) {
 
@@ -76,7 +86,43 @@ public class BoxDynamischBlauGroß extends HBox {
 
 //-------------------------------------------------------------------------------------
 //Image View erstellen und als Children in HBox hinzufügen
-        Image image = new Image("pictures/051-athlete-7.png");
+        int ID = 1;
+
+        String imgName = "";
+        // try-with-resource statement will auto close the connection.
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                // Step 2:Create a statement using connection object
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT bildName FROM trainingseinheit WHERE  trainingsuebung_id = '" + ID + "'")) {
+            //preparedStatement.setString(1, searchString);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+
+                imgName = rs.getString("bildName");
+
+                ///___________------------------
+                // Sout Ausgabe später löschen 
+                //   System.out.println(trainingsuebung_id);
+                // System.out.println(trainingsname);
+                //System.out.println(rep);
+                //   System.out.println(beschreibung);
+                if (imgName == null) {
+
+                    imgName = "051-athlete.png";
+
+                }
+
+            }
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+
+        String wholeName = "icon/" + imgName;
+
+        Image image = new Image("" + wholeName + "");
 
         ImageView iv1 = new ImageView();
 
