@@ -91,7 +91,6 @@ public class EinheitBearbeitenPresenter {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String INSERT_QUERY = "INSERT INTO trainingsuebung (trainingsname, wiederholung, beschreibung, benutzer_id, bild_id) VALUES (?, ?, ?, ?, ?)";
 
     private final StringProperty name = new SimpleStringProperty();
     
@@ -114,10 +113,7 @@ public class EinheitBearbeitenPresenter {
             }
                  clearChildren();
                  
-              //    Trainingseinheit te = new Trainingseinheit();
-
-    
-              //  getInputName().textProperty().bindBidirectional(te.nameProperty());
+          
 
 
             //Wenn Trainingseinheit vorhande

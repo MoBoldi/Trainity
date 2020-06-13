@@ -1,7 +1,9 @@
 package com.trainity;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Trainity.LOGIN_VIEW;
+import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW2;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
@@ -58,7 +60,6 @@ public class BoxDynamischGruen2 extends HBox {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String SELECT_QUERY = "SELECT bildName FROM trainingsuebung WHERE  name = ?";
 
     
 
@@ -99,6 +100,14 @@ public class BoxDynamischGruen2 extends HBox {
         };
          */
      
+        HBox eventBox = new HBox();
+        
+        
+        eventBox.setPrefWidth(190);
+        eventBox.setPrefHeight(50);
+        
+        hbox.getChildren().add(eventBox);
+        
 //-------------------------------------------------------------------------------------
 //Image View erstellen und als Children in HBox hinzufügen
 
@@ -167,7 +176,7 @@ String wholeName = "icon/" + imgName;
 
         iv1.setImage(image);
 
-        hbox.getChildren().add(iv1);
+       eventBox.getChildren().add(iv1);
 
 //-------------------------------------------------------------------------------------
 //Dünnes Pane erstellen    
@@ -185,7 +194,7 @@ String wholeName = "icon/" + imgName;
 
         pane.setOpacity(0.67);
 
-        hbox.getChildren().add(pane);
+        eventBox.getChildren().add(pane);
 
 //-------------------------------------------------------------------------------------
 //Dünne VBOX erstellen    
@@ -205,7 +214,7 @@ String wholeName = "icon/" + imgName;
 
         vbox.setMargin(label, new Insets(8, 0, 0, 10));
 
-        hbox.getChildren().add(vbox);
+       eventBox.getChildren().add(vbox);
 
 
         
@@ -263,15 +272,15 @@ String wholeName = "icon/" + imgName;
 
         ImageView iv3 = new ImageView();
 
-        iv3.setFitWidth(16);
-        iv3.setFitHeight(19);
+        iv3.setFitWidth(19);
+        iv3.setFitHeight(23);
 
         iv3.setImage(image3);
 
         hbox.setCursor(Cursor.HAND);
 
-        hbox.getChildren().add(iv3);
-        hbox.setMargin(iv3, new Insets(15.2, 0, 0, 53));
+       hbox.getChildren().add(iv3);
+        eventBox.setMargin(iv3, new Insets(15.2, 0, 0, 53));
    
 
 
@@ -279,9 +288,33 @@ String wholeName = "icon/" + imgName;
            EventHandler<MouseEvent> mouseEventHandler2 = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Deleting this ....");
+                System.out.println("Deleting this " + getID());
+                
+                 try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                // Step 2:Create a statement using connection object
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM trainingsListe WHERE  trainingsuebung_id = '" + getID() + "'")) {
+            //preparedStatement.setString(1, searchString);
+
+                    int rs = preparedStatement.executeUpdate();
+
+
+            
+                           MobileApplication.getInstance().switchView(UEBUNG_AUSWAEHLEN_VIEW);
+                MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
+
+   
+            
+            
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+                
+
 
             }
+            
+            
         };
            
 
@@ -342,7 +375,7 @@ String wholeName = "icon/" + imgName;
      
         };
 
-        hbox.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
+      eventBox.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
 
 //-------------------------------------------------------------------------------------
 //Margin       
