@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 
 public class TrainingDurchfuehrenView {
-    
+
     public View getView() {
         try {
             View view = FXMLLoader.load(TrainingDurchfuehrenView.class.getResource("trainingDurchfuehren.fxml"));

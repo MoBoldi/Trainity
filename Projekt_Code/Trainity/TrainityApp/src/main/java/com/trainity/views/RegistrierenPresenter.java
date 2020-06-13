@@ -2,40 +2,250 @@ package com.trainity.views;
 
 import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import static com.gluonhq.charm.glisten.application.MobileApplication.HOME_VIEW;
 import com.gluonhq.charm.glisten.control.AppBar;
-import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
-import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import java.sql.SQLException;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Window;
+import com.trainity.JdbcDao;
+import static com.trainity.JdbcDao.printSQLException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.TimeZone;
+import java.util.regex.*;
+import javafx.scene.control.Tooltip;
 
 public class RegistrierenPresenter {
 
     @FXML
     private View registrieren;
-    
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private TextField confirmPasswordField;
+    @FXML
+    private Button submitButton;
+    @FXML
+    private TextField vornameField;
+    @FXML
+    private TextField nachnameField;
+    @FXML
+    private Button loginLink;
+
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private static final String DATABASE_USERNAME = "root";
+    private static final String DATABASE_PASSWORD = "root";
+    private static final String SELECT_QUERY = "SELECT * from benutzer where email=?";
+
     public void initialize() {
         registrieren.setShowTransitionFactory(BounceInRightTransition::new);
-        
-        FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.INFO.text,
-                e -> System.out.println("Info"));
-        fab.showOn(registrieren);
-        
+
+        final Tooltip tp = new Tooltip();
+        tp.setText("Passwortanforderungen:\n"
+                + "- mindestens 8 Zeichen\n"
+                + "- mindestens 1 Groß- & 1 Kleinbuchstabe\n"
+                + "- mindestens 1 Ziffer");
+        passwordField.setTooltip(tp);
+        confirmPasswordField.setTooltip(tp);
+
         registrieren.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
-                appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> 
-                        MobileApplication.getInstance().getDrawer().open()));
+                //appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
+                //        -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Registrieren");
-                appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e -> 
-                        System.out.println("Favorite")));
+                //appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e
+                //        -> System.out.println("Favorite")));
             }
         });
-    
-}
 
+    }
+    
+    @FXML
+    public void switchLogin(ActionEvent event) {
+        System.out.println("You clicked me!");
+        MobileApplication.getInstance().switchView(HOME_VIEW);
+    }
+
+    @FXML
+    public void register(ActionEvent event) throws SQLException, Exception {
+
+        Window owner = submitButton.getScene().getWindow();
+
+        System.out.println(vornameField.getText());
+        System.out.println(nachnameField.getText());
+        System.out.println(emailField.getText());
+        System.out.println(passwordField.getText());
+        System.out.println(confirmPasswordField.getText());
+
+        if (vornameField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie ihren Vornamen an!");
+            return;
+        }
+        if (vornameField.getText().length() < 2) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Vorname muss mindestens 2 Zeichen haben!");
+            return;
+        }
+        if (nachnameField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie ihren Nachnamen an!");
+            return;
+        }
+        if (nachnameField.getText().length() < 2) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Nachname muss mindestens 2 Zeichen haben!");
+            return;
+        }
+        if (emailField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie Ihre E-Mail Adresse an!");
+            return;
+        }
+        if (passwordField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie ein Passwort ein!");
+            return;
+        }
+        if (confirmPasswordField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie ein Passwort ein!");
+            return;
+        }
+        if (!passwordField.getText().equals(confirmPasswordField.getText())) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Das Passwort stimmt nicht überein!");
+            return;
+        }
+        if (!isValidPassword(passwordField.getText())) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Das Passwort erfüllt nicht den Anferderungen!");
+            return;
+        }
+        if (!isValidEmail(emailField.getText())) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie eine gültige E-Mail Adresse an!");
+            return;
+        }
+        if (!isValidName(vornameField.getText())) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie einen gültigen Vornamen an!");
+            return;
+        }
+        if (!isValidName(nachnameField.getText())) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Bitte geben Sie einen gültigen Nachnamen an!");
+            return;
+        }
+        if (checkEmail(emailField.getText())) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Die Email Adresse ist schon einem Account zugeordnet!");
+            return;
+        }
+
+        String vorname = vornameField.getText();
+        String nachname = nachnameField.getText();
+        String email = emailField.getText();
+        //String to encrypt
+        String password = passwordField.getText();
+
+        //encrypt
+        String algorithm = "MD5";
+        String hashedPassword = generateHash(password, algorithm);
+        System.out.println("MD5 Hash: " + hashedPassword);
+
+        JdbcDao jdbcDao = new JdbcDao();
+        jdbcDao.insertRecord(vorname, nachname, email, hashedPassword);
+
+        showAlert(Alert.AlertType.CONFIRMATION, owner, "Erfolgreich registriert!",
+                "Willkommen " + vornameField.getText() + "!");
+        MobileApplication.getInstance().switchView("Startseite View");
+    }
+
+    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        alert.show();
+    }
+
+    private static String generateHash(String password, String algorithm) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance(algorithm);
+        digest.reset();
+        byte[] hash = digest.digest(password.getBytes());
+        return bytesToStringHex(hash);
+    }
+
+    private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
+
+    public static String bytesToStringHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for (int i = 0; i < bytes.length; i++) {
+            int v = bytes[i] & 0xFF;
+            hexChars[i * 2] = hexArray[v >>> 4];
+            hexChars[i * 2 + 1] = hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
+
+    public static boolean isValidPassword(String password) {
+        String regex = "^(?=.*[0-9])"
+                + "(?=.*[a-z])(?=.*[A-Z])"
+                + ".{8,}$";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(password);
+        return m.matches();
+    }
+
+    public static boolean isValidEmail(String email) {
+        String regexMail = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+        Pattern p = Pattern.compile(regexMail);
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    public static boolean isValidName(String name) {
+        String regexName = "^[A-ZÄÖÜ][a-zäöüß]*$";
+
+        Pattern p = Pattern.compile(regexName);
+        Matcher m = p.matcher(name);
+        return m.matches();
+    }
+
+    public static boolean checkEmail(String email) throws SQLException {
+        boolean usernameExists = false;
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
+
+            preparedStatement.setString(1, email);
+            ResultSet r1 = preparedStatement.executeQuery();
+            if (r1.next()) {
+                usernameExists = true;
+            }
+            System.out.println(preparedStatement);
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return usernameExists;
+    }
 
 }
