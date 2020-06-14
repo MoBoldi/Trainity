@@ -28,8 +28,6 @@ public class JdbcDao {
             preparedStatement.setString(2, nachname);
             preparedStatement.setString(3, email);
             preparedStatement.setString(4, password);
-
-            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -42,9 +40,6 @@ public class JdbcDao {
                 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
-
-            System.out.println(preparedStatement);
-
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 return true;
@@ -76,9 +71,6 @@ public class JdbcDao {
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERID_QUERY)) {
             preparedStatement.setString(1, email);
-
-            System.out.println(preparedStatement);
-
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 return rs.getInt("id");
