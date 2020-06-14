@@ -8,6 +8,7 @@ package com.trainity;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.EinheitSession.instanceE;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_ALL;
 import static com.trainity.Uebung.printSQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +27,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-/**
+/**s
  *
  * @author julian
  */
@@ -83,7 +84,7 @@ public class BoxDynamischBlauGroß extends HBox {
                 
                 instanceE = null;
                 EinheitSession.getInstace(id);
-                MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
+                MobileApplication.getInstance().switchView(UEBUNG_ALL);
 
             }
         };

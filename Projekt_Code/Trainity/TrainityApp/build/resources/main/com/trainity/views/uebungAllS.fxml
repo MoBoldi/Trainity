@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="einheitBearbeiten" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@einheitBearbeiten.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.EinheitALLPresenter">
+<View fx:id="einheitBearbeiten" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@einheitBearbeiten.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.EinheitALLPresenterS">
    <center>
       <VBox fx:id="outerBox" alignment="CENTER" maxWidth="-Infinity" prefHeight="670.0" prefWidth="315.0" spacing="15.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>

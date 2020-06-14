@@ -21,11 +21,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 import javafx.scene.text.Text;
 
 public class StartseitePresenter {
 
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/trainity?zeroDateTimeBehavior=convertToNull";
+        private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
     private static final String SELECT_STATUS_QUERY = "select status from ziel where benutzer_id = ? and datum BETWEEN ? and ?";
