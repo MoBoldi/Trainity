@@ -16,7 +16,6 @@ import static com.trainity.Trainity.WOCHENPLAN_VIEW;
 import static com.trainity.Trainity.BILD_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Trainity.EINHEIT_ERSTELLEN_VIEW;
-import static com.trainity.Trainity.TRAINING_DURCHFUEHREN_VIEW;
 import static com.trainity.Trainity.UEBUNG_ALL;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
@@ -40,13 +39,13 @@ public class DrawerManager {
         final Item einheitBearbeiten = new ViewItem("Einheit bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), EINHEIT_BEARBEITEN_VIEW);
         final Item einheitErstellen = new ViewItem("Einheit erstellen", MaterialDesignIcon.DASHBOARD.graphic(), EINHEIT_ERSTELLEN_VIEW);
 
-        final Item trainingDurchfuehren = new ViewItem("Training durchführen", MaterialDesignIcon.DASHBOARD.graphic(), TRAINING_DURCHFUEHREN_VIEW);
+        ///final Item trainingDurchfuehren = new ViewItem("Training durchführen", MaterialDesignIcon.DASHBOARD.graphic(), TRAINING_DURCHFUEHREN_VIEW);
         final Item uebungAuswaehlen = new ViewItem("Übung auswählen", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_AUSWAEHLEN_VIEW);
         final Item uebungBearbeiten = new ViewItem("Übung bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_VIEW);
         final Item uebungNotBearbeiten = new ViewItem("Übung Notbearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_NotEditable_VIEW);
-        final Item uebungAll = new ViewItem("Übung Übersicht", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_ALL);
+        final Item uebungAll = new ViewItem("Übersicht Trainingseinheiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_ALL);
 
-        drawer.getItems().addAll(startseiteItem, eigeneTrainings, wochenplan, bildAuswaehlen, einheitBearbeiten, trainingDurchfuehren, uebungAuswaehlen, uebungBearbeiten,uebungNotBearbeiten, einheitErstellen,uebungAll );
+        drawer.getItems().addAll(startseiteItem, eigeneTrainings, wochenplan, bildAuswaehlen, einheitBearbeiten, uebungAll, uebungAuswaehlen, uebungBearbeiten,uebungNotBearbeiten, einheitErstellen );
         
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Logout", MaterialDesignIcon.EXIT_TO_APP.graphic());

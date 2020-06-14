@@ -6,42 +6,26 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import com.trainity.BoxDynamischGruen;
-import com.trainity.BoxDynamischGruen2;
 import com.trainity.BoxDynamischGruen3;
-import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
-import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
-import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
-import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
-import java.net.URL;
+import static com.trainity.UserSession.instance;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 import java.util.TimeZone;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Window;
-import static jdk.nashorn.internal.objects.Global.undefined;
 
 public class EinheitALLPresenter {
 
@@ -73,214 +57,88 @@ public class EinheitALLPresenter {
     private HBox saveButtonHBox;
     @FXML
     private Button ButtonSave;
-    
-      private Connection connection;
-      private Statement statement;
 
-        private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private Connection connection;
+    private Statement statement;
+
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
-
+    private static final String UPDATE_STATEMENT = "UPDATE benutzer set nextWorkoutId = ? where id = ?";
+    
+    //ÄNDERN !!!!!!
+    // private static int trainingseinheit_id = instanceE.getUserID();
+    private static int trainingseinheit_id = 1;
 
     private final StringProperty name = new SimpleStringProperty();
-    
 
     public void initialize() {
         einheitBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
-       
-         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.DO_NOT_DISTURB.text,
-                e -> System.out.println("Starte Benjamin Uebung")
-           
-         );
-         
-         
+
+        FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
+                e -> MobileApplication.getInstance().switchView("Training durchführen View")
+        );
+
         fab.showOn(einheitBearbeiten);
-        
+
         einheitBearbeiten.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
-             
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
-                appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
-                        -> MobileApplication.getInstance().getDrawer().open()));
-                appBar.setTitleText("Einheit bearbeiten");
-
+                appBar.setNavIcon(MaterialDesignIcon.MENU.button(
+                        e -> MobileApplication.getInstance().getDrawer().open()));
+                appBar.setTitleText("Übersicht Trainingseinheiten");
+                appBar.getActionItems().add(MaterialDesignIcon.TODAY.button(
+                        e -> setNewWorkoutId(trainingseinheit_id)));
             }
-                 clearChildren();
-                 
-          
-
-
+            clearChildren();
             //Wenn Trainingseinheit vorhande
-                        
-                            
-                         
-                        
-                        getUebungenVonTrainingsEinheit();
-                        
-                      
-               
-                        
+            getUebungenVonTrainingsEinheit();
         });
-     
-
     }
     
-    
-    
-   
-
-    private void createNewUebung(ActionEvent event) {
-        
-        clearChildren();
-        MobileApplication.getInstance().switchView(UEBUNG_AUSWAEHLEN_VIEW);
-
+    public void clearChildren() {
+        innerVBox.getChildren().clear();
     }
-
-    
-    
-    public void clearChildren(){
-    
-    
-    innerVBox.getChildren().clear();
-    
-    
-    }
-    @FXML
-    private void onActionSaveTrainingsPlan(ActionEvent event) {
-
-        System.out.println("Saving");
-        
-        
-        instanceE.cleanUserSession();
-        MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
-
-
-    }
-
-    
-    
-    
-    //Wird automatisch aufgerufen wenn Traininsgeinheit schon vorhanden
     public void getUebungenVonTrainingsEinheit() {
-
-        //ÄNDERN !!!!!!
-     // int trainingseinheit_id = instanceE.getUserID();
-       
-       
-      int trainingseinheit_id = 1;
-       
-       
         System.out.println(trainingseinheit_id);
-       
-       
-         Trainingseinheit te = (Trainingseinheit) getInfoFromDB( trainingseinheit_id);
-        
+        Trainingseinheit te = (Trainingseinheit) getInfoFromDB(trainingseinheit_id);
         getInputName().textProperty().bindBidirectional(te.nameProperty());
 
-   
-       
-    
-       
-       
-        
-  // Step 1: Establishing a Connection and 
-        // try-with-resource statement will auto close the connection.
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                // Step 2:Create a statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id FROM trainingsliste WHERE trainingseinheit_id = '" + trainingseinheit_id + "'")) {
-
             ResultSet rs1 = preparedStatement.executeQuery();
-
-            
-            
-            System.out.println("-------------------");
-
-            
-
-               String trainingsname;
-               int rep;
-               String beschreibung;
-     
-            while(rs1.next()){
-
-                int trainingsuebung_id= rs1.getInt("trainingsuebung_id");
-
-         try (Connection connection2 = DriverManager
-                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
-            //preparedStatement.setString(1, searchString);
-
-            ResultSet rs2 = preparedStatement2.executeQuery();
-   
-            
-           
-             
-            while (rs2.next()) {
-
-                System.out.println("-------------------");
-
-                
-
-                trainingsname = rs2.getString("trainingsname");
-
-                rep = rs2.getInt("wiederholung");
-
-                beschreibung = rs2.getString("beschreibung");
-
-          
-           
-                createNewUebungBox(trainingsname,rep,beschreibung,trainingsuebung_id);
-            
-
+            String trainingsname;
+            int rep;
+            String beschreibung;
+            while (rs1.next()) {
+                int trainingsuebung_id = rs1.getInt("trainingsuebung_id");
+                try (Connection connection2 = DriverManager
+                        .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                        PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
+                    //preparedStatement.setString(1, searchString);
+                    ResultSet rs2 = preparedStatement2.executeQuery();
+                    while (rs2.next()) {
+                        trainingsname = rs2.getString("trainingsname");
+                        rep = rs2.getInt("wiederholung");
+                        beschreibung = rs2.getString("beschreibung");
+                        createNewUebungBox(trainingsname, rep, beschreibung, trainingsuebung_id);
+                    }
+                } catch (SQLException e) {
+                    printSQLException(e);
+                }
             }
-            
-             } catch (SQLException e) {
-            printSQLException(e);
-        }
-            
-        
-           }   
-            
         } catch (SQLException e) {
             printSQLException(e);
         }
-            
-
-          //  }
-     
-
     }
-
-    
-  
     
     public void createNewUebungBox(String name, int rep, String beschreibung, int id) {
-
         boolean includeTrash = false;
-
         BoxDynamischGruen3 bx = new BoxDynamischGruen3(name, rep, beschreibung, includeTrash, id);
         innerVBox.getChildren().add(bx);
-
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    // Wenn man einen neuen Trainingsplan erstellt, wird das Array aus Namen Wiederholungen... einen Null Eintrag geaddet 
-    // und das Input Field leer gemacht.
-    private void newTrainingsplan() {
-    Trainingseinheit te = new Trainingseinheit();
-       getInputName().textProperty().bindBidirectional(te.nameProperty());
-      
-    }
-
     public TextField getInputName() {
         return inputName;
     }
@@ -290,44 +148,36 @@ public class EinheitALLPresenter {
     }
 
     private Object getInfoFromDB(int trainingseinheit_id) {
-        
-          String nameTE="";
-           int dauer=0;
-             
-         try (Connection connection2 = DriverManager
+        String nameTE = "";
+        int dauer = 0;
+        try (Connection connection2 = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement = connection2.prepareStatement("SELECT   name , dauer FROM trainingseinheit WHERE  trainingseinheit_id = '" + trainingseinheit_id+ "'")) {
+                PreparedStatement preparedStatement = connection2.prepareStatement("SELECT   name , dauer FROM trainingseinheit WHERE  trainingseinheit_id = '" + trainingseinheit_id + "'")) {
             //preparedStatement.setString(1, searchString);
-
             ResultSet rs2 = preparedStatement.executeQuery();
-   
-       
-             
             while (rs2.next()) {
-
-               
-
                 nameTE = rs2.getString("name");
-
                 dauer = rs2.getInt("dauer");
-
-            
             }
-            
-             } catch (SQLException e) {
+        } catch (SQLException e) {
             printSQLException(e);
         }
-        
-                   Trainingseinheit te = new Trainingseinheit(nameTE,dauer);
-
-           
-           return te;
+        Trainingseinheit te = new Trainingseinheit(nameTE, dauer);
+        return te;
     }
-
-  
-   
-
     
+    public void setNewWorkoutId(int trainingseinheit_id) {
+        int userId = instance.getUserID();
+        //trainingseinheit_id
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATEMENT)) {
+            preparedStatement.setInt(1, trainingseinheit_id);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
 }
-

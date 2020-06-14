@@ -19,6 +19,7 @@ public class JdbcDao {
     private static final String INSERT_QUERY = "INSERT INTO benutzer (vorname, nachname, email, passwort) VALUES (?, ?, ?, ?)";
     private static final String SELECT_QUERY = "SELECT * FROM benutzer WHERE email = ? and passwort = ?";
     private static final String SELECT_USERID_QUERY = "SELECT ID FROM benutzer WHERE email = ?";
+    private static final String INSERT_NEXTWORKOUTID = "INSERT INTO benutzer (nextWorkoutId) VALUES (?)";
 
     public void insertRecord(String vorname, String nachname, String email, String password) throws SQLException {
         try (Connection connection = DriverManager
@@ -79,5 +80,16 @@ public class JdbcDao {
             printSQLException(e);
         }
         return -1;
+    }
+
+    public void insertNextWorkoutId(int nextWorkOutId) throws SQLException {
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_NEXTWORKOUTID)) {
+            preparedStatement.setInt(1, nextWorkOutId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 }

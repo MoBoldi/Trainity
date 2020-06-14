@@ -7,13 +7,26 @@ import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.control.TextField;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import com.trainity.BoxDynamischGruen3;
+import com.trainity.Trainingseinheit;
 import com.trainity.Uebung;
+import static com.trainity.Uebung.printSQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class TrainingDurchfuehrenPresenter {
 
@@ -26,14 +39,52 @@ public class TrainingDurchfuehrenPresenter {
 
     private static final Image pauseImage = new Image("pictures/pause.jpg");
     private static final Image workOutImage = new Image("pictures/workOut.jpg");
+    @FXML
+    private VBox outterVBox;
+    @FXML
+    private VBox innerVBox;
+    @FXML
+    private HBox labelImageViewHBox;
+    @FXML
+    private HBox InputHBox1;
+    @FXML
+    private Label titelUebung;
+    @FXML
+    private HBox InputHBox11;
+    @FXML
+    private Label wiederholungen;
+    @FXML
+    private VBox upperBox;
+    @FXML
+    private HBox labelH1Box;
+    @FXML
+    private Label labelEinteilung;
+    @FXML
+    private HBox ScrollPaneHBox;
+    @FXML
+    private ScrollPane AllExercisePane;
+    
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private static final String DATABASE_USERNAME = "root";
+    private static final String DATABASE_PASSWORD = "root";
+    private static String[][] lNames = new String[60][2];
+    
+    //ÄNDERN !!!!!!
+    // private static int trainingseinheit_id = instanceE.getUserID();
+    private static int trainingseinheit_id = 1;
 
     public void initialize() {
         trainingDurchfuehren.setShowTransitionFactory(BounceInRightTransition::new);
 
         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
-                e -> System.out.println("Play"));
+                e -> removeTopChild());
         fab.showOn(trainingDurchfuehren); 
         ImageView.setImage(workOutImage);
+            
+        //Geht leider nicht, hat wer eine Lösung?
+        if (innerVBox.getChildren().isEmpty()) {
+           fab.hide();
+        }
 
         trainingDurchfuehren.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
@@ -41,8 +92,6 @@ public class TrainingDurchfuehrenPresenter {
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
                         -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Training durchführen");
-                appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e
-                        -> System.out.println("Favorite")));
             }
         });
 
@@ -75,7 +124,91 @@ public class TrainingDurchfuehrenPresenter {
             }
             event.consume();
         });
+         clearChildren();
+         getUebungenVonTrainingsEinheit();
+         setLabels();
+    }
+    
+    public void clearChildren() {
+        innerVBox.getChildren().clear();
+    }
 
+    public void getUebungenVonTrainingsEinheit() {
+        System.out.println(trainingseinheit_id);
+        Trainingseinheit te = (Trainingseinheit) getInfoFromDB(trainingseinheit_id);
+
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id FROM trainingsliste WHERE trainingseinheit_id = '" + trainingseinheit_id + "'")) {
+            ResultSet rs1 = preparedStatement.executeQuery();
+            String trainingsname;
+            int rep;
+            String beschreibung;
+            while (rs1.next()) {
+                int trainingsuebung_id = rs1.getInt("trainingsuebung_id");
+                try (Connection connection2 = DriverManager
+                        .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                        PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
+                    //preparedStatement.setString(1, searchString);
+                    ResultSet rs2 = preparedStatement2.executeQuery();
+                    while (rs2.next()) {
+                        trainingsname = rs2.getString("trainingsname");
+                        rep = rs2.getInt("wiederholung");
+                        beschreibung = rs2.getString("beschreibung");
+                        createNewUebungBox(trainingsname, rep, beschreibung, trainingsuebung_id);
+                       /* for (int i = 0; i <= traininguebung_id; i++) {
+                            for (int j = 0; j>=2; j++) {
+                                String[i][j] lNames = {trainingsname}{rep};
+                            }
+                        }*/
+                        
+                    }
+                } catch (SQLException e) {
+                    printSQLException(e);
+                }
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+    
+    public void createNewUebungBox(String name, int rep, String beschreibung, int id) {
+        boolean includeTrash = false;
+        BoxDynamischGruen3 bx = new BoxDynamischGruen3(name, rep, beschreibung, includeTrash, id);
+        innerVBox.getChildren().add(bx);
+        innerVBox.setSpacing(10);
+    }
+    
+    public void removeTopChild() {
+        innerVBox.getChildren().remove(0);   
+        //!!! WICHTIG !!!
+        //FÜR MORITZ!!!:
+            //do beginnt des Training- also do gehört dei Insert hi!!!
+            //set status Insert
+    }
+    
+    public void setLabels() {
+        String lName = innerVBox.getChildren().get(0).toString();
+        System.out.println(lName);
+    }
+    
+    private Object getInfoFromDB(int trainingseinheit_id) {
+        String nameTE = "";
+        int dauer = 0;
+        try (Connection connection2 = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                PreparedStatement preparedStatement = connection2.prepareStatement("SELECT   name , dauer FROM trainingseinheit WHERE  trainingseinheit_id = '" + trainingseinheit_id + "'")) {
+            //preparedStatement.setString(1, searchString);
+            ResultSet rs2 = preparedStatement.executeQuery();
+            while (rs2.next()) {
+                nameTE = rs2.getString("name");
+                dauer = rs2.getInt("dauer");
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        Trainingseinheit te = new Trainingseinheit(nameTE, dauer);
+        return te;
     }
 
 }
