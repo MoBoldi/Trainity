@@ -70,8 +70,6 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-<<<<<<< HEAD
-=======
                   <Button fx:id="ButtonSave1" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OnActionBack" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Zurück" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
@@ -84,7 +82,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
->>>>>>> 04c1ac0d49ec6362db047fada44fb95418fcc42d
                </children>
                <VBox.margin>
                   <Insets />

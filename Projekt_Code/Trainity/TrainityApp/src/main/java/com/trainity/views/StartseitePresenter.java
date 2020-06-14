@@ -26,7 +26,7 @@ import javafx.scene.text.Text;
 
 public class StartseitePresenter {
 
-        private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
     private static final String SELECT_STATUS_QUERY = "select status from ziel where benutzer_id = ? and datum BETWEEN ? and ?";
@@ -108,7 +108,8 @@ public class StartseitePresenter {
             }
             updateDays();
         });
-        switch (Calendar.DAY_OF_WEEK) {
+        Calendar c = Calendar.getInstance(Locale.GERMAN);
+        switch (c.get(Calendar.DAY_OF_WEEK) - 1) {
             case (1):
                 setDay(mo, moText);
                 break;
