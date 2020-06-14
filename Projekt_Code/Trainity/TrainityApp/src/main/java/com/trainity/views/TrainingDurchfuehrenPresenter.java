@@ -49,11 +49,11 @@ public class TrainingDurchfuehrenPresenter {
     @FXML
     private HBox InputHBox1;
     @FXML
-    private Label titelUebung;
+    private TextField titelUebung;
     @FXML
     private HBox InputHBox11;
     @FXML
-    private Label wiederholungen;
+    private TextField wiederholungen;
     @FXML
     private VBox upperBox;
     @FXML
@@ -137,6 +137,12 @@ public class TrainingDurchfuehrenPresenter {
     public void getUebungenVonTrainingsEinheit() throws SQLException{
         System.out.println(trainingseinheit_id);
 
+        Uebung u = new Uebung();
+           titelUebung.textProperty().bindBidirectional(u.nameProperty());
+                    wiederholungen.textProperty().bindBidirectional(u.beschreibungProperty());
+
+                    
+        
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id, trainingsname, beschreibung, wiederholung FROM trainingsliste tl join trainingsuebung using (trainingsuebung_id) WHERE trainingseinheit_id = ? ");
@@ -178,6 +184,13 @@ public class TrainingDurchfuehrenPresenter {
                     lNames = new String[einheitLength][2];
                     lNames[i][0] = rs1.getString("trainingsname");
                     lNames[i][1] = rs1.getInt("wiederholung") + "";
+                    
+                    
+                
+                    u.setName(lNames[i][0]);
+                    u.setBeschreibung(lNames[i][1]);
+                    
+                    
                     i++;
                 }
             

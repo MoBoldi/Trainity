@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="trainingDurchfuehren" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="330.0" stylesheets="@startseite.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.TrainingDurchfuehrenPresenter">
+<View fx:id="trainingDurchfuehren" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="330.0" stylesheets="@startseite.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.TrainingDurchfuehrenPresenter">
     <center>
         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="310.0" vbarPolicy="NEVER">
             <content>
@@ -40,22 +40,14 @@
                                     </children>
                                 </HBox>
                                 <HBox fx:id="InputHBox1" alignment="CENTER" prefHeight="35.0" prefWidth="310.0">
-                                    <children>
-                                        <Label fx:id="titelUebung" alignment="TOP_LEFT" contentDisplay="CENTER" opacity="0.96" text="Jumping Jacks" textAlignment="CENTER">
-                                            <font>
-                                                <Font name="Segoe UI Semibold" size="25.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
+                           <children>
+                              <TextField fx:id="titelUebung" />
+                           </children>
                                 </HBox>
                                 <HBox fx:id="InputHBox11" alignment="CENTER" prefHeight="20.0" prefWidth="310.0">
-                                    <children>
-                                        <Label fx:id="wiederholungen" alignment="TOP_LEFT" contentDisplay="CENTER" opacity="0.7" text="10x" textAlignment="CENTER">
-                                            <font>
-                                                <Font name="Segoe UI Semibold" size="20.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
+                           <children>
+                              <TextField fx:id="wiederholungen" />
+                           </children>
                                 </HBox>
                         <VBox fx:id="upperBox" prefHeight="200.0" prefWidth="100.0">
                            <children>
