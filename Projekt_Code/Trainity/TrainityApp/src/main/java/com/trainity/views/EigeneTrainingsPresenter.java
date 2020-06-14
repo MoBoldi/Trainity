@@ -22,7 +22,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import static com.trainity.UserSession.instance;
 import java.sql.ResultSet;
-import java.util.TimeZone;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
@@ -31,7 +30,7 @@ import javafx.scene.control.Button;
 
 public class EigeneTrainingsPresenter {
 
-        private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/trainity?zeroDateTimeBehavior=convertToNull";
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
 

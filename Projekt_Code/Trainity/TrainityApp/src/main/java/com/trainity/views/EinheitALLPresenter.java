@@ -9,8 +9,6 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen3;
 import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
-import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
-import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
 import static com.trainity.UserSession.instance;
 import java.sql.Connection;
@@ -22,13 +20,11 @@ import java.sql.Statement;
 import java.util.TimeZone;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -59,6 +55,8 @@ public class EinheitALLPresenter {
     @FXML
     private VBox innerVBox;
     @FXML
+    private HBox saveButtonHBox;
+    @FXML
     private Button ButtonSave;
 
     private Connection connection;
@@ -72,8 +70,6 @@ public class EinheitALLPresenter {
     private static int trainingseinheit_id = instanceE.getUserID();
 
     private final StringProperty name = new SimpleStringProperty();
-    @FXML
-    private ImageView imageViewSafes;
 
     public void initialize() {
         einheitBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
@@ -182,12 +178,5 @@ public class EinheitALLPresenter {
         } catch (SQLException e) {
             printSQLException(e);
         }
-    }
-
-    @FXML
-    private void BackToE(ActionEvent event) {
-        
-                MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
-
     }
 }
