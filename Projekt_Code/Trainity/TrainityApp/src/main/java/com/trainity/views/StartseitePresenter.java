@@ -7,6 +7,7 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischBlauKlein;
 import com.trainity.Trainity;
 import static com.trainity.Trainity.LOGIN_VIEW;
+import static com.trainity.UserSession.instance;
 import static com.trainity.views.WochenplanPresenter.printSQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,11 +25,12 @@ import javafx.scene.text.Text;
 
 public class StartseitePresenter {
 
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/trainity?zeroDateTimeBehavior=convertToNull";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/trainity?zeroDateTimeBehavior=convertToNull";
     private static final String DATABASE_USERNAME = "root";
-    private static final String DATABASE_PASSWORD = "";
-
-    private static final String SELECT_QUERY = "select status from ziel where benutzer_id = ? and datum BETWEEN ? and ?";
+    private static final String DATABASE_PASSWORD = "root";
+    private static final String SELECT_STATUS_QUERY = "select status from ziel where benutzer_id = ? and datum BETWEEN ? and ?";
+    private static final String SELECT_HISTORIE_QUERY = "select name, dauer from trainingseinheit te join trainingshistorie th USING (trainingseinheit_id) where th.user_id = ? order by datum desc limit 3";
+    private static final String SELECT_EINHEIT_QUERY = "select name, dauer from trainingseinheit where trainingseinheit_id = (select nextWorkoutId from benutzer where id = ?)";
 
     @FXML
     private View startseite;
@@ -101,13 +103,11 @@ public class StartseitePresenter {
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
                         -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Startseite");
-                appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e
-                        -> System.out.println("Search")));
+                
             }
             updateDays();
         });
-        Date date = new Date();
-        switch (date.getDay()) {
+        switch (Calendar.DAY_OF_WEEK) {
             case (1):
                 setDay(mo, moText);
                 break;
@@ -130,19 +130,58 @@ public class StartseitePresenter {
                 setDay(so, soText);
                 break;
             default:
-                setDay(mo, moText);
+                setDay(di, moText);
                 break;
         }
-        //Nächstes Training aus DB holen 
-        nextTraining.getChildren().add(new BoxDynamischBlauKlein("Nächste Trainingseinheit", 20, "Plan"));
+        nextTraining.getChildren().clear();
+        lastTraining.getChildren().clear();
+        try (
+                Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD); 
+                // Step 2:Create a statement using connection object
+                PreparedStatement selectHistorieStmt = connection.prepareStatement(SELECT_HISTORIE_QUERY);
+                PreparedStatement selectEinheitStmt = connection.prepareStatement(SELECT_EINHEIT_QUERY);
+            ) {
+            int id = instance.getUserID();
 
-        //Letzte Trainings aus DB holen
-        lastTraining.getChildren().add(new BoxDynamischBlauKlein("Letzte Trainingseinheit", 20, "Plan"));
-
+            selectHistorieStmt.setInt(1, id);
+            selectEinheitStmt.setInt(1, id);
+            
+            ResultSet result = selectHistorieStmt.executeQuery();
+            
+            while (result.next()){
+                lastTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), ""));
+            }
+            
+            result = selectEinheitStmt.executeQuery();
+            while (result.next()){
+                nextTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), ""));
+            }
+            
+        } catch (SQLException e) {
+            // print SQL exception information
+            printSQLException(e);
+        }
+        
         
         
     }
 
+    public static void printSQLException(SQLException ex) {
+        for (Throwable e: ex) {
+            if (e instanceof SQLException) {
+                e.printStackTrace(System.err);
+                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+                System.err.println("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while (t != null) {
+                    System.out.println("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
+        }
+    }
+    
     public void setDay(VBox box, Text text) {
         box.setStyle("-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);");
         text.setFill(Color.web("#2196f3"));
@@ -166,7 +205,7 @@ public class StartseitePresenter {
         try (
                 Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
-                PreparedStatement selectStmt = connection.prepareStatement(SELECT_QUERY);
+                PreparedStatement selectStmt = connection.prepareStatement(SELECT_STATUS_QUERY);
             ) {
                 //Benutzer_ID setzen und überprüfen
                 //Später ändern
@@ -221,19 +260,5 @@ public class StartseitePresenter {
      *
      * @param ex
      */
-    public static void printSQLException(SQLException ex) {
-        for (Throwable e : ex) {
-            if (e instanceof SQLException) {
-                e.printStackTrace(System.err);
-                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
-                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
-                System.err.println("Message: " + e.getMessage());
-                Throwable t = ex.getCause();
-                while (t != null) {
-                    System.out.println("Cause: " + t);
-                    t = t.getCause();
-                }
-            }
-        }
-    }
+    
 }

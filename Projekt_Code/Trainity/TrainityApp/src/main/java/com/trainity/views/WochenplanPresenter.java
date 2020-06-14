@@ -84,9 +84,9 @@ public class WochenplanPresenter {
     @FXML
     private HBox Sunday;
     
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/trainity?zeroDateTimeBehavior=convertToNull";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/trainity?zeroDateTimeBehavior=convertToNull";
     private static final String DATABASE_USERNAME = "root";
-    private static final String DATABASE_PASSWORD = "";
+    private static final String DATABASE_PASSWORD = "root";
 
     private static final String INSERT_QUERY = "insert into ziel (datum, benutzer_id, status) VALUES (?, ?, ?)";
     private static final String SELECT_QUERY = "select * from ziel where datum = ? and benutzer_id = ?";
@@ -102,8 +102,7 @@ public class WochenplanPresenter {
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> 
                         MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Wochenplan");
-                appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e -> 
-                        System.out.println("Favorite")));
+                
             }
         });
     
@@ -192,7 +191,7 @@ public class WochenplanPresenter {
                 }
             } else {
                 c.set(Calendar.DAY_OF_WEEK, c.getFirstDayOfWeek());
-             
+                
                 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 //Heutiger Tag 

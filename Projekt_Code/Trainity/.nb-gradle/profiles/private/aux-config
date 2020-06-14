@@ -8,19 +8,7 @@
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/DrawerManager.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/StartseitePresenter.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/UserSession.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/LoginPresenter.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/resources/com/trainity/views/trainingDurchfuehren.fxml</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/JdbcDao.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/TrainingDurchfuehrenView.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/RegistrierenPresenter.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/TrainingDurchfuehrenPresenter.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/Trainity.java</file>
-        <file>file:/Users/benjamingolic/Desktop/Schule/Trainity%20ITP%20Projekt/Trainity/Projekt_Code/Trainity/TrainityApp/src/main/java/com/trainity/views/EigeneTrainingsView.java</file>
-      </group>
+      <group/>
     </open-files>
   </auxiliary>
 </gradle-project-properties>

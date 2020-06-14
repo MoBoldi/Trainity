@@ -54,7 +54,7 @@ public class BoxDynamischBlauGroß extends HBox {
 //HBOX AUSSEN
         HBox hbox = new HBox();
 
-        hbox.setPrefWidth(275);
+        hbox.setPrefWidth(300);
         hbox.setPrefHeight(68);
         //Cursor
         hbox.setCursor(Cursor.HAND);
@@ -93,7 +93,7 @@ public class BoxDynamischBlauGroß extends HBox {
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT bildName FROM trainingseinheit WHERE  trainingsuebung_id = '" + ID + "'")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT bildName FROM trainingseinheit WHERE  trainingseinheit_id = '" + ID + "'")) {
             //preparedStatement.setString(1, searchString);
 
             ResultSet rs = preparedStatement.executeQuery();

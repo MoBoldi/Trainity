@@ -10,35 +10,30 @@ package com.trainity;
  *
  * @author benjamingolic
  */
-   public final class UserSession {
+   public final class EinheitSession {
 
-    public static UserSession instance;
-    
-    public int userId;
-    
+    public static EinheitSession instanceE;
 
-    public UserSession(int userId) {
-        this.userId = userId;
+    public int einheitId;
+
+
+    public EinheitSession(int userId) {
+        this.einheitId = userId;
     }
 
-    public static UserSession getInstace(int userId) {
-        if(instance == null) {
-            instance = new UserSession(userId);
+    public static EinheitSession getInstace(int userId) {
+        if(instanceE == null) {
+            instanceE = new EinheitSession(userId);
         }
-        return instance;
+        return instanceE;
     }
 
     public int getUserID() {
-        return userId;
+        return einheitId;
     }
 
 
     public void cleanUserSession() {
-        userId = -1;
+       einheitId = -1;
     }
-
-    @Override
-    public String toString() {
-        return userId+"";
-    }
-}
+   }

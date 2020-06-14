@@ -45,7 +45,7 @@ public class BoxDynamischBlauKlein extends HBox {
 //HBOX AUSSEN
         HBox hbox = new HBox();
 
-        hbox.setPrefWidth(300);
+        hbox.setPrefWidth(310);
         hbox.setPrefHeight(50);
         //Cursor
         hbox.setCursor(Cursor.HAND);
