@@ -64,12 +64,12 @@ public class TrainingDurchfuehrenPresenter {
     private HBox ScrollPaneHBox;
     @FXML
     private ScrollPane AllExercisePane;
-    
+
     private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
-    private static String[][] lNames = new String[60][2];
-    
+    private String[][] lNames;
+
     private static int trainingseinheit_id = instanceE.getUserID();
 
     public void initialize() {
@@ -77,13 +77,13 @@ public class TrainingDurchfuehrenPresenter {
 
         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
                 e -> removeTopChild());
-        
-        fab.showOn(trainingDurchfuehren); 
+
+        fab.showOn(trainingDurchfuehren);
         ImageView.setImage(workOutImage);
-            
+
         //Geht leider nicht, hat wer eine Lösung?
         if (innerVBox.getChildren().isEmpty()) {
-           fab.hide();
+            fab.hide();
         }
 
         trainingDurchfuehren.showingProperty().addListener((obs, oldValue, newValue) -> {
@@ -103,8 +103,9 @@ public class TrainingDurchfuehrenPresenter {
                     int sekunden = 30;
                     String now = "";
                     Uebung u = new Uebung();
+
                     public void run() {
-                        now = Integer.toString(sekunden--)+"s";
+                        now = Integer.toString(sekunden--) + "s";
                         u.setName(now);
                         timerAnzeige.textProperty().bindBidirectional(u.nameProperty());
                         if (sekunden <= 0) {
@@ -112,7 +113,7 @@ public class TrainingDurchfuehrenPresenter {
                             u.clear();
                             ImageView.setImage(workOutImage);
                         }
-                        ImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> {
+                        ImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                             timer.cancel();
                             u.clear();
                             event.consume();
@@ -124,11 +125,11 @@ public class TrainingDurchfuehrenPresenter {
             }
             event.consume();
         });
-         clearChildren();
-         getUebungenVonTrainingsEinheit();
-         setLabels();
+        clearChildren();
+        getUebungenVonTrainingsEinheit();
+        setLabels();
     }
-    
+
     public void clearChildren() {
         innerVBox.getChildren().clear();
     }
@@ -148,20 +149,38 @@ public class TrainingDurchfuehrenPresenter {
                 int trainingsuebung_id = rs1.getInt("trainingsuebung_id");
                 try (Connection connection2 = DriverManager
                         .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                        PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
+                        PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'");
+                        PreparedStatement preparedStatement3 = connection2.prepareStatement("SELECT COUNT(*)Length FROM trainingsListe WHERE trainingseinheit_id = '" + instanceE.getUserID() + "'")) {
                     //preparedStatement.setString(1, searchString);
                     ResultSet rs2 = preparedStatement2.executeQuery();
+                    ResultSet rs3 = preparedStatement3.executeQuery();
+                    int einheitLength = 0;
+
+                    if (rs3.next()) {
+                        einheitLength = rs3.getInt("Length");
+                    }
+                    lNames = new String[einheitLength][2];
                     while (rs2.next()) {
                         trainingsname = rs2.getString("trainingsname");
                         rep = rs2.getInt("wiederholung");
                         beschreibung = rs2.getString("beschreibung");
                         createNewUebungBox(trainingsname, rep, beschreibung, trainingsuebung_id);
-                       /* for (int i = 0; i <= traininguebung_id; i++) {
+                        /* for (int i = 0; i <= traininguebung_id; i++) {
                             for (int j = 0; j>=2; j++) {
                                 String[i][j] lNames = {trainingsname}{rep};
                             }
-                        }*/
+                        }
                         
+                        SELECT COUNT(*) FROM trainingsListe WHERE trainingseinheit_id = 1
+                        
+                        for (int j = 0; j < einheitLength; j++) {
+                               
+                           }
+                         */
+                        for (int i = 0; i < einheitLength; i++) {
+                            lNames[i][0] = rs2.getString("trainingsname");
+                            lNames[i][1] = rs2.getInt("wiederholung") + "";
+                        }
                     }
                 } catch (SQLException e) {
                     printSQLException(e);
@@ -171,23 +190,23 @@ public class TrainingDurchfuehrenPresenter {
             printSQLException(e);
         }
     }
-    
+
     public void createNewUebungBox(String name, int rep, String beschreibung, int id) {
         boolean includeTrash = false;
         BoxDynamischGruen3 bx = new BoxDynamischGruen3(name, rep, beschreibung, includeTrash, id);
         innerVBox.getChildren().add(bx);
         innerVBox.setSpacing(10);
     }
-    
+
     public void removeTopChild() {
         innerVBox.getChildren().remove(0);
     }
-    
+
     public void setLabels() {
         String lName = innerVBox.getChildren().get(0).toString();
         System.out.println(lName);
     }
-    
+
     private Object getInfoFromDB(int trainingseinheit_id) {
         String nameTE = "";
         int dauer = 0;
