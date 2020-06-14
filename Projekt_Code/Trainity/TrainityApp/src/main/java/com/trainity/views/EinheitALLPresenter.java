@@ -67,7 +67,6 @@ public class EinheitALLPresenter {
     private static final String DATABASE_PASSWORD = "root";
     private static final String UPDATE_STATEMENT = "UPDATE benutzer set nextWorkoutId = ? where id = ?";
     
-    private static int trainingseinheit_id = instanceE.getUserID();
 
     private final StringProperty name = new SimpleStringProperty();
     @FXML
@@ -85,6 +84,8 @@ public class EinheitALLPresenter {
         fab.showOn(einheitBearbeiten);
 
         einheitBearbeiten.showingProperty().addListener((obs, oldValue, newValue) -> {
+             int trainingseinheit_id = instanceE.getUserID();
+
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(
@@ -103,6 +104,8 @@ public class EinheitALLPresenter {
         innerVBox.getChildren().clear();
     }
     public void getUebungenVonTrainingsEinheit() {
+         int trainingseinheit_id = instanceE.getUserID();
+
         System.out.println(trainingseinheit_id);
         Trainingseinheit te = (Trainingseinheit) getInfoFromDB(trainingseinheit_id);
         getInputName().textProperty().bindBidirectional(te.nameProperty());
