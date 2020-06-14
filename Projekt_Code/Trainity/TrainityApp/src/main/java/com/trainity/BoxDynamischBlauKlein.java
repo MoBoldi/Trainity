@@ -7,7 +7,9 @@ package com.trainity;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.EinheitSession.instanceE;
+import static com.trainity.Trainity.EINHEIT_ALL_START;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_ALL;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -73,7 +75,7 @@ public class BoxDynamischBlauKlein extends HBox {
                 //  System.out.println("Mouse event handler has been called");
                 instanceE = null;
                 EinheitSession.getInstace(id);
-                MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
+                MobileApplication.getInstance().switchView(EINHEIT_ALL_START);
                 
 
             }

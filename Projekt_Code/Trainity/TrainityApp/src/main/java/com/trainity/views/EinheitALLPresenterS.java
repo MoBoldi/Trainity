@@ -10,7 +10,7 @@ import com.trainity.BoxDynamischGruen3;
 import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
-import static com.trainity.Trainity.UEBUNG_ALL;
+import static com.trainity.Trainity.STARTSEITE_VIEW;
 import static com.trainity.Uebung.printSQLException;
 import static com.trainity.UserSession.instance;
 import java.sql.Connection;
@@ -32,7 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class EinheitALLPresenter {
+public class EinheitALLPresenterS {
 
     @FXML
     private View einheitBearbeiten;
@@ -186,8 +186,7 @@ public class EinheitALLPresenter {
 
     @FXML
     private void OnActionBack(ActionEvent event) {
-        
-                        MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
+                                MobileApplication.getInstance().switchView(STARTSEITE_VIEW);
 
     }
 }

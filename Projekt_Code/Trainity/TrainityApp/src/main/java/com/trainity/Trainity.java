@@ -26,6 +26,8 @@ public class Trainity extends MobileApplication {
     public static final String UEBUNG_AUSWAEHLEN_VIEW = "Übung auswählen View";
     public static final String UEBUNG_BEARBEITEN_VIEW = "Übung bearbeiten View";
 //new
+        public static final String EINHEIT_ALL_START = "EINHEIT BEARB";
+
 
     public static final String UEBUNG_BEARBEITEN_NotEditable_VIEW = "Übung bearb N E View";
     public static final String UEBUNG_BEARBEITEN_NotEditable_VIEW2 = "Übung bearb N E View2";
@@ -51,6 +53,8 @@ public class Trainity extends MobileApplication {
         //   addViewFactory(UEBUNG_BEARBEITEN_VIEW2, () -> new UebungBearbeitenView2().getView());
         addViewFactory(UEBUNG_BEARBEITEN_NotEditable_VIEW, () -> new UebungBearbeitenNotEditableView().getView());
         addViewFactory(UEBUNG_BEARBEITEN_NotEditable_VIEW2, () -> new UebungBearbeitenNotEditableView2().getView());
+         addViewFactory(EINHEIT_ALL_START, () -> new EinheitAllViewS().getView());
+
         addViewFactory(UEBUNG_ALL, () -> new EinheitAllView().getView());
 
         DrawerManager.buildDrawer(this);

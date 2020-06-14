@@ -11,6 +11,7 @@ import com.trainity.BoxDynamischGruen2;
 import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
+import static com.trainity.Trainity.UEBUNG_ALL;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
@@ -82,6 +83,14 @@ public class EinheitBearbeitenPresenter {
 
 
     private final StringProperty name = new SimpleStringProperty();
+    @FXML
+    private HBox buttonHBox;
+    @FXML
+    private Button ButtonAdd;
+    @FXML
+    private Button ButtonSave1;
+    @FXML
+    private ImageView imageViewSafes1;
     
 
     public void initialize() {
@@ -317,6 +326,13 @@ public class EinheitBearbeitenPresenter {
 
            
            return te;
+    }
+
+    @FXML
+    private void OnActionBack(ActionEvent event) {
+        
+                        MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
+
     }
 
   
