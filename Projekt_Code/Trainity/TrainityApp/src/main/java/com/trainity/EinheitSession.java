@@ -22,7 +22,7 @@ package com.trainity;
     }
 
     public static EinheitSession getInstace(int userId) {
-        if(instanceE == null) {
+        if(instanceE == null || userId == -1) {
             instanceE = new EinheitSession(userId);
         }
         return instanceE;

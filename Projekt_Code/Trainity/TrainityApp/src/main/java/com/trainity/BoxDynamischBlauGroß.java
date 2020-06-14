@@ -6,6 +6,7 @@
 package com.trainity;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import static com.trainity.EinheitSession.instanceE;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
 import java.sql.Connection;
@@ -79,6 +80,8 @@ public class BoxDynamischBlauGroß extends HBox {
             @Override
             public void handle(MouseEvent event) {
                 //  System.out.println("Mouse event handler has been called");
+                
+                instanceE = null;
                 EinheitSession.getInstace(id);
                 MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
 
