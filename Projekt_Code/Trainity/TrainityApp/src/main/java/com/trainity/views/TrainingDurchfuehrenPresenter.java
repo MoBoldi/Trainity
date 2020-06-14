@@ -72,7 +72,7 @@ public class TrainingDurchfuehrenPresenter {
 
     private static int trainingseinheit_id = instanceE.getUserID();
 
-    public void initialize() {
+    public void initialize() throws SQLException {
         trainingDurchfuehren.setShowTransitionFactory(BounceInRightTransition::new);
 
         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
@@ -134,60 +134,55 @@ public class TrainingDurchfuehrenPresenter {
         innerVBox.getChildren().clear();
     }
 
-    public void getUebungenVonTrainingsEinheit() {
+    public void getUebungenVonTrainingsEinheit() throws SQLException{
         System.out.println(trainingseinheit_id);
-        Trainingseinheit te = (Trainingseinheit) getInfoFromDB(trainingseinheit_id);
 
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id FROM trainingsliste WHERE trainingseinheit_id = '" + trainingseinheit_id + "'")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id, trainingsname, beschreibung, wiederholung FROM trainingsliste tl join trainingsuebung using (trainingsuebung_id) WHERE trainingseinheit_id = ? ");
+                PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT COUNT(*)Length FROM trainingsListe WHERE trainingseinheit_id = '" + instanceE.getUserID() + "'")
+            ) {
+            preparedStatement.setInt(1, trainingseinheit_id);
             ResultSet rs1 = preparedStatement.executeQuery();
+            
+            ResultSet rs3 = preparedStatement2.executeQuery();
+            int einheitLength = 0;
+            if (rs3.next()) {
+                einheitLength = rs3.getInt("Length");
+            }
+            
             String trainingsname;
             int rep;
             String beschreibung;
+            
+            int i = 0; 
             while (rs1.next()) {
-                int trainingsuebung_id = rs1.getInt("trainingsuebung_id");
-                try (Connection connection2 = DriverManager
-                        .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
-                        PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'");
-                        PreparedStatement preparedStatement3 = connection2.prepareStatement("SELECT COUNT(*)Length FROM trainingsListe WHERE trainingseinheit_id = '" + instanceE.getUserID() + "'")) {
-                    //preparedStatement.setString(1, searchString);
-                    ResultSet rs2 = preparedStatement2.executeQuery();
-                    ResultSet rs3 = preparedStatement3.executeQuery();
-                    int einheitLength = 0;
-
-                    if (rs3.next()) {
-                        einheitLength = rs3.getInt("Length");
-                    }
-                    lNames = new String[einheitLength][2];
-                    while (rs2.next()) {
-                        trainingsname = rs2.getString("trainingsname");
-                        rep = rs2.getInt("wiederholung");
-                        beschreibung = rs2.getString("beschreibung");
-                        createNewUebungBox(trainingsname, rep, beschreibung, trainingsuebung_id);
-                        /* for (int i = 0; i <= traininguebung_id; i++) {
-                            for (int j = 0; j>=2; j++) {
-                                String[i][j] lNames = {trainingsname}{rep};
-                            }
+               
+                //preparedStatement.setString(1, searchString);
+                    
+                
+                
+                    createNewUebungBox(rs1.getString("trainingsname"), rs1.getInt("wiederholung"), rs1.getString("beschreibung"), rs1.getInt("trainingsuebung_id"));
+                    /* for (int i = 0; i <= traininguebung_id; i++) {
+                        for (int j = 0; j>=2; j++) {
+                            String[i][j] lNames = {trainingsname}{rep};
                         }
+                    }
                         
-                        SELECT COUNT(*) FROM trainingsListe WHERE trainingseinheit_id = 1
+                    SELECT COUNT(*) FROM trainingsListe WHERE trainingseinheit_id = 1
                         
-                        for (int j = 0; j < einheitLength; j++) {
+                    for (int j = 0; j < einheitLength; j++) {
                                
-                           }
-                         */
-                        for (int i = 0; i < einheitLength; i++) {
-                            lNames[i][0] = rs2.getString("trainingsname");
-                            lNames[i][1] = rs2.getInt("wiederholung") + "";
                         }
-                    }
-                } catch (SQLException e) {
-                    printSQLException(e);
+                    */
+                    lNames = new String[einheitLength][2];
+                    lNames[i][0] = rs1.getString("trainingsname");
+                    lNames[i][1] = rs1.getInt("wiederholung") + "";
+                    i++;
                 }
-            }
+            
         } catch (SQLException e) {
-            printSQLException(e);
+            System.out.println(e.getMessage());
         }
     }
 
