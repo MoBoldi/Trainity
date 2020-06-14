@@ -67,28 +67,6 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#BackToE" opacity="0.99" prefHeight="38.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Zurück" textAlignment="CENTER" textFill="WHITE">
-=======
-                  <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#BackToE" opacity="0.99" prefHeight="58.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Zurück" textAlignment="CENTER" textFill="WHITE">
->>>>>>> parent of 6b76134... fast fertig
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fx:id="imageViewSafes" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../pictures/icons8-arrow-96white.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets right="140.0" top="70.0" />
-                     </VBox.margin>
-                  </Button>
-=======
->>>>>>> parent of 7146faf... fast ready
                </children>
                <VBox.margin>
                   <Insets />
