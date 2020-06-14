@@ -1,6 +1,7 @@
 package com.trainity;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import static com.trainity.EinheitSession.instanceE;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
@@ -72,7 +73,6 @@ public class Uebung {
 
     public void saveuebung()  {
         
-
         //   int userID = getUserID();
         int userID = instance.getUserID();
         System.out.println(userID);

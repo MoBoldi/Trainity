@@ -8,6 +8,7 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen;
 import com.trainity.BoxDynamischGruen2;
+import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
@@ -157,6 +158,9 @@ public class EinheitBearbeitenPresenter {
     private void onActionSaveTrainingsPlan(ActionEvent event) {
 
         System.out.println("Saving");
+        
+        
+        instanceE.cleanUserSession();
         MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
 
 
@@ -169,7 +173,8 @@ public class EinheitBearbeitenPresenter {
     public void getUebungenVonTrainingsEinheit() {
 
         //ÄNDERN !!!!!!
-       int trainingseinheit_id = 1;
+       int trainingseinheit_id = instanceE.getUserID();
+        System.out.println(trainingseinheit_id);
        
        
          Trainingseinheit te = (Trainingseinheit) getInfoFromDB( trainingseinheit_id);
