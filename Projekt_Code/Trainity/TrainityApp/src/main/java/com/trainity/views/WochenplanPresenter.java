@@ -6,6 +6,7 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import static com.trainity.UserSession.instance;
 import static java.awt.PageAttributes.ColorType.COLOR;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -166,7 +167,7 @@ public class WochenplanPresenter {
             selectStmt.setString(1, c.get(Calendar.YEAR) + "-"+(c.get(Calendar.MONTH)+1)+"-"+c.get(Calendar.DAY_OF_MONTH));
             //Benutzer_ID setzen und überprüfen
             //Später ändern
-            selectStmt.setInt(2, 1);
+            selectStmt.setInt(2, instance.getUserID());
             ResultSet result = selectStmt.executeQuery();
             if (result.next()==false){
                 for (int i = 0; i < selected.length; i++){
@@ -175,15 +176,15 @@ public class WochenplanPresenter {
                     c.add(Calendar.DAY_OF_WEEK, 1);
                     //Benutzer_ID setzen 
                     //Später ändern
-                    insertStmt.setInt(2, 1);
+                    insertStmt.setInt(2, instance.getUserID());
                     //Status speichern
                     //Status 1 = Training geplant 
                     //Status 0 = Training erledigt
                     //Status null = kein Training an diesem Tag
                     if (selected[i]){
-                        alterStmt.setBoolean(1, true);
+                        insertStmt.setBoolean(3, true);
                     } else {
-                        alterStmt.setNull(1, java.sql.Types.NULL);
+                        insertStmt.setNull(3, java.sql.Types.NULL);
                     }
                     System.out.println(insertStmt);
                     // Step 3: Execute the query or update query
@@ -198,7 +199,7 @@ public class WochenplanPresenter {
                 selectTodayStmt.setString(1,formatter.format(today));
                 //Benutzer 
                 //Später ändern
-                selectTodayStmt.setInt(2, 1);
+                selectTodayStmt.setInt(2, instance.getUserID());
                 //Nachschauen ob der User am heutigen Tag bereits ein Training absolviert hat 
                 //Dieses darf nämlich nicht mehr überschrieben werden - changeToday Boolean
                 ResultSet todayResult = selectTodayStmt.executeQuery();
@@ -220,7 +221,7 @@ public class WochenplanPresenter {
                         //Status 0 = Training erledigt
                         //Status null = kein Training an diesem Tag
                         if (selected[i]){
-                            alterStmt.setBoolean(1, true);
+                            alterStmt.setInt(1, 1);
                         } else {
                             alterStmt.setNull(1, java.sql.Types.NULL);
                         }
@@ -232,7 +233,7 @@ public class WochenplanPresenter {
 
                         //Benutzer_ID 
                         //Später ändern
-                        alterStmt.setInt(3, 1);
+                        alterStmt.setInt(3, instance.getUserID());
 
                         // Step 3: Execute the query or update query
                         alterStmt.executeUpdate();

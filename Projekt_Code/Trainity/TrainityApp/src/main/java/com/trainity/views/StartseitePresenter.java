@@ -221,6 +221,8 @@ public class StartseitePresenter {
                 for (int i = 0; i < 7; i++){
                     if (result.next()){
                     setPlanned(check[i], calendar[i], result.getString(1));
+                    } else {
+                        setPlanned(check[i], calendar[i], null);
                     }
                 }
         } catch (SQLException e) {
