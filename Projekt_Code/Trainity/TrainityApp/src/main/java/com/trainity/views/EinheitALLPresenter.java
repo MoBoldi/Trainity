@@ -8,6 +8,7 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen;
 import com.trainity.BoxDynamischGruen2;
+import com.trainity.BoxDynamischGruen3;
 import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
@@ -42,7 +43,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import static jdk.nashorn.internal.objects.Global.undefined;
 
-public class EinheitBearbeitenPresenter {
+public class EinheitALLPresenter {
 
     @FXML
     private View einheitBearbeiten;
@@ -87,10 +88,14 @@ public class EinheitBearbeitenPresenter {
     public void initialize() {
         einheitBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
        
-        /*  FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.DO_NOT_DISTURB.text,
-                e -> System.out.println("Test"));
+         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.DO_NOT_DISTURB.text,
+                e -> System.out.println("Starte Benjamin Uebung")
+           
+         );
+         
+         
         fab.showOn(einheitBearbeiten);
-         */
+        
         einheitBearbeiten.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
              
@@ -123,7 +128,7 @@ public class EinheitBearbeitenPresenter {
     
     
    
-@FXML
+
     private void createNewUebung(ActionEvent event) {
         
         clearChildren();
@@ -159,10 +164,10 @@ public class EinheitBearbeitenPresenter {
     public void getUebungenVonTrainingsEinheit() {
 
         //ÄNDERN !!!!!!
-//      int trainingseinheit_id = instanceE.getUserID();
+     // int trainingseinheit_id = instanceE.getUserID();
        
        
-     int trainingseinheit_id = 1;
+      int trainingseinheit_id = 1;
        
        
         System.out.println(trainingseinheit_id);
@@ -253,9 +258,9 @@ public class EinheitBearbeitenPresenter {
     
     public void createNewUebungBox(String name, int rep, String beschreibung, int id) {
 
-        boolean includeTrash = true;
+        boolean includeTrash = false;
 
-        BoxDynamischGruen2 bx = new BoxDynamischGruen2(name, rep, beschreibung, includeTrash, id);
+        BoxDynamischGruen3 bx = new BoxDynamischGruen3(name, rep, beschreibung, includeTrash, id);
         innerVBox.getChildren().add(bx);
 
     }
