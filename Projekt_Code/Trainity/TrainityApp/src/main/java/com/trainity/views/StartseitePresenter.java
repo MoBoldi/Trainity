@@ -29,8 +29,8 @@ public class StartseitePresenter {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
     private static final String SELECT_STATUS_QUERY = "select status from ziel where benutzer_id = ? and datum BETWEEN ? and ?";
-    private static final String SELECT_HISTORIE_QUERY = "select name, dauer from trainingseinheit te join trainingshistorie th USING (trainingseinheit_id) where th.user_id = ? order by datum desc limit 3";
-    private static final String SELECT_EINHEIT_QUERY = "select name, dauer from trainingseinheit where trainingseinheit_id = (select nextWorkoutId from benutzer where id = ?)";
+    private static final String SELECT_HISTORIE_QUERY = "select name, dauer, trainingseinheit_id from trainingseinheit te join trainingshistorie th USING (trainingseinheit_id) where th.user_id = ? order by datum desc limit 3";
+    private static final String SELECT_EINHEIT_QUERY = "select name, dauer, trainingseinheit_id from trainingseinheit where trainingseinheit_id = (select nextWorkoutId from benutzer where id = ?)";
 
     @FXML
     private View startseite;
@@ -149,12 +149,12 @@ public class StartseitePresenter {
             ResultSet result = selectHistorieStmt.executeQuery();
             
             while (result.next()){
-                lastTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), ""));
+                lastTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
             }
             
             result = selectEinheitStmt.executeQuery();
             while (result.next()){
-                nextTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), ""));
+                nextTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
             }
             
         } catch (SQLException e) {

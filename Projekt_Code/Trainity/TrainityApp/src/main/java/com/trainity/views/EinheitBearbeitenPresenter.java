@@ -159,10 +159,9 @@ public class EinheitBearbeitenPresenter {
     public void getUebungenVonTrainingsEinheit() {
 
         //ÄNDERN !!!!!!
-//      int trainingseinheit_id = instanceE.getUserID();
+      int trainingseinheit_id = instanceE.getUserID();
        
        
-     int trainingseinheit_id = 1;
        
        
         System.out.println(trainingseinheit_id);
@@ -206,7 +205,7 @@ public class EinheitBearbeitenPresenter {
                 // Step 2:Create a statement using connection object
                 PreparedStatement preparedStatement2 = connection2.prepareStatement("SELECT   trainingsname , wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + trainingsuebung_id + "'")) {
             //preparedStatement.setString(1, searchString);
-
+            System.out.println(preparedStatement);
             ResultSet rs2 = preparedStatement2.executeQuery();
    
             
@@ -294,7 +293,7 @@ public class EinheitBearbeitenPresenter {
                 // Step 2:Create a statement using connection object
                 PreparedStatement preparedStatement = connection2.prepareStatement("SELECT   name , dauer FROM trainingseinheit WHERE  trainingseinheit_id = '" + trainingseinheit_id+ "'")) {
             //preparedStatement.setString(1, searchString);
-
+             
             ResultSet rs2 = preparedStatement.executeQuery();
    
        

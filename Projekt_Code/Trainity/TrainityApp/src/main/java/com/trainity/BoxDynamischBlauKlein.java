@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import static com.trainity.UserSession.instance;
 
 /**
  *
@@ -28,13 +29,14 @@ public class BoxDynamischBlauKlein extends HBox {
     private String name;
     private int duration;
     private String beschreibung;
+    private int id; 
 
-    public BoxDynamischBlauKlein(String name, int duration, String beschreibung) {
+    public BoxDynamischBlauKlein(String name, int duration, String beschreibung, int id) {
 
         this.setName(name);
         this.setDuration(duration);
         this.setBeschreibung(beschreibung);
-
+        this.setId(id);
         addContent();
 
     }
@@ -68,7 +70,9 @@ public class BoxDynamischBlauKlein extends HBox {
             @Override
             public void handle(MouseEvent event) {
                 //  System.out.println("Mouse event handler has been called");
+                EinheitSession.getInstace(instance.getUserID());
                 MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
+                
 
             }
         };
@@ -196,6 +200,10 @@ public class BoxDynamischBlauKlein extends HBox {
 
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
+    }
+
+    private void setId(int id) {
+        this.id = id;
     }
 
 }

@@ -7,6 +7,7 @@ import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen3;
+import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import static com.trainity.Uebung.printSQLException;
 import static com.trainity.UserSession.instance;
@@ -66,9 +67,7 @@ public class EinheitALLPresenter {
     private static final String DATABASE_PASSWORD = "root";
     private static final String UPDATE_STATEMENT = "UPDATE benutzer set nextWorkoutId = ? where id = ?";
     
-    //ÄNDERN !!!!!!
-    // private static int trainingseinheit_id = instanceE.getUserID();
-    private static int trainingseinheit_id = 1;
+    private static int trainingseinheit_id = instanceE.getUserID();
 
     private final StringProperty name = new SimpleStringProperty();
 
