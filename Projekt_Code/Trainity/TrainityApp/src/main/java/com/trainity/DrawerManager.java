@@ -20,6 +20,7 @@ import static com.trainity.Trainity.UEBUNG_ALL;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
+import static com.trainity.UserSession.instance;
 import javafx.scene.image.Image;
 
 public class DrawerManager {
@@ -34,23 +35,15 @@ public class DrawerManager {
         
         final Item startseiteItem = new ViewItem("Startseite", MaterialDesignIcon.HOME.graphic(), STARTSEITE_VIEW, ViewStackPolicy.SKIP);
         final Item eigeneTrainings = new ViewItem("Eigene Trainings", MaterialDesignIcon.DASHBOARD.graphic(), EIGENE_TRAININGS_VIEW);
-        final Item wochenplan = new ViewItem("Wochenplan", MaterialDesignIcon.DASHBOARD.graphic(), WOCHENPLAN_VIEW);
-        final Item bildAuswaehlen = new ViewItem("Bild auswählen", MaterialDesignIcon.DASHBOARD.graphic(), BILD_AUSWAEHLEN_VIEW);
-        final Item einheitBearbeiten = new ViewItem("Einheit bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), EINHEIT_BEARBEITEN_VIEW);
-        final Item einheitErstellen = new ViewItem("Einheit erstellen", MaterialDesignIcon.DASHBOARD.graphic(), EINHEIT_ERSTELLEN_VIEW);
 
         ///final Item trainingDurchfuehren = new ViewItem("Training durchführen", MaterialDesignIcon.DASHBOARD.graphic(), TRAINING_DURCHFUEHREN_VIEW);
-        final Item uebungAuswaehlen = new ViewItem("Übung auswählen", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_AUSWAEHLEN_VIEW);
-        final Item uebungBearbeiten = new ViewItem("Übung bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_VIEW);
-        final Item uebungNotBearbeiten = new ViewItem("Übung Notbearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_NotEditable_VIEW);
-        final Item uebungAll = new ViewItem("Übersicht Trainingseinheiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_ALL);
 
-        drawer.getItems().addAll(startseiteItem, eigeneTrainings, wochenplan, bildAuswaehlen, einheitBearbeiten, uebungAll, uebungAuswaehlen, uebungBearbeiten,uebungNotBearbeiten, einheitErstellen );
+        drawer.getItems().addAll(startseiteItem, eigeneTrainings );
         
-        if (Platform.isDesktop()) {
+       if (Platform.isDesktop()) {
             final Item quitItem = new Item("Logout", MaterialDesignIcon.EXIT_TO_APP.graphic());
             quitItem.selectedProperty().addListener((obs, ov, nv) -> {
-                //us.cleanUserSession()); //Do müsste die Session gecleared werden aber iwie funktionierts ned und i was nd warum
+                instance.cleanUserSession();
                 if (nv) {
                     Services.get(LifecycleService.class).ifPresent(LifecycleService::shutdown);
                 }

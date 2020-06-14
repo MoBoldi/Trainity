@@ -7,6 +7,7 @@ package com.trainity;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
+import static com.trainity.Trainity.UEBUNG_ALL;
 import static com.trainity.Uebung.printSQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,6 +68,15 @@ public class BoxDynamischBlauGroß extends HBox {
                 + "        -fx-border-radius: 5;" + "       -fx-background-radius: 5;" + "-fx-background-color: rgb(33, 150, 243);"
         );
 
+        HBox eventBox = new HBox();
+        
+        
+        eventBox.setPrefWidth(190);
+        eventBox.setPrefHeight(50);
+        
+        hbox.getChildren().add(eventBox);
+        
+        
         /*
         EventHandler<MouseEvent> mouseEventFilter = new EventHandler<MouseEvent>() {
             @Override
@@ -80,12 +90,12 @@ public class BoxDynamischBlauGroß extends HBox {
             public void handle(MouseEvent event) {
                 //  System.out.println("Mouse event handler has been called");
                 EinheitSession.getInstace(id);
-                MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
+                MobileApplication.getInstance().switchView(UEBUNG_ALL);
 
             }
         };
 
-        hbox.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
+       eventBox.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
 
 //-------------------------------------------------------------------------------------
 //Image View erstellen und als Children in HBox hinzufügen
@@ -134,7 +144,7 @@ public class BoxDynamischBlauGroß extends HBox {
 
         iv1.setImage(image);
 
-        hbox.getChildren().add(iv1);
+       eventBox.getChildren().add(iv1);
 
 //-------------------------------------------------------------------------------------
 //Dünnes Pane erstellen    
@@ -152,7 +162,7 @@ public class BoxDynamischBlauGroß extends HBox {
 
         pane.setOpacity(0.67);
 
-        hbox.getChildren().add(pane);
+        eventBox.getChildren().add(pane);
 
 //-------------------------------------------------------------------------------------
 //Dünne VBOX erstellen    
@@ -172,7 +182,7 @@ public class BoxDynamischBlauGroß extends HBox {
 
         vbox.setMargin(label, new Insets(8, 0, 0, 10));
 
-        hbox.getChildren().add(vbox);
+        eventBox.getChildren().add(vbox);
 
 //-------------------------------------------------------------------------------------      
         //HBOX
@@ -187,8 +197,8 @@ public class BoxDynamischBlauGroß extends HBox {
 
         ImageView iv2 = new ImageView();
 
-        iv2.setFitWidth(15);
-        iv2.setFitHeight(15);
+        iv2.setFitWidth(18);
+        iv2.setFitHeight(18);
 
         iv2.setImage(image2);
 
@@ -224,26 +234,27 @@ public class BoxDynamischBlauGroß extends HBox {
         hbox.setMargin(iv3, new Insets(20, 0, 0, 47));
 
 
-        /* 
-           EventHandler<MouseEvent> mouseEventHandler2 = new EventHandler<MouseEvent>() {
+        
+           EventHandler<MouseEvent> mouseEventHandler10 = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("EDIT THIS ....");
-
+                
+                  EinheitSession.getInstace(id);
+                MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
             }
         };
 
-        iv3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler2);
+        iv3.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler10);
              
-         */
+         
 //-------------------------------------------------------------------------------------
 //Margin       
         // Oben Rechts Unten Links
-        hbox.setMargin(iv1, new Insets(18.5, 0, 0, 6));
+        eventBox.setMargin(iv1, new Insets(18.5, 0, 0, 6));
 
-        hbox.setMargin(pane, new Insets(11, 0, 11, 6));
+        eventBox.setMargin(pane, new Insets(11, 0, 11, 6));
 
-        hbox.setMargin(vbox, new Insets(7, 0, 0, 1));
+        eventBox.setMargin(vbox, new Insets(7, 0, 0, 1));
 
         this.getChildren().add(hbox);
 
