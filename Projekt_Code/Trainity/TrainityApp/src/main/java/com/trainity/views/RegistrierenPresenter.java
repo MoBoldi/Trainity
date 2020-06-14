@@ -24,6 +24,8 @@ import java.sql.ResultSet;
 import java.util.TimeZone;
 import java.util.regex.*;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class RegistrierenPresenter {
 
@@ -42,7 +44,9 @@ public class RegistrierenPresenter {
     @FXML
     private TextField nachnameField;
     @FXML
-    private Button loginLink;
+    private ImageView ImageView;
+
+    private static final Image avocadoImage = new Image("pictures/avocado.png");
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
@@ -63,19 +67,16 @@ public class RegistrierenPresenter {
         registrieren.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
-                //appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
-                //        -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Registrieren");
-                //appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e
-                //        -> System.out.println("Favorite")));
             }
         });
 
+        ImageView.setImage(avocadoImage);
+
     }
-    
+
     @FXML
     public void switchLogin(ActionEvent event) {
-        System.out.println("You clicked me!");
         MobileApplication.getInstance().switchView(HOME_VIEW);
     }
 
@@ -83,12 +84,6 @@ public class RegistrierenPresenter {
     public void register(ActionEvent event) throws SQLException, Exception {
 
         Window owner = submitButton.getScene().getWindow();
-
-        System.out.println(vornameField.getText());
-        System.out.println(nachnameField.getText());
-        System.out.println(emailField.getText());
-        System.out.println(passwordField.getText());
-        System.out.println(confirmPasswordField.getText());
 
         if (vornameField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
@@ -156,16 +151,15 @@ public class RegistrierenPresenter {
             return;
         }
 
-        String vorname = vornameField.getText();
-        String nachname = nachnameField.getText();
-        String email = emailField.getText();
+        String vorname = vornameField.getText().trim();
+        String nachname = nachnameField.getText().trim();
+        String email = emailField.getText().trim();
         //String to encrypt
-        String password = passwordField.getText();
+        String password = passwordField.getText().trim();
 
         //encrypt
         String algorithm = "MD5";
         String hashedPassword = generateHash(password, algorithm);
-        System.out.println("MD5 Hash: " + hashedPassword);
 
         JdbcDao jdbcDao = new JdbcDao();
         jdbcDao.insertRecord(vorname, nachname, email, hashedPassword);
@@ -240,12 +234,10 @@ public class RegistrierenPresenter {
             if (r1.next()) {
                 usernameExists = true;
             }
-            System.out.println(preparedStatement);
 
         } catch (SQLException e) {
             printSQLException(e);
         }
         return usernameExists;
     }
-
 }

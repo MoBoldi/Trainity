@@ -19,7 +19,7 @@ public class Trainity extends MobileApplication {
     public static final String WOCHENPLAN_VIEW = "Wochenplan View";
     public static final String BILD_AUSWAEHLEN_VIEW = "Bild auswählen View";
     public static final String EINHEIT_BEARBEITEN_VIEW = "Einheit bearbeiten View";
-        public static final String EINHEIT_ERSTELLEN_VIEW = "Einheit erstellen View";
+    public static final String EINHEIT_ERSTELLEN_VIEW = "Einheit erstellen View";
 
     public static final String TRAINING_DURCHFUEHREN_VIEW = "Training durchführen View";
     public static final String TRAINING_PAUSE_VIEW = "Training Pause View";
@@ -29,6 +29,8 @@ public class Trainity extends MobileApplication {
 
     public static final String UEBUNG_BEARBEITEN_NotEditable_VIEW = "Übung bearb N E View";
     public static final String UEBUNG_BEARBEITEN_NotEditable_VIEW2 = "Übung bearb N E View2";
+
+    public static final String UEBUNG_ALL = "Übung Übersicht";
 
     @Override
     public void init() {
@@ -49,6 +51,7 @@ public class Trainity extends MobileApplication {
         //   addViewFactory(UEBUNG_BEARBEITEN_VIEW2, () -> new UebungBearbeitenView2().getView());
         addViewFactory(UEBUNG_BEARBEITEN_NotEditable_VIEW, () -> new UebungBearbeitenNotEditableView().getView());
         addViewFactory(UEBUNG_BEARBEITEN_NotEditable_VIEW2, () -> new UebungBearbeitenNotEditableView2().getView());
+        addViewFactory(UEBUNG_ALL, () -> new EinheitAllView().getView());
 
         DrawerManager.buildDrawer(this);
     }

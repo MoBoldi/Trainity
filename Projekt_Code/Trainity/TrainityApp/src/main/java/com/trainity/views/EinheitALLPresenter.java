@@ -4,138 +4,105 @@ import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
-import com.gluonhq.charm.glisten.control.TextField;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen3;
 import com.trainity.Trainingseinheit;
-import com.trainity.Uebung;
 import static com.trainity.Uebung.printSQLException;
+import static com.trainity.UserSession.instance;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.TimeZone;
-import java.util.Timer;
-import java.util.TimerTask;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class TrainingDurchfuehrenPresenter {
+public class EinheitALLPresenter {
 
     @FXML
-    private View trainingDurchfuehren;
+    private View einheitBearbeiten;
     @FXML
-    private ImageView ImageView;
+    private VBox outerBox;
     @FXML
-    private TextField timerAnzeige;
-
-    private static final Image pauseImage = new Image("pictures/pause.jpg");
-    private static final Image workOutImage = new Image("pictures/workOut.jpg");
+    private HBox labelH1HBox1;
     @FXML
-    private VBox outterVBox;
+    private Label labelName;
     @FXML
-    private VBox innerVBox;
+    private HBox inputHBoxName;
     @FXML
-    private HBox labelImageViewHBox;
-    @FXML
-    private HBox InputHBox1;
-    @FXML
-    private Label titelUebung;
-    @FXML
-    private HBox InputHBox11;
-    @FXML
-    private Label wiederholungen;
+    private TextField inputName;
     @FXML
     private VBox upperBox;
     @FXML
-    private HBox labelH1Box;
+    private HBox labelH1HBox;
     @FXML
     private Label labelEinteilung;
     @FXML
     private HBox ScrollPaneHBox;
     @FXML
     private ScrollPane AllExercisePane;
-    
+    @FXML
+    private VBox innerVBox;
+    @FXML
+    private HBox saveButtonHBox;
+    @FXML
+    private Button ButtonSave;
+
+    private Connection connection;
+    private Statement statement;
+
     private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
-    private static String[][] lNames = new String[60][2];
+    private static final String UPDATE_STATEMENT = "UPDATE benutzer set nextWorkoutId = ? where id = ?";
     
     //ÄNDERN !!!!!!
     // private static int trainingseinheit_id = instanceE.getUserID();
     private static int trainingseinheit_id = 1;
 
+    private final StringProperty name = new SimpleStringProperty();
+
     public void initialize() {
-        trainingDurchfuehren.setShowTransitionFactory(BounceInRightTransition::new);
+        einheitBearbeiten.setShowTransitionFactory(BounceInRightTransition::new);
 
         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
-                e -> removeTopChild());
-        fab.showOn(trainingDurchfuehren); 
-        ImageView.setImage(workOutImage);
-            
-        //Geht leider nicht, hat wer eine Lösung?
-        if (innerVBox.getChildren().isEmpty()) {
-           fab.hide();
-        }
+                e -> MobileApplication.getInstance().switchView("Training durchführen View")
+        );
 
-        trainingDurchfuehren.showingProperty().addListener((obs, oldValue, newValue) -> {
+        fab.showOn(einheitBearbeiten);
+
+        einheitBearbeiten.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
-                appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
-                        -> MobileApplication.getInstance().getDrawer().open()));
-                appBar.setTitleText("Training durchführen");
+                appBar.setNavIcon(MaterialDesignIcon.MENU.button(
+                        e -> MobileApplication.getInstance().getDrawer().open()));
+                appBar.setTitleText("Übersicht Trainingseinheiten");
+                appBar.getActionItems().add(MaterialDesignIcon.TODAY.button(
+                        e -> setNewWorkoutId(trainingseinheit_id)));
             }
+            clearChildren();
+            //Wenn Trainingseinheit vorhande
+            getUebungenVonTrainingsEinheit();
         });
-
-        ImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (ImageView.getImage().equals(workOutImage)) {
-                ImageView.setImage(pauseImage);
-                Timer timer = new Timer();
-                timer.scheduleAtFixedRate(new TimerTask() {
-                    int sekunden = 30;
-                    String now = "";
-                    Uebung u = new Uebung();
-                    public void run() {
-                        now = Integer.toString(sekunden--)+"s";
-                        u.setName(now);
-                        timerAnzeige.textProperty().bindBidirectional(u.nameProperty());
-                        if (sekunden <= 0) {
-                            timer.cancel();
-                            u.clear();
-                            ImageView.setImage(workOutImage);
-                        }
-                        ImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> {
-                            timer.cancel();
-                            u.clear();
-                            event.consume();
-                        });
-                    }
-                }, 1000, 1000);
-            } else {
-                ImageView.setImage(workOutImage);
-            }
-            event.consume();
-        });
-         clearChildren();
-         getUebungenVonTrainingsEinheit();
-         setLabels();
     }
     
     public void clearChildren() {
         innerVBox.getChildren().clear();
     }
-
     public void getUebungenVonTrainingsEinheit() {
         System.out.println(trainingseinheit_id);
         Trainingseinheit te = (Trainingseinheit) getInfoFromDB(trainingseinheit_id);
+        getInputName().textProperty().bindBidirectional(te.nameProperty());
 
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
@@ -156,12 +123,6 @@ public class TrainingDurchfuehrenPresenter {
                         rep = rs2.getInt("wiederholung");
                         beschreibung = rs2.getString("beschreibung");
                         createNewUebungBox(trainingsname, rep, beschreibung, trainingsuebung_id);
-                       /* for (int i = 0; i <= traininguebung_id; i++) {
-                            for (int j = 0; j>=2; j++) {
-                                String[i][j] lNames = {trainingsname}{rep};
-                            }
-                        }*/
-                        
                     }
                 } catch (SQLException e) {
                     printSQLException(e);
@@ -176,27 +137,22 @@ public class TrainingDurchfuehrenPresenter {
         boolean includeTrash = false;
         BoxDynamischGruen3 bx = new BoxDynamischGruen3(name, rep, beschreibung, includeTrash, id);
         innerVBox.getChildren().add(bx);
-        innerVBox.setSpacing(10);
     }
     
-    public void removeTopChild() {
-        innerVBox.getChildren().remove(0);   
-        //!!! WICHTIG !!!
-        //FÜR MORITZ!!!:
-            //do beginnt des Training- also do gehört dei Insert hi!!!
-            //set status Insert
+    public TextField getInputName() {
+        return inputName;
     }
-    
-    public void setLabels() {
-        String lName = innerVBox.getChildren().get(0).toString();
-        System.out.println(lName);
+
+    public void setInputName(TextField inputName) {
+        this.inputName = inputName;
     }
-    
+
     private Object getInfoFromDB(int trainingseinheit_id) {
         String nameTE = "";
         int dauer = 0;
         try (Connection connection2 = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                // Step 2:Create a statement using connection object
                 PreparedStatement preparedStatement = connection2.prepareStatement("SELECT   name , dauer FROM trainingseinheit WHERE  trainingseinheit_id = '" + trainingseinheit_id + "'")) {
             //preparedStatement.setString(1, searchString);
             ResultSet rs2 = preparedStatement.executeQuery();
@@ -210,5 +166,18 @@ public class TrainingDurchfuehrenPresenter {
         Trainingseinheit te = new Trainingseinheit(nameTE, dauer);
         return te;
     }
-
+    
+    public void setNewWorkoutId(int trainingseinheit_id) {
+        int userId = instance.getUserID();
+        //trainingseinheit_id
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATEMENT)) {
+            preparedStatement.setInt(1, trainingseinheit_id);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
 }

@@ -16,12 +16,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 
 public class LoginPresenter {
@@ -34,7 +32,11 @@ public class LoginPresenter {
     private TextField passwordField;
     @FXML
     private Button submitButton;
+    @FXML
+    private ImageView ImageView;
 
+    private static final Image avocadoImage = new Image("pictures/avocado.png");
+    
     public void initialize() {
         login.setShowTransitionFactory(BounceInRightTransition::new);
 
@@ -51,11 +53,12 @@ public class LoginPresenter {
                 appBar.setTitleText("Login");;
             }
         });
+        
+        ImageView.setImage(avocadoImage);
     }
     
     @FXML
     public void switchRegister(ActionEvent event) {
-        System.out.println("You clicked me!");
         MobileApplication.getInstance().switchView("Registrieren View");
     }
 
@@ -63,9 +66,6 @@ public class LoginPresenter {
     public void login(ActionEvent event) throws SQLException, NoSuchAlgorithmException {
 
         Window owner = submitButton.getScene().getWindow();
-
-        System.out.println(emailField.getText());
-        System.out.println(passwordField.getText());
 
         if (emailField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
@@ -88,14 +88,13 @@ public class LoginPresenter {
             return;
         }
 
-        String email = emailField.getText();
+        String email = emailField.getText().trim();
         //String to encrypt
-        String password = passwordField.getText();
+        String password = passwordField.getText().trim();
 
         //encrypt
         String algorithm = "MD5";
         String hashedPassword = generateHash(password, algorithm);
-        System.out.println("MD5 Hash: " + hashedPassword);
 
         JdbcDao jdbcDao = new JdbcDao();
         boolean flag = jdbcDao.validateLogin(email, hashedPassword);
@@ -112,7 +111,7 @@ public class LoginPresenter {
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        Alert alert = new Alert(AlertType.INFORMATION);
         alert.setContentText(infoMessage);
         alert.setTitle(title);
         alert.setHeaderText(headerText);

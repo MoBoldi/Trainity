@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -45,11 +44,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="150.0">
                <children>
-                  <ImageView fx:id="ImageView" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Fertige%20Views/Views_Trainity_Julian/Bildschirmfoto%202020-03-24%20um%2020.56.43.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="ImageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefWidth="310.0">

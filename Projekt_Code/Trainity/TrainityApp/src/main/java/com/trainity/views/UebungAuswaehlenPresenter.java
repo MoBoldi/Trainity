@@ -6,8 +6,10 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen;
+import com.trainity.EinheitSession;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
+import com.trainity.UserSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -118,7 +120,9 @@ public class UebungAuswaehlenPresenter {
     }
 
     private void searchForUebungInDB() {
-
+        
+        
+                    
         String searchString = getInputSearchBar().textProperty().get();
        
         if(oldSearchString == null ? searchString != null : !oldSearchString.equals(searchString)){

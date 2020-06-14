@@ -8,6 +8,7 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen;
 import com.trainity.BoxDynamischGruen2;
+import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import static com.trainity.Trainity.EIGENE_TRAININGS_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
@@ -39,6 +40,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
+import static jdk.nashorn.internal.objects.Global.undefined;
 
 public class EinheitBearbeitenPresenter {
 
@@ -55,14 +57,6 @@ public class EinheitBearbeitenPresenter {
     @FXML
     private TextField inputName;
     @FXML
-    private HBox labelIconHBox;
-    @FXML
-    private Label labelIcon;
-    @FXML
-    private HBox buttonOpenHBox;
-    @FXML
-    private Button ButtonOpenImagePicker;
-    @FXML
     private VBox upperBox;
     @FXML
     private HBox labelH1HBox;
@@ -75,15 +69,9 @@ public class EinheitBearbeitenPresenter {
     @FXML
     private VBox innerVBox;
     @FXML
-    private HBox buttonHBox;
-    @FXML
-    private Button ButtonAdd;
-    @FXML
     private HBox saveButtonHBox;
     @FXML
     private Button ButtonSave;
-    @FXML
-    private ImageView imageViewSafes;
     
       private Connection connection;
       private Statement statement;
@@ -135,8 +123,7 @@ public class EinheitBearbeitenPresenter {
     
     
    
-
-    @FXML
+@FXML
     private void createNewUebung(ActionEvent event) {
         
         clearChildren();
@@ -157,6 +144,9 @@ public class EinheitBearbeitenPresenter {
     private void onActionSaveTrainingsPlan(ActionEvent event) {
 
         System.out.println("Saving");
+        
+        
+        instanceE.cleanUserSession();
         MobileApplication.getInstance().switchView(EIGENE_TRAININGS_VIEW);
 
 
@@ -169,7 +159,13 @@ public class EinheitBearbeitenPresenter {
     public void getUebungenVonTrainingsEinheit() {
 
         //ÄNDERN !!!!!!
-       int trainingseinheit_id = 1;
+//      int trainingseinheit_id = instanceE.getUserID();
+       
+       
+     int trainingseinheit_id = 1;
+       
+       
+        System.out.println(trainingseinheit_id);
        
        
          Trainingseinheit te = (Trainingseinheit) getInfoFromDB( trainingseinheit_id);

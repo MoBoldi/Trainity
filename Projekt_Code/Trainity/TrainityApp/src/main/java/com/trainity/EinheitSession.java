@@ -13,10 +13,17 @@ package com.trainity;
    public final class EinheitSession {
 
     public static EinheitSession instanceE;
+<<<<<<< HEAD
 
     public int einheitId;
 
 
+=======
+    
+    public int einheitId;
+    
+
+>>>>>>> 79683407cecc35e08236a716281427ec989f1374
     public EinheitSession(int userId) {
         this.einheitId = userId;
     }
@@ -35,5 +42,13 @@ package com.trainity;
 
     public void cleanUserSession() {
        einheitId = -1;
+<<<<<<< HEAD
+=======
+    }
+
+    @Override
+    public String toString() {
+        return einheitId+"";
+>>>>>>> 79683407cecc35e08236a716281427ec989f1374
     }
    }
