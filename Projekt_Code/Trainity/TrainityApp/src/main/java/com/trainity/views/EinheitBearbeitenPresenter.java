@@ -82,10 +82,6 @@ public class EinheitBearbeitenPresenter {
 
 
     private final StringProperty name = new SimpleStringProperty();
-    @FXML
-    private HBox buttonHBox;
-    @FXML
-    private Button ButtonAdd;
     
 
     public void initialize() {
