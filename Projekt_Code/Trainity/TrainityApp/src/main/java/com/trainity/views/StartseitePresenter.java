@@ -209,7 +209,7 @@ public class StartseitePresenter {
             ) {
                 //Benutzer_ID setzen und überprüfen
                 //Später ändern
-                selectStmt.setInt(1, 1);
+                selectStmt.setInt(1, instance.getUserID());
                 //Datum für Abfrage speichern
                 selectStmt.setString(2, monday);
                 selectStmt.setString(3, sunday);
@@ -217,9 +217,9 @@ public class StartseitePresenter {
                 ResultSet result = selectStmt.executeQuery();
                 
                 for (int i = 0; i < 7; i++){
-                    result.next();
+                    if (result.next()){
                     setPlanned(check[i], calendar[i], result.getString(1));
-                    
+                    }
                 }
         } catch (SQLException e) {
             // print SQL exception information

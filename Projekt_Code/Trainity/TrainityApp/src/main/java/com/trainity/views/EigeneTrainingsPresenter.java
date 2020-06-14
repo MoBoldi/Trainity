@@ -8,6 +8,7 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischBlauGroß;
 import com.trainity.BoxDynamischBlauKlein;
+import static com.trainity.Trainity.EINHEIT_ERSTELLEN_VIEW;
 import static com.trainity.Trainity.WOCHENPLAN_VIEW;
 import java.net.URL;
 import java.sql.DriverManager;
@@ -33,7 +34,7 @@ public class EigeneTrainingsPresenter {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
 
-    private static final String SELECT_QUERY = "select name, dauer from trainingseinheit where user_id = ?";
+    private static final String SELECT_QUERY = "select name, dauer, trainingseinheit_id from trainingseinheit where user_id = ?";
 
     @FXML
     private View eigeneTrainings;
@@ -72,7 +73,7 @@ public class EigeneTrainingsPresenter {
             ResultSet result = selectStmt.executeQuery();
             
             while (result.next()){
-                einheiten.getChildren().add(new BoxDynamischBlauGroß(result.getString("name"), result.getInt("dauer"), ""));
+                einheiten.getChildren().add(new BoxDynamischBlauGroß(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
             }
             
         } catch (SQLException e) {
@@ -100,12 +101,9 @@ public static void printSQLException(SQLException ex) {
         }
     }
 
-    private void createNewUebung(ActionEvent event) {
-        //MobileApplication.getInstance().switchView(WOCHENPLAN_VIEW);
-    }
-
     @FXML
     private void neueEinheit(ActionEvent event) {
+        MobileApplication.getInstance().switchView(EINHEIT_ERSTELLEN_VIEW);
     }
 
 }

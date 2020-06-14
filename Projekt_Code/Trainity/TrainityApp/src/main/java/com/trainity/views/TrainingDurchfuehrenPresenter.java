@@ -8,6 +8,7 @@ import com.gluonhq.charm.glisten.control.TextField;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen3;
+import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
 import com.trainity.Uebung;
 import static com.trainity.Uebung.printSQLException;
@@ -69,15 +70,14 @@ public class TrainingDurchfuehrenPresenter {
     private static final String DATABASE_PASSWORD = "root";
     private static String[][] lNames = new String[60][2];
     
-    //ÄNDERN !!!!!!
-    // private static int trainingseinheit_id = instanceE.getUserID();
-    private static int trainingseinheit_id = 1;
+    private static int trainingseinheit_id = instanceE.getUserID();
 
     public void initialize() {
         trainingDurchfuehren.setShowTransitionFactory(BounceInRightTransition::new);
 
         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
                 e -> removeTopChild());
+        
         fab.showOn(trainingDurchfuehren); 
         ImageView.setImage(workOutImage);
             
@@ -180,11 +180,7 @@ public class TrainingDurchfuehrenPresenter {
     }
     
     public void removeTopChild() {
-        innerVBox.getChildren().remove(0);   
-        //!!! WICHTIG !!!
-        //FÜR MORITZ!!!:
-            //do beginnt des Training- also do gehört dei Insert hi!!!
-            //set status Insert
+        innerVBox.getChildren().remove(0);
     }
     
     public void setLabels() {

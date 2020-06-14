@@ -34,16 +34,18 @@ public class BoxDynamischBlauGroß extends HBox {
     private String name;
     private int duration;
     private String beschreibung;
+    private int id; 
+    
     private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/Trainity?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
 
-    public BoxDynamischBlauGroß(String name, int duration, String beschreibung) {
+    public BoxDynamischBlauGroß(String name, int duration, String beschreibung, int id) {
 
         this.setName(name);
         this.setDuration(duration);
         this.setBeschreibung(beschreibung);
-
+        this.setId(id);
         addContent();
 
     }
@@ -77,6 +79,7 @@ public class BoxDynamischBlauGroß extends HBox {
             @Override
             public void handle(MouseEvent event) {
                 //  System.out.println("Mouse event handler has been called");
+                EinheitSession.getInstace(id);
                 MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
 
             }
@@ -86,14 +89,14 @@ public class BoxDynamischBlauGroß extends HBox {
 
 //-------------------------------------------------------------------------------------
 //Image View erstellen und als Children in HBox hinzufügen
-        int ID = 1;
+        
 
         String imgName = "";
         // try-with-resource statement will auto close the connection.
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT bildName FROM trainingseinheit WHERE  trainingseinheit_id = '" + ID + "'")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT bildName FROM trainingseinheit WHERE  trainingseinheit_id = '" + id + "'")) {
             //preparedStatement.setString(1, searchString);
 
             ResultSet rs = preparedStatement.executeQuery();
@@ -269,5 +272,8 @@ public class BoxDynamischBlauGroß extends HBox {
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
-
+    
+    private void setId(int id) {
+        this.id = id;
+    }
 }

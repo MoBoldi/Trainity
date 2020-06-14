@@ -70,7 +70,7 @@ public class BoxDynamischBlauKlein extends HBox {
             @Override
             public void handle(MouseEvent event) {
                 //  System.out.println("Mouse event handler has been called");
-                EinheitSession.getInstace(instance.getUserID());
+                EinheitSession.getInstace(id);
                 MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
                 
 
