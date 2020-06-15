@@ -10,6 +10,7 @@ import com.trainity.EinheitSession;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_VIEW;
 import static com.trainity.Uebung.printSQLException;
 import com.trainity.UserSession;
+import static com.trainity.UserSession.instance;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -148,7 +149,7 @@ public class UebungAuswaehlenPresenter {
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id, trainingsname, wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsname = '" + searchString + "'")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT trainingsuebung_id, trainingsname, wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsname = '" + searchString + "' and benutzer_id = " + instance.getUserID())) {
             //preparedStatement.setString(1, searchString);
 
             ResultSet rs = preparedStatement.executeQuery();

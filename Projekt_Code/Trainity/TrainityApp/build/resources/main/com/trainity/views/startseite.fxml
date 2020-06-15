@@ -15,7 +15,7 @@
    <center>
       <ScrollPane hbarPolicy="NEVER" prefWidth="310.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox minHeight="600.0" prefWidth="280.0" spacing="15.0">
+            <VBox prefHeight="1000.0" prefWidth="280.0" spacing="15.0">
                <children>
                   <HBox prefHeight="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 13;">
                      <VBox.margin>

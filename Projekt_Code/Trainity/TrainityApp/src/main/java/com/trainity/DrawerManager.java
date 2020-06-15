@@ -33,7 +33,7 @@ public class DrawerManager {
         drawer.setHeader(header);
         
         final Item startseiteItem = new ViewItem("Startseite", MaterialDesignIcon.HOME.graphic(), STARTSEITE_VIEW, ViewStackPolicy.SKIP);
-        final Item eigeneTrainings = new ViewItem("Eigene Trainings", MaterialDesignIcon.DASHBOARD.graphic(), EIGENE_TRAININGS_VIEW);
+        final Item eigeneTrainings = new ViewItem("Trainings bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), EIGENE_TRAININGS_VIEW);
         final Item wochenplan = new ViewItem("Wochenplan", MaterialDesignIcon.DASHBOARD.graphic(), WOCHENPLAN_VIEW);
         final Item bildAuswaehlen = new ViewItem("Bild auswählen", MaterialDesignIcon.DASHBOARD.graphic(), BILD_AUSWAEHLEN_VIEW);
         final Item einheitBearbeiten = new ViewItem("Einheit bearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), EINHEIT_BEARBEITEN_VIEW);
@@ -45,8 +45,8 @@ public class DrawerManager {
         final Item uebungNotBearbeiten = new ViewItem("Übung Notbearbeiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_BEARBEITEN_NotEditable_VIEW);
         final Item uebungAll = new ViewItem("Übersicht Trainingseinheiten", MaterialDesignIcon.DASHBOARD.graphic(), UEBUNG_ALL);
 
-        drawer.getItems().addAll(startseiteItem, eigeneTrainings, wochenplan, bildAuswaehlen, einheitBearbeiten, uebungAll, uebungAuswaehlen, uebungBearbeiten,uebungNotBearbeiten, einheitErstellen );
-        
+        drawer.getItems().addAll(startseiteItem, eigeneTrainings, wochenplan/*, bildAuswaehlen, einheitBearbeiten, uebungAll, uebungAuswaehlen, uebungBearbeiten,uebungNotBearbeiten, einheitErstellen */);
+        //drawer.getItems().
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Logout", MaterialDesignIcon.EXIT_TO_APP.graphic());
             quitItem.selectedProperty().addListener((obs, ov, nv) -> {

@@ -92,7 +92,9 @@ public class UebungBearbeitenNotEditablePresenter {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
         private static final String INSERT_QUERY = "INSERT INTO trainingsListe (trainingseinheit_id, trainingsuebung_id) VALUES (?, ?)";
-
+        private static final String UPDATE_QUERY = "update trainingseinheit set dauer = (select count(*) anz from trainingsliste where trainingseinheit_id = ?)*3 where trainingseinheit_id = ?;";
+        
+//select count(*) anz from trainingsliste where trainingseinheit_id = 1;
     // Helper
     private static final NumberFormat DF;
 
@@ -153,7 +155,8 @@ public class UebungBearbeitenNotEditablePresenter {
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
 
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT  trainingsname, wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + USERID + "'")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT  trainingsname, wiederholung, beschreibung FROM trainingsuebung WHERE  trainingsuebung_id = '" + USERID + "'");
+                ) {
 
                       System.out.println(USERID);
 
@@ -165,11 +168,6 @@ public class UebungBearbeitenNotEditablePresenter {
      
             if(rs!=null){
             
- 
-
-            
-       
-        
                String trainingsname="";
                int rep=0;
                  String beschreibung="";
@@ -196,7 +194,7 @@ public class UebungBearbeitenNotEditablePresenter {
         uebung.setName(trainingsname);
         uebung.setWiederholungen(rep);
         uebung.setBeschreibung(beschreibung);
-       
+        
             }
             
         } catch (SQLException e) {
@@ -246,7 +244,9 @@ public class UebungBearbeitenNotEditablePresenter {
         try (Connection connection = DriverManager
                 .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
                 // Step 2:Create a statement using connection object
-                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY);
+                PreparedStatement updateStmt = connection.prepareStatement(UPDATE_QUERY);
+            ) {
             preparedStatement.setInt(1, trainingseinheit_id);
             preparedStatement.setInt(2, uebung_id);
           
@@ -254,7 +254,9 @@ public class UebungBearbeitenNotEditablePresenter {
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
             
-            
+            updateStmt.setInt(1, trainingseinheit_id);
+            updateStmt.setInt(2, trainingseinheit_id);
+            updateStmt.executeUpdate();
             
             
             //ADDING TO LIST
@@ -264,7 +266,7 @@ public class UebungBearbeitenNotEditablePresenter {
             
 
         } catch (SQLException e) {
-            printSQLException(e);
+            System.out.println(e.getMessage());
         }
        
        
