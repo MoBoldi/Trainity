@@ -246,6 +246,8 @@ public class StartseitePresenter {
                             break;
                     }*/
                     System.out.println(result);
+                    check.setVisible(true);
+                    calendar.setVisible(true);
                     if (result == null){
                         check.setVisible(false);
                         calendar.setVisible(false);

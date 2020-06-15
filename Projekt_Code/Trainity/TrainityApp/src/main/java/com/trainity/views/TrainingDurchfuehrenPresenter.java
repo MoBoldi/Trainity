@@ -10,6 +10,7 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.trainity.BoxDynamischGruen3;
 import static com.trainity.EinheitSession.instanceE;
 import com.trainity.Trainingseinheit;
+import static com.trainity.Trainity.STARTSEITE_VIEW;
 import com.trainity.Uebung;
 import static com.trainity.Uebung.printSQLException;
 import java.sql.Connection;
@@ -20,6 +21,8 @@ import java.sql.SQLException;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -69,8 +72,8 @@ public class TrainingDurchfuehrenPresenter {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
     private String[][] lNames;
-    private int j=0; 
-    private static int trainingseinheit_id = instanceE.getUserID();
+    private int j; 
+    private int trainingseinheit_id = instanceE.getUserID();
 
     public void initialize() throws SQLException {
         trainingDurchfuehren.setShowTransitionFactory(BounceInRightTransition::new);
@@ -93,6 +96,13 @@ public class TrainingDurchfuehrenPresenter {
                         -> MobileApplication.getInstance().getDrawer().open()));
                 appBar.setTitleText("Training durchführen");
             }
+            clearChildren();
+            try {
+                getUebungenVonTrainingsEinheit();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            setLabels();
         });
 
         ImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -125,9 +135,7 @@ public class TrainingDurchfuehrenPresenter {
             }
             event.consume();
         });
-        clearChildren();
-        getUebungenVonTrainingsEinheit();
-        setLabels();
+        
     }
 
     public void clearChildren() {
@@ -135,8 +143,7 @@ public class TrainingDurchfuehrenPresenter {
     }
 
     public void getUebungenVonTrainingsEinheit() throws SQLException{
-        System.out.println(trainingseinheit_id);
-
+        trainingseinheit_id = instanceE.getUserID();
         Uebung u = new Uebung();
            titelUebung.textProperty().bindBidirectional(u.nameProperty());
                     wiederholungen.textProperty().bindBidirectional(u.beschreibungProperty());
@@ -180,12 +187,12 @@ public class TrainingDurchfuehrenPresenter {
                     */
                     
                     lNames[i][0] = rs1.getString("trainingsname");
-                    lNames[i][1] = rs1.getInt("wiederholung") + "";
+                    lNames[i][1] = rs1.getInt("wiederholung") + "x";
                     i++;
                 }
             titelUebung.textProperty().bindBidirectional(u.nameProperty());
             wiederholungen.textProperty().bindBidirectional(u.beschreibungProperty());
-
+            j=0;
             u.setName(lNames[j][0]);
             u.setBeschreibung(lNames[j][1]);
             j++;
@@ -212,8 +219,9 @@ public class TrainingDurchfuehrenPresenter {
         u.setBeschreibung(lNames[j][1]);
         j++;
         }
-        innerVBox.getChildren().remove(0);
-        
+        if (innerVBox.getChildren().size() == 1){ 
+            MobileApplication.getInstance().switchView(STARTSEITE_VIEW);
+        }
     }
 
     public void setLabels() {

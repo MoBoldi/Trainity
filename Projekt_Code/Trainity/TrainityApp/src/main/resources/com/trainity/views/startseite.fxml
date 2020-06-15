@@ -189,7 +189,7 @@
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Text>
-                  <VBox fx:id="lastTraining" spacing="5.0" />
+                  <VBox fx:id="lastTraining" spacing="15.0" />
                </children>
                <padding>
                   <Insets right="-20.0" />

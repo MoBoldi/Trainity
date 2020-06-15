@@ -6,6 +6,7 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import static com.trainity.Trainity.STARTSEITE_VIEW;
 import static com.trainity.UserSession.instance;
 import static java.awt.PageAttributes.ColorType.COLOR;
 import java.net.URL;
@@ -144,7 +145,7 @@ public class WochenplanPresenter {
     }
 
     @FXML
-    private void savePlan(ActionEvent event) {
+    private void savePlan(ActionEvent event) throws InterruptedException {
         //Wochenplan hier in DB speichern 
         //Wochenplan ist in selected[] gespeichert
         try (
@@ -247,6 +248,8 @@ public class WochenplanPresenter {
             // print SQL exception information
             printSQLException(e);
         }
+        Thread.sleep(1000);
+        MobileApplication.getInstance().switchView(STARTSEITE_VIEW);
         
         
     }
