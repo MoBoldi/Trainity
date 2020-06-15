@@ -107,6 +107,34 @@ public class StartseitePresenter {
                 
             }
             updateDays();
+            nextTraining.getChildren().clear();
+        lastTraining.getChildren().clear();
+        try (
+                Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD); 
+                // Step 2:Create a statement using connection object
+                PreparedStatement selectHistorieStmt = connection.prepareStatement(SELECT_HISTORIE_QUERY);
+                PreparedStatement selectEinheitStmt = connection.prepareStatement(SELECT_EINHEIT_QUERY);
+            ) {
+            int id = instance.getUserID();
+
+            selectHistorieStmt.setInt(1, id);
+            selectEinheitStmt.setInt(1, id);
+            
+            ResultSet result = selectHistorieStmt.executeQuery();
+            
+            while (result.next()){
+                lastTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
+            }
+            
+            result = selectEinheitStmt.executeQuery();
+            while (result.next()){
+                nextTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
+            }
+            
+        } catch (SQLException e) {
+            // print SQL exception information
+            printSQLException(e);
+        }
         });
         Calendar c = Calendar.getInstance(Locale.GERMAN);
         switch (c.get(Calendar.DAY_OF_WEEK) - 1) {
@@ -135,34 +163,7 @@ public class StartseitePresenter {
                 setDay(di, moText);
                 break;
         }
-        nextTraining.getChildren().clear();
-        lastTraining.getChildren().clear();
-        try (
-                Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD); 
-                // Step 2:Create a statement using connection object
-                PreparedStatement selectHistorieStmt = connection.prepareStatement(SELECT_HISTORIE_QUERY);
-                PreparedStatement selectEinheitStmt = connection.prepareStatement(SELECT_EINHEIT_QUERY);
-            ) {
-            int id = instance.getUserID();
-
-            selectHistorieStmt.setInt(1, id);
-            selectEinheitStmt.setInt(1, id);
-            
-            ResultSet result = selectHistorieStmt.executeQuery();
-            
-            while (result.next()){
-                lastTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
-            }
-            
-            result = selectEinheitStmt.executeQuery();
-            while (result.next()){
-                nextTraining.getChildren().add(new BoxDynamischBlauKlein(result.getString("name"), result.getInt("dauer"), "", result.getInt("trainingseinheit_id")));
-            }
-            
-        } catch (SQLException e) {
-            // print SQL exception information
-            printSQLException(e);
-        }
+        
         
         
         

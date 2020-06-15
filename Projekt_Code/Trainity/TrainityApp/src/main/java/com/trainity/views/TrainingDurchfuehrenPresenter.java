@@ -222,6 +222,7 @@ public class TrainingDurchfuehrenPresenter {
         if (innerVBox.getChildren().size() == 1){ 
             MobileApplication.getInstance().switchView(STARTSEITE_VIEW);
         }
+        innerVBox.getChildren().remove(0);
     }
 
     public void setLabels() {

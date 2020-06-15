@@ -77,26 +77,11 @@
                         </children>
                     </HBox>
                     <HBox fx:id="labelIconHBox" prefHeight="29.0" prefWidth="300.0">
-                        <children>
-                            <Label fx:id="labelIcon" alignment="CENTER" opacity="0.96" prefHeight="41.0" prefWidth="49.0" text="Icon">
-                                <font>
-                                    <Font name="Al Bayan Plain" size="21.0" />
-                                </font>
-                            </Label>
-                        </children>
                         <VBox.margin>
                             <Insets top="20.0" />
                         </VBox.margin>
                     </HBox>
-                    <HBox fx:id="buttonHBox" prefHeight="52.0" prefWidth="300.0">
-                        <children>
-                            <Button fx:id="NewExerciseButton" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="294.0" style="-fx-border-radius: 2.5px; -fx-border-width: .2px; -fx-border-color: black; -fx-background-color: white;" text="Icon auswählen" textAlignment="CENTER">
-                                <font>
-                                    <Font size="17.0" />
-                                </font>
-                            </Button>
-                        </children>
-                    </HBox>
+                    <HBox fx:id="buttonHBox" prefHeight="52.0" prefWidth="300.0" />
                <HBox fx:id="saveButtonHBox" alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="277.0">
                   <children>
                      <Button fx:id="ButtonSave" alignment="CENTER" graphicTextGap="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OnActionBack" opacity="0.99" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #2196F3#2196F3; -fx-background-radius: 10px;" text="Zurück" textAlignment="CENTER" textFill="WHITE">

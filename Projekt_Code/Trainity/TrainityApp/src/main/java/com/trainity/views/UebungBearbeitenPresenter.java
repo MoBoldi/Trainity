@@ -70,11 +70,9 @@ public class UebungBearbeitenPresenter {
     private TextField inputLabelInfo;
     @FXML
     private HBox labelIconHBox;
-    @FXML
     private Label labelIcon;
     @FXML
     private HBox buttonHBox;
-    @FXML
     private Button NewExerciseButton;
     @FXML
     private HBox saveButtonHBox;

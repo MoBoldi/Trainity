@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Window;
 import com.trainity.JdbcDao;
 import static com.trainity.JdbcDao.printSQLException;
+import static com.trainity.Trainity.LOGIN_VIEW;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -77,7 +78,7 @@ public class RegistrierenPresenter {
 
     @FXML
     public void switchLogin(ActionEvent event) {
-        MobileApplication.getInstance().switchView(HOME_VIEW);
+        MobileApplication.getInstance().switchView(LOGIN_VIEW);
     }
 
     @FXML
@@ -166,7 +167,7 @@ public class RegistrierenPresenter {
 
         showAlert(Alert.AlertType.CONFIRMATION, owner, "Erfolgreich registriert!",
                 "Willkommen " + vornameField.getText() + "!");
-        MobileApplication.getInstance().switchView("Startseite View");
+        MobileApplication.getInstance().switchView(LOGIN_VIEW);
     }
 
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
