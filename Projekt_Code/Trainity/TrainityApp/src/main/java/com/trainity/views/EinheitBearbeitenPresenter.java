@@ -167,9 +167,9 @@ public class EinheitBearbeitenPresenter {
     //Wird automatisch aufgerufen wenn Traininsgeinheit schon vorhanden
     public void getUebungenVonTrainingsEinheit() {
 
-        //ÄNDERN !!!!!!
-      int trainingseinheit_id = instanceE.getUserID();
-       
+        
+        int trainingseinheit_id = instanceE.getUserID();
+        
        
        
        

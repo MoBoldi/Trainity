@@ -13,9 +13,9 @@
 
 <View fx:id="startseite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="310.0" stylesheets="@startseite.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trainity.views.StartseitePresenter">
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="310.0" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefWidth="310.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefWidth="280.0" spacing="15.0">
+            <VBox minHeight="600.0" prefWidth="280.0" spacing="15.0">
                <children>
                   <HBox prefHeight="100.0" style="-fx-background-color: #2196F3; -fx-background-radius: 13;">
                      <VBox.margin>
@@ -184,7 +184,7 @@
                      </VBox.margin>
                   </Text>
                   <VBox fx:id="nextTraining" spacing="5.0" />
-                  <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Letzte Trainings">
+                  <Text fill="#2a2a2a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Eigene Trainings">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>

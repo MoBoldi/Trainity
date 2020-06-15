@@ -41,12 +41,12 @@
                                 </HBox>
                                 <HBox fx:id="InputHBox1" alignment="CENTER" prefHeight="35.0" prefWidth="310.0">
                            <children>
-                              <TextField fx:id="titelUebung" />
+                              <TextField fx:id="titelUebung" disable="true" />
                            </children>
                                 </HBox>
                                 <HBox fx:id="InputHBox11" alignment="CENTER" prefHeight="20.0" prefWidth="310.0">
                            <children>
-                              <TextField fx:id="wiederholungen" />
+                              <TextField fx:id="wiederholungen" disable="true" />
                            </children>
                                 </HBox>
                         <VBox fx:id="upperBox" prefHeight="200.0" prefWidth="100.0">

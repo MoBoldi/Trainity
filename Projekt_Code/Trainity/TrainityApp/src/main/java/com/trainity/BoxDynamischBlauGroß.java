@@ -85,7 +85,7 @@ public class BoxDynamischBlauGroß extends HBox {
                 
                 instanceE = null;
                 EinheitSession.getInstace(id);
-                MobileApplication.getInstance().switchView(UEBUNG_ALL);
+                MobileApplication.getInstance().switchView(EINHEIT_BEARBEITEN_VIEW);
 //UEBUNG_ALL
             }
         };

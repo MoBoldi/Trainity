@@ -28,6 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.NullableNumberStringConverter;
 import com.trainity.*;
+import static com.trainity.EinheitSession.instanceE;
 import static com.trainity.Trainity.EINHEIT_BEARBEITEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_AUSWAEHLEN_VIEW;
 import static com.trainity.Trainity.UEBUNG_BEARBEITEN_NotEditable_VIEW;
@@ -238,7 +239,7 @@ public class UebungBearbeitenNotEditablePresenter {
        
        
     int uebung_id = USERID;
-    int trainingseinheit_id = 1;
+    int trainingseinheit_id = instanceE.getUserID();
      
        // Step 1: Establishing a Connection and 
         // try-with-resource statement will auto close the connection.

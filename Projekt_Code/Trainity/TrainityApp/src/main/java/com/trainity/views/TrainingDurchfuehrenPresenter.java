@@ -69,12 +69,12 @@ public class TrainingDurchfuehrenPresenter {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "root";
     private String[][] lNames;
-
+    private int j=0; 
     private static int trainingseinheit_id = instanceE.getUserID();
 
     public void initialize() throws SQLException {
         trainingDurchfuehren.setShowTransitionFactory(BounceInRightTransition::new);
-
+        
         FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.PLAY_ARROW.text,
                 e -> removeTopChild());
 
@@ -160,14 +160,11 @@ public class TrainingDurchfuehrenPresenter {
             String trainingsname;
             int rep;
             String beschreibung;
-            
+            lNames = new String[einheitLength][2];
             int i = 0; 
             while (rs1.next()) {
                
                 //preparedStatement.setString(1, searchString);
-                    
-                
-                
                     createNewUebungBox(rs1.getString("trainingsname"), rs1.getInt("wiederholung"), rs1.getString("beschreibung"), rs1.getInt("trainingsuebung_id"));
                     /* for (int i = 0; i <= traininguebung_id; i++) {
                         for (int j = 0; j>=2; j++) {
@@ -181,22 +178,22 @@ public class TrainingDurchfuehrenPresenter {
                                
                         }
                     */
-                    lNames = new String[einheitLength][2];
+                    
                     lNames[i][0] = rs1.getString("trainingsname");
                     lNames[i][1] = rs1.getInt("wiederholung") + "";
-                    
-                    
-                
-                    u.setName(lNames[i][0]);
-                    u.setBeschreibung(lNames[i][1]);
-                    
-                    
                     i++;
                 }
+            titelUebung.textProperty().bindBidirectional(u.nameProperty());
+            wiederholungen.textProperty().bindBidirectional(u.beschreibungProperty());
+
+            u.setName(lNames[j][0]);
+            u.setBeschreibung(lNames[j][1]);
+            j++;
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
     }
 
     public void createNewUebungBox(String name, int rep, String beschreibung, int id) {
@@ -207,7 +204,16 @@ public class TrainingDurchfuehrenPresenter {
     }
 
     public void removeTopChild() {
+        Uebung u = new Uebung();
+        titelUebung.textProperty().bindBidirectional(u.nameProperty());
+        wiederholungen.textProperty().bindBidirectional(u.beschreibungProperty());
+        if (j < lNames.length){
+        u.setName(lNames[j][0]);
+        u.setBeschreibung(lNames[j][1]);
+        j++;
+        }
         innerVBox.getChildren().remove(0);
+        
     }
 
     public void setLabels() {
